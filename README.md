@@ -553,7 +553,7 @@ mvn -B -pl tika-core -Pchatunitest-verify test-compile \
   -Drat.skip=true -Dcheckstyle.skip=true -Dossindex.skip=true
 ```
 
-Le plugin, ses opérateurs et la classe ciblée sont inchangés. Le `clean` avait été exécuté avant la mesure générée corrigée ; cette étape n’a ajouté qu’une classe de test et n’a supprimé/renommé aucun test. Le contrôle des 206 identités (méthode, surcharge JVM, ligne, opérateur et indices bytecode) confirme la même population dans les trois rapports. La compilation et les tests sont validés localement ; le workflow CI est configuré et ses commandes sont validées localement, mais son exécution sur GitHub reste à vérifier.
+Le plugin, ses opérateurs et la classe ciblée sont inchangés. Le `clean` avait été exécuté avant la mesure générée corrigée ; cette étape n’a ajouté qu’une classe de test et n’a supprimé/renommé aucun test. Le contrôle des 206 identités (méthode, surcharge JVM, ligne, opérateur et indices bytecode) confirme la même population dans les trois rapports. La compilation et les tests sont validés localement ; le workflow CI est configuré et validé localement ainsi que sur GitHub (voir la section « Intégration continue »).
 
 #### Attribution exacte des 101 nouvelles détections
 
@@ -699,7 +699,7 @@ Aucune installation ni invocation d'Ollama, aucune génération ChatUniTest et a
 
 **Vérification du 28 septembre 2026 :** les deux commandes exactes ci-dessus réussissent localement sur macOS avec Java 21. Après `clean`, Surefire compte **837 tests, 0 échec, 0 erreur et 2 ignorés**, dont les **71 tests générés corrigés** et les **17 tests manuels**. Journaux : [préparation](chatunitest-local/logs/ci-prerequisites-local.log) et [tests](chatunitest-local/logs/ci-tests-local.log). Le cache Maven local était déjà alimenté : cette vérification ne prouve pas une résolution depuis un cache vierge.
 
-**Vérification distante non réalisée :** au moment du contrôle, `gh auth status` signale une authentification invalide pour `nass1379`. Aucun succès sur le runner Linux GitHub n'est donc revendiqué. Après réauthentification (`gh auth login -h github.com`), commit et push du workflow, du POM et des tests, vérifier le job dans l'onglet Actions du fork. Les nouveaux fichiers doivent être versionnés pour être disponibles sur le runner. Un simple commit local ne déclenche pas GitHub Actions.
+**Vérification distante réussie le 28 septembre 2026 :** le commit `d4288be12` a été publié sur `main`. Le [workflow GitHub Actions n° 36482829069](https://github.com/nass1379/tika/actions/runs/36482829069) a terminé avec succès sur Ubuntu 24.04 : préparation du réacteur, exécution des tests originaux, générés et manuels, puis sauvegarde des rapports Surefire. Le statut invalide de `gh auth status` n'empêchait pas Git de publier avec son accès existant ; aucune nouvelle authentification n'a été nécessaire. Cette preuve concerne le workflow « Tache 2 - tika-core tests », pas les autres workflows hérités du dépôt Apache. Le commit documentaire suivant porte `[skip ci]` pour éviter de relancer les builds pour cette seule mise à jour du compte rendu.
 
 <!-- IFT3913-TACHE2-END -->
 
