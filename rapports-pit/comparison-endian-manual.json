@@ -1,0 +1,3112 @@
+{
+  "before_manual": {
+    "NO_COVERAGE": 82,
+    "KILLED": 103,
+    "SURVIVED": 21
+  },
+  "final": {
+    "KILLED": 204,
+    "SURVIVED": 2
+  },
+  "newly_killed": 101,
+  "manual_tests": 17,
+  "manual_source_sha256": "769774d9935b2083f6ac93927f69eaad5c05e59fcdac4a1c4670a9f6fb2ef4d4",
+  "transitions": {
+    "NO_COVERAGE -> KILLED": 82,
+    "KILLED -> KILLED": 103,
+    "SURVIVED -> SURVIVED": 2,
+    "SURVIVED -> KILLED": 19
+  },
+  "mutants": [
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)S",
+      "lineNumber": "45",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::readShortLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_readShortLE_0_0_Test]/[method:testReadShortLE_withValidData()]",
+      "indexes": [
+        6
+      ],
+      "id": "M001",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)S",
+      "lineNumber": "58",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::readShortBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadShortBEValues()]",
+      "indexes": [
+        6
+      ],
+      "id": "M002",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "64",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        16
+      ],
+      "id": "M003",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "64",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_readShortLE_0_0_Test]/[method:testReadShortLE_withBufferUnderrun()]",
+      "indexes": [
+        15
+      ],
+      "id": "M004",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "64",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_readShortLE_0_0_Test]/[method:testReadShortLE_withBufferUnderrun()]",
+      "indexes": [
+        16
+      ],
+      "id": "M005",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "67",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_readShortLE_0_0_Test]/[method:testReadShortLE_withValidData()]",
+      "indexes": [
+        28
+      ],
+      "id": "M006",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "67",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_readShortLE_0_0_Test]/[method:testReadShortLE_withValidData()]",
+      "indexes": [
+        30
+      ],
+      "id": "M007",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "67",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::readUShortLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_readShortLE_0_0_Test]/[method:testReadShortLE_withValidData()]",
+      "indexes": [
+        31
+      ],
+      "id": "M008",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "73",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        16
+      ],
+      "id": "M009",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "73",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        15
+      ],
+      "id": "M010",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "73",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        16
+      ],
+      "id": "M011",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "76",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadShortBEValues()]",
+      "indexes": [
+        28
+      ],
+      "id": "M012",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "76",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadShortBEValues()]",
+      "indexes": [
+        30
+      ],
+      "id": "M013",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUShortBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "76",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::readUShortBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadShortBEValues()]",
+      "indexes": [
+        31
+      ],
+      "id": "M014",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "92",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        30
+      ],
+      "id": "M015",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "92",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        25
+      ],
+      "id": "M016",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "92",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        27
+      ],
+      "id": "M017",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "92",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        29
+      ],
+      "id": "M018",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "92",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        30
+      ],
+      "id": "M019",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        42
+      ],
+      "id": "M020",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        45
+      ],
+      "id": "M021",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        46
+      ],
+      "id": "M022",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        49
+      ],
+      "id": "M023",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        50
+      ],
+      "id": "M024",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        52
+      ],
+      "id": "M025",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        55
+      ],
+      "id": "M026",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "95",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::readUIntLE",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntLE()]",
+      "indexes": [
+        56
+      ],
+      "id": "M027",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "111",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        30
+      ],
+      "id": "M028",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "111",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        25
+      ],
+      "id": "M029",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "111",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        27
+      ],
+      "id": "M030",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "111",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        29
+      ],
+      "id": "M031",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "111",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        30
+      ],
+      "id": "M032",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        42
+      ],
+      "id": "M033",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        45
+      ],
+      "id": "M034",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        46
+      ],
+      "id": "M035",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        49
+      ],
+      "id": "M036",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        50
+      ],
+      "id": "M037",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        52
+      ],
+      "id": "M038",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        55
+      ],
+      "id": "M039",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "114",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::readUIntBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUIntBE()]",
+      "indexes": [
+        56
+      ],
+      "id": "M040",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "130",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        30
+      ],
+      "id": "M041",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "130",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        25
+      ],
+      "id": "M042",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "130",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        27
+      ],
+      "id": "M043",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "130",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        29
+      ],
+      "id": "M044",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "130",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        30
+      ],
+      "id": "M045",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        42
+      ],
+      "id": "M046",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        45
+      ],
+      "id": "M047",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        46
+      ],
+      "id": "M048",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        49
+      ],
+      "id": "M049",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        50
+      ],
+      "id": "M050",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        52
+      ],
+      "id": "M051",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntLE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "133",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::readIntLE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntLEValues()]",
+      "indexes": [
+        53
+      ],
+      "id": "M052",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "149",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        30
+      ],
+      "id": "M053",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "149",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        25
+      ],
+      "id": "M054",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "149",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        27
+      ],
+      "id": "M055",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "149",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        29
+      ],
+      "id": "M056",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "149",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        30
+      ],
+      "id": "M057",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        42
+      ],
+      "id": "M058",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        45
+      ],
+      "id": "M059",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        46
+      ],
+      "id": "M060",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        49
+      ],
+      "id": "M061",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        50
+      ],
+      "id": "M062",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        52
+      ],
+      "id": "M063",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntBE",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "152",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::readIntBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadIntBEValues()]",
+      "indexes": [
+        53
+      ],
+      "id": "M064",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "168",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        30
+      ],
+      "id": "M065",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "168",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        25
+      ],
+      "id": "M066",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "168",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        27
+      ],
+      "id": "M067",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "168",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        29
+      ],
+      "id": "M068",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "168",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        30
+      ],
+      "id": "M069",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        42
+      ],
+      "id": "M070",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        45
+      ],
+      "id": "M071",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        46
+      ],
+      "id": "M072",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        49
+      ],
+      "id": "M073",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        50
+      ],
+      "id": "M074",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        52
+      ],
+      "id": "M075",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readIntME",
+      "methodDescription": "(Ljava/io/InputStream;)I",
+      "lineNumber": "171",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::readIntME",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadIntME()]",
+      "indexes": [
+        53
+      ],
+      "id": "M076",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        58
+      ],
+      "id": "M077",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        45
+      ],
+      "id": "M078",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        47
+      ],
+      "id": "M079",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        49
+      ],
+      "id": "M080",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        51
+      ],
+      "id": "M081",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        53
+      ],
+      "id": "M082",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        55
+      ],
+      "id": "M083",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        57
+      ],
+      "id": "M084",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "191",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        58
+      ],
+      "id": "M085",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        71
+      ],
+      "id": "M086",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        75
+      ],
+      "id": "M087",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        76
+      ],
+      "id": "M088",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        80
+      ],
+      "id": "M089",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        81
+      ],
+      "id": "M090",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        85
+      ],
+      "id": "M091",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        86
+      ],
+      "id": "M092",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        90
+      ],
+      "id": "M093",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        91
+      ],
+      "id": "M094",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        94
+      ],
+      "id": "M095",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        96
+      ],
+      "id": "M096",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        99
+      ],
+      "id": "M097",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        101
+      ],
+      "id": "M098",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        104
+      ],
+      "id": "M099",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongLE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "195",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::readLongLE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongLEValues()]",
+      "indexes": [
+        105
+      ],
+      "id": "M100",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthZeroIsValid()]",
+      "indexes": [
+        58
+      ],
+      "id": "M101",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        45
+      ],
+      "id": "M102",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        47
+      ],
+      "id": "M103",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        49
+      ],
+      "id": "M104",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        51
+      ],
+      "id": "M105",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        53
+      ],
+      "id": "M106",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthRejectsEofEvenIfFileGrows(java.nio.file.Path)]",
+      "indexes": [
+        55
+      ],
+      "id": "M107",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        57
+      ],
+      "id": "M108",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "217",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testFixedWidthTruncationAtEveryPosition()]",
+      "indexes": [
+        58
+      ],
+      "id": "M109",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        71
+      ],
+      "id": "M110",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        75
+      ],
+      "id": "M111",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        76
+      ],
+      "id": "M112",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        80
+      ],
+      "id": "M113",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        81
+      ],
+      "id": "M114",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        85
+      ],
+      "id": "M115",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        86
+      ],
+      "id": "M116",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        90
+      ],
+      "id": "M117",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        91
+      ],
+      "id": "M118",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        94
+      ],
+      "id": "M119",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        96
+      ],
+      "id": "M120",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        99
+      ],
+      "id": "M121",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        101
+      ],
+      "id": "M122",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        104
+      ],
+      "id": "M123",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readLongBE",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "221",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::readLongBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadLongBEValues()]",
+      "indexes": [
+        105
+      ],
+      "id": "M124",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "235",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadUE7ZeroAfterContinuation()]",
+      "indexes": [
+        21
+      ],
+      "id": "M125",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "235",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadUE7SixByteLimitConsumesLookahead()]",
+      "indexes": [
+        25
+      ],
+      "id": "M126",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "235",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadUE7SixByteLimitConsumesLookahead()]",
+      "indexes": [
+        23
+      ],
+      "id": "M127",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "235",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        21
+      ],
+      "id": "M128",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "235",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        25
+      ],
+      "id": "M129",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "236",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        30
+      ],
+      "id": "M130",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "237",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        36
+      ],
+      "id": "M131",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "237",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_EQUAL_ELSE",
+      "description": "removed conditional - replaced equality check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        38
+      ],
+      "id": "M132",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "239",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        44
+      ],
+      "id": "M133",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "239",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        46
+      ],
+      "id": "M134",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "242",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced long addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        55
+      ],
+      "id": "M135",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "246",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadUE7ZeroAfterContinuation()]",
+      "indexes": [
+        64
+      ],
+      "id": "M136",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "246",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testReadUE7RejectsPrematureEnd()]",
+      "indexes": [
+        64
+      ],
+      "id": "M137",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "readUE7",
+      "methodDescription": "(Ljava/io/InputStream;)J",
+      "lineNumber": "249",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::readUE7",
+      "killingTest": "org.apache.tika.io.EndianUtilsTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsTest]/[method:testReadUE7()]",
+      "indexes": [
+        76
+      ],
+      "id": "M138",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getShortLE",
+      "methodDescription": "([B)S",
+      "lineNumber": "259",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::getShortLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLE()]",
+      "indexes": [
+        6
+      ],
+      "id": "M139",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getShortLE",
+      "methodDescription": "([BI)S",
+      "lineNumber": "270",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::getShortLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        7
+      ],
+      "id": "M140",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([B)I",
+      "lineNumber": "280",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getUShortLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortLE_14_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortLE_14_0_Test]/[method:testGetUShortLE()]",
+      "indexes": [
+        6
+      ],
+      "id": "M141",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "291",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        7
+      ],
+      "id": "M142",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "292",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        14
+      ],
+      "id": "M143",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "292",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        17
+      ],
+      "id": "M144",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "293",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        23
+      ],
+      "id": "M145",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "293",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        25
+      ],
+      "id": "M146",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "293",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getUShortLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortLE_12_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortLE_12_0_Test]/[method:testGetShortLEWithOffset()]",
+      "indexes": [
+        26
+      ],
+      "id": "M147",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getShortBE",
+      "methodDescription": "([B)S",
+      "lineNumber": "303",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::getShortBE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortBE_16_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortBE_16_0_Test]/[method:testGetShortBE()]",
+      "indexes": [
+        6
+      ],
+      "id": "M148",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getShortBE",
+      "methodDescription": "([BI)S",
+      "lineNumber": "314",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::getShortBE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getShortBE_16_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getShortBE_16_0_Test]/[method:testGetShortBE()]",
+      "indexes": [
+        7
+      ],
+      "id": "M149",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([B)I",
+      "lineNumber": "324",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getUShortBE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test]/[method:testGetUShortBE()]",
+      "indexes": [
+        6
+      ],
+      "id": "M150",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "335",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test]/[method:testGetUShortBE()]",
+      "indexes": [
+        7
+      ],
+      "id": "M151",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "336",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test]/[method:testGetUShortBE()]",
+      "indexes": [
+        14
+      ],
+      "id": "M152",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "336",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test]/[method:testGetUShortBE()]",
+      "indexes": [
+        17
+      ],
+      "id": "M153",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "337",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_19_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_19_0_Test]/[method:testGetUShortBEWithNegativeValues()]",
+      "indexes": [
+        23
+      ],
+      "id": "M154",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "337",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test]/[method:testGetUShortBE()]",
+      "indexes": [
+        25
+      ],
+      "id": "M155",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUShortBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "337",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getUShortBE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test]/[method:testGetUShortBE()]",
+      "indexes": [
+        26
+      ],
+      "id": "M156",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([B)I",
+      "lineNumber": "347",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getIntLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_20_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_20_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        6
+      ],
+      "id": "M157",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "359",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        9
+      ],
+      "id": "M158",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "359",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        12
+      ],
+      "id": "M159",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "360",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_20_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_20_0_Test]/[method:testGetIntLEWithTooShortArray()]",
+      "indexes": [
+        18
+      ],
+      "id": "M160",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "360",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        21
+      ],
+      "id": "M161",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "361",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        27
+      ],
+      "id": "M162",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "361",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        30
+      ],
+      "id": "M163",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "362",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "",
+      "indexes": [
+        36
+      ],
+      "id": "M164",
+      "before_manual": "SURVIVED",
+      "status": "SURVIVED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "362",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        39
+      ],
+      "id": "M165",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        45
+      ],
+      "id": "M166",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        48
+      ],
+      "id": "M167",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        49
+      ],
+      "id": "M168",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        52
+      ],
+      "id": "M169",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        53
+      ],
+      "id": "M170",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        55
+      ],
+      "id": "M171",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntLE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "363",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getIntLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getIntLE_21_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getIntLE_21_0_Test]/[method:testGetIntLE()]",
+      "indexes": [
+        56
+      ],
+      "id": "M172",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([B)I",
+      "lineNumber": "373",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getIntBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testIntBEArrayWithoutOffset()]",
+      "indexes": [
+        6
+      ],
+      "id": "M173",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "385",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        9
+      ],
+      "id": "M174",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "385",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        12
+      ],
+      "id": "M175",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "386",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        18
+      ],
+      "id": "M176",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "386",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        21
+      ],
+      "id": "M177",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "387",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        27
+      ],
+      "id": "M178",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "387",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        30
+      ],
+      "id": "M179",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "388",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator",
+      "description": "Changed increment from 1 to -1",
+      "killingTest": "",
+      "indexes": [
+        36
+      ],
+      "id": "M180",
+      "before_manual": "SURVIVED",
+      "status": "SURVIVED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "388",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        39
+      ],
+      "id": "M181",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testIntBEArrayWithoutOffset()]",
+      "indexes": [
+        45
+      ],
+      "id": "M182",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testIntBEArrayWithoutOffset()]",
+      "indexes": [
+        48
+      ],
+      "id": "M183",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testIntBEArrayWithoutOffset()]",
+      "indexes": [
+        49
+      ],
+      "id": "M184",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testIntBEArrayWithoutOffset()]",
+      "indexes": [
+        52
+      ],
+      "id": "M185",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testIntBEArrayWithoutOffset()]",
+      "indexes": [
+        53
+      ],
+      "id": "M186",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        55
+      ],
+      "id": "M187",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getIntBE",
+      "methodDescription": "([BI)I",
+      "lineNumber": "389",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::getIntBE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        56
+      ],
+      "id": "M188",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUIntLE",
+      "methodDescription": "([B)J",
+      "lineNumber": "399",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::getUIntLE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testUnsignedArrayWrappersReturnNonZero()]",
+      "indexes": [
+        6
+      ],
+      "id": "M189",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUIntLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "411",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntLE_25_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntLE_25_0_Test]/[method:testGetUIntLEWithZeroValues()]",
+      "indexes": [
+        12
+      ],
+      "id": "M190",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUIntLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "411",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::getUIntLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test]/[method:testGetUIntLEWithOffset()]",
+      "indexes": [
+        13
+      ],
+      "id": "M191",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUIntBE",
+      "methodDescription": "([B)J",
+      "lineNumber": "421",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::getUIntBE",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testUnsignedArrayWrappersReturnNonZero()]",
+      "indexes": [
+        6
+      ],
+      "id": "M192",
+      "before_manual": "SURVIVED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUIntBE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "433",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        12
+      ],
+      "id": "M193",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUIntBE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "433",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::getUIntBE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test]/[method:testGetUIntBEWithOffset()]",
+      "indexes": [
+        13
+      ],
+      "id": "M194",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "446",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator",
+      "description": "changed conditional boundary",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        17
+      ],
+      "id": "M195",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "446",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer addition with subtraction",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        9
+      ],
+      "id": "M196",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "446",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced integer subtraction with addition",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        11
+      ],
+      "id": "M197",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "446",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE",
+      "description": "removed conditional - replaced comparison check with false",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        17
+      ],
+      "id": "M198",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "447",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced Shift Left with Shift Right",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        22
+      ],
+      "id": "M199",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "448",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        31
+      ],
+      "id": "M200",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "448",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise OR with AND",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        33
+      ],
+      "id": "M201",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getLongLE",
+      "methodDescription": "([BI)J",
+      "lineNumber": "450",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced long return with 0 for org/apache/tika/io/EndianUtils::getLongLE",
+      "killingTest": "org.apache.tika.io.EndianUtils_getLongLE_28_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_getLongLE_28_0_Test]/[method:testGetLongLE()]",
+      "indexes": [
+        43
+      ],
+      "id": "M202",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "ubyteToInt",
+      "methodDescription": "(B)I",
+      "lineNumber": "461",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtils_ubyteToInt_29_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_ubyteToInt_29_0_Test]/[method:testUbyteToInt()]",
+      "indexes": [
+        5
+      ],
+      "id": "M203",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "ubyteToInt",
+      "methodDescription": "(B)I",
+      "lineNumber": "461",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced int return with 0 for org/apache/tika/io/EndianUtils::ubyteToInt",
+      "killingTest": "org.apache.tika.io.EndianUtils_ubyteToInt_29_0_Test.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtils_ubyteToInt_29_0_Test]/[method:testUbyteToInt()]",
+      "indexes": [
+        6
+      ],
+      "id": "M204",
+      "before_manual": "KILLED",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUByte",
+      "methodDescription": "([BI)S",
+      "lineNumber": "472",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.MathMutator",
+      "description": "Replaced bitwise AND with OR",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testGetUByteAtOffset()]",
+      "indexes": [
+        7
+      ],
+      "id": "M205",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    },
+    {
+      "mutatedClass": "org.apache.tika.io.EndianUtils",
+      "mutatedMethod": "getUByte",
+      "methodDescription": "([BI)S",
+      "lineNumber": "472",
+      "mutator": "org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator",
+      "description": "replaced short return with 0 for org/apache/tika/io/EndianUtils::getUByte",
+      "killingTest": "org.apache.tika.io.EndianUtilsManualTest.[engine:junit-jupiter]/[class:org.apache.tika.io.EndianUtilsManualTest]/[method:testGetUByteAtOffset()]",
+      "indexes": [
+        9
+      ],
+      "id": "M206",
+      "before_manual": "NO_COVERAGE",
+      "status": "KILLED"
+    }
+  ]
+}

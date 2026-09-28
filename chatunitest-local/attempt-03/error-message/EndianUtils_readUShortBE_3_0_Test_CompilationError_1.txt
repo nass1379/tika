@@ -1,0 +1,52 @@
+package org.apache.tika.io;
+
+import org.apache.tika.io.EndianUtils;
+import org.apache.tika.io.EndianUtils.BufferUnderrunException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.io.InputStream;
+import org.apache.tika.exception.TikaException;
+
+public class EndianUtils_readUShortBE_3_0_Test {
+
+    @Test
+    public void testReadUShortBE_Success() throws IOException {
+        byte[] data = { 0x12, 0x34 };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        int result = EndianUtils.readUShortBE(inputStream);
+        assertEquals(0x1234, result);
+    }
+
+    @Test
+    public void testReadUShortBE_InsufficientData() throws IOException {
+        byte[] data = { 0x12 };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        assertThrows(BufferUnderrunException.class, () -> EndianUtils.readUShortBE(inputStream));
+    }
+
+    @Test
+    public void testReadUShortBE_NegativeData() throws IOException {
+        byte[] data = { (byte) 0xFF, (byte) 0xFF };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        int result = EndianUtils.readUShortBE(inputStream);
+        assertEquals(0xFFFF, result);
+    }
+}
+
+--------------------------------------------
+Error in EndianUtils_readUShortBE_3_0_Test: line -1 : Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+Error in EndianUtils_readUShortBE_3_0_Test: line -1 : Supported source version 'RELEASE_17' from annotation processor 'org.apache.tika.annotation.TikaComponentProcessor' less than -source '21'
+Error in EndianUtils_readUShortBE_3_0_Test: line 22 : unreported exception org.apache.tika.io.EndianUtils.BufferUnderrunException; must be caught or declared to be thrown
+Error in EndianUtils_readUShortBE_3_0_Test: line 37 : unreported exception org.apache.tika.io.EndianUtils.BufferUnderrunException; must be caught or declared to be thrown

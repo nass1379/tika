@@ -1,0 +1,118 @@
+[
+  {
+    "file": "EndianUtils_getShortBE_16_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "6066ddb71e0ef8b6d60cf94d7f8fc4e4eec6a3377e836f05e5dbf1fba199250e",
+    "after_sha256": "41fb1e30be932d6a7a775e9864e7bdd469cad403a9b9cee4809b3ba8e20d532c",
+    "replacements": [
+      {
+        "before": "assertEquals(258, result);",
+        "after": "assertEquals(0x0002, result);"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getShortBE_17_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "2b8a45c263d1b2b2dcce33f1775be3fa0c6b97c960da4d99138b53b38149cafe",
+    "after_sha256": "7be7c54ba348bd53b98c0c2f4ece7053e67590c19325a13758d1e3ce33383d5b",
+    "replacements": [
+      {
+        "before": "short expected = 0x0100;",
+        "after": "short expected = 0x0001;"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getUIntBE_26_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "a877c9da0a743f80fb5714f45f197e62779f1d66fe1427d175a2f1853b5c406d",
+    "after_sha256": "b609e5ed7c6e1e4dffee605df12f8bef681091a31760014346707d68cf064adf",
+    "replacements": [
+      {
+        "before": "long result = EndianUtils.getUIntBE(data);\n        assertEquals(1L, result);",
+        "after": "long result = EndianUtils.getUIntBE(data);\n        assertEquals(0L, result);"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getUIntBE_27_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "661576252fa0e3e5f1b413d753d7d3022bf893575d1621b27df5f6a76d6a322e",
+    "after_sha256": "34a9f5ab48e9bf530d868160838c7168e82239d442c1e4fb5f0ca2300053cfc2",
+    "replacements": [
+      {
+        "before": "long expected = 1L;",
+        "after": "long expected = 0L;"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getUIntLE_24_0_Test.java",
+    "semantic_corrections": 2,
+    "before_sha256": "21710fe229a13dde14f25ae4ac3b8296eb9ac3c1c4cee3b6288bf9301c5551b6",
+    "after_sha256": "38c9a48c25835b2a5f1ecfcdceb83449d1d8e4d27494c948c3133652b2490c27",
+    "replacements": [
+      {
+        "before": "long result = EndianUtils.getUIntLE(data);\n        assertEquals(1L, result);",
+        "after": "long result = EndianUtils.getUIntLE(data);\n        assertEquals(0L, result);"
+      },
+      {
+        "before": "long result = EndianUtils.getUIntLE(data, 4);\n        assertEquals(1L, result);",
+        "after": "long result = EndianUtils.getUIntLE(data, 4);\n        assertEquals(0x01000000L, result);"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getUIntLE_25_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "2a53eecc233baff68fe18c1dd852f7ef2079e8854f988191a3aa88d9f9a62ba0",
+    "after_sha256": "8b512f596e967d614f34f329e5e77c897f2bb827e0202c448b6ad21e65dac164",
+    "replacements": [
+      {
+        "before": "long expected = 1L;",
+        "after": "long expected = 0L;"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getUShortBE_18_0_Test.java",
+    "semantic_corrections": 2,
+    "before_sha256": "ca6bb651a7a01b945313498b7c920a679c030b2c671518febbdaa407b41fd917",
+    "after_sha256": "1f28c9e1608900dc78b6a6c22aae77f30da715265a16d3e27d8357d330dc7237",
+    "replacements": [
+      {
+        "before": "int result = EndianUtils.getUShortBE(data);\n        assertEquals(256, result);",
+        "after": "int result = EndianUtils.getUShortBE(data);\n        assertEquals(0x0001, result);"
+      },
+      {
+        "before": "int result = EndianUtils.getUShortBE(data, 1);\n        assertEquals(256, result);",
+        "after": "int result = EndianUtils.getUShortBE(data, 1);\n        assertEquals(0x0102, result);"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_getUShortLE_14_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "1520ea496b7275102e224eff0c78af10dc8f59ee2b2d25cf24228cf4240f610d",
+    "after_sha256": "bdf42c47334045d4c4a5d82618590078bff6e6b29e018af456c527f65df8fb4b",
+    "replacements": [
+      {
+        "before": "assertEquals(0x0403, result);",
+        "after": "assertEquals(0x0302, result);"
+      }
+    ]
+  },
+  {
+    "file": "EndianUtils_readShortLE_0_0_Test.java",
+    "semantic_corrections": 1,
+    "before_sha256": "8e81494ae851a50d681965bdce067f4c3bd2956f09712cec77cd69237440c707",
+    "after_sha256": "831c13fcc2be3ca5af62906e681dc72c485b30fc23d438306d92b88bf8a4296c",
+    "replacements": [
+      {
+        "before": "when(mockInputStream.read()).thenReturn(0x12);",
+        "after": "when(mockInputStream.read()).thenReturn(0x12, -1);"
+      }
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "manual_semantic_corrections": 11,
+  "modified_files": 9,
+  "expected_value_corrections": 10,
+  "mock_input_corrections": 1,
+  "tests_removed": 0,
+  "generated_tests": {
+    "tests": 71,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_suite": {
+    "tests": 820,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  }
+}

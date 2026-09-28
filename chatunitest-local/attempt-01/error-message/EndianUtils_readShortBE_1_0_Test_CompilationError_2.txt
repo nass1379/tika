@@ -1,0 +1,49 @@
+package org.apache.tika.io;
+
+import org.apache.tika.io.EndianUtils;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.io.BufferUnderrunException;
+import java.io.InputStream;
+import java.io.IOException;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EndianUtils_readShortBE_1_0_Test {
+
+    @Test
+    public void testReadShortBE() throws IOException, TikaException {
+        InputStream inputStream = Mockito.mock(InputStream.class);
+        when(inputStream.read()).thenReturn(0x12, 0x34);
+        short result = EndianUtils.readShortBE(inputStream);
+        assertEquals(0x1234, result);
+        verify(inputStream, times(2)).read();
+    }
+
+    @Test
+    public void testReadShortBEWithBufferUnderrun() throws IOException, TikaException {
+        InputStream inputStream = Mockito.mock(InputStream.class);
+        when(inputStream.read()).thenReturn(-1);
+        assertThrows(BufferUnderrunException.class, () -> EndianUtils.readShortBE(inputStream));
+        verify(inputStream, times(1)).read();
+    }
+}
+
+--------------------------------------------
+Error in EndianUtils_readShortBE_1_0_Test: line -1 : Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+Error in EndianUtils_readShortBE_1_0_Test: line -1 : Supported source version 'RELEASE_17' from annotation processor 'org.apache.tika.annotation.TikaComponentProcessor' less than -source '21'
+Error in EndianUtils_readShortBE_1_0_Test: line 5 : cannot find symbol
+  symbol:   class BufferUnderrunException
+  location: package org.apache.tika.io
+Error in EndianUtils_readShortBE_1_0_Test: line 9 : package org.mockito.junit.jupiter does not exist
+Error in EndianUtils_readShortBE_1_0_Test: line 12 : package org.mockito does not exist
+Error in EndianUtils_readShortBE_1_0_Test: line 10 : package org.mockito does not exist

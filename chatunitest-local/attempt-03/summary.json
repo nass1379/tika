@@ -1,0 +1,12 @@
+{
+  "methods_attempted": 31,
+  "model_responses": 61,
+  "automatic_repair_rounds": 30,
+  "exported_files": 18,
+  "methods_without_export": 13,
+  "manual_test_code_corrections": 0,
+  "tests": 71,
+  "failures": 11,
+  "errors": 0,
+  "skipped": 0
+}

@@ -1,0 +1,223 @@
+[INFO] Maveniverse Nisse 0.9.4 loaded
+[INFO] Nisse injecting 32 properties into User Properties
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika-parent:pom:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika:pom:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] No need for inlining
+[INFO] 
+[INFO] ---------------------< org.apache.tika:tika-core >----------------------
+[INFO] Building Apache Tika core 4.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.2/build-helper-maven-plugin-3.6.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.2/build-helper-maven-plugin-3.6.2.pom (7.9 kB at 14 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.2/build-helper-maven-plugin-3.6.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/build-helper-maven-plugin/3.6.2/build-helper-maven-plugin-3.6.2.jar (72 kB at 1.1 MB/s)
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-core ---
+[INFO] Spotless apply skipped
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] Copying appended resource: META-INF/LICENSE
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-core ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-core:bundle:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- build-helper:3.6.2:add-test-source (verify-raw-chatunitest-tests) @ tika-core ---
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.pom (7.8 kB at 108 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/27/plexus-27.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/27/plexus-27.pom (36 kB at 633 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.jar (193 kB at 2.8 MB/s)
+[INFO] Test Source directory: /Users/nassimbarhoumi/Documents/tika/tika-core/chatunitest added.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ tika-core ---
+[INFO] Copying 57 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ tika-core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 88 source files with javac [debug deprecation release 17] to target/test-classes
+[WARNING] /Users/nassimbarhoumi/Documents/tika/tika-core/src/test/java/org/apache/tika/mime/MimeTypesReaderTest.java:[296,37] getMimeType(java.lang.String) in org.apache.tika.mime.MimeTypes has been deprecated
+[WARNING] /Users/nassimbarhoumi/Documents/tika/tika-core/src/test/java/org/apache/tika/mime/MimeTypesReaderTest.java:[304,37] getMimeType(java.lang.String) in org.apache.tika.mime.MimeTypes has been deprecated
+[WARNING] /Users/nassimbarhoumi/Documents/tika/tika-core/src/test/java/org/apache/tika/parser/ParserDecoratorTest.java:[117,28] withFallbacks(java.util.Collection<? extends org.apache.tika.parser.Parser>,java.util.Set<org.apache.tika.mime.MediaType>) in org.apache.tika.parser.ParserDecorator has been deprecated
+[WARNING] /Users/nassimbarhoumi/Documents/tika/tika-core/src/test/java/org/apache/tika/utils/ServiceLoaderUtilsTest.java:[45,48] org.apache.tika.detect.OverrideDetector in org.apache.tika.detect has been deprecated
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ tika-core ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.tika.io.EndianUtils_getUIntLE_25_0_Test
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.050 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getUIntLE_25_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getUIntLE_25_0_Test.testGetUIntLE -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:673)
+	at org.apache.tika.io.EndianUtils_getUIntLE_25_0_Test.testGetUIntLE(EndianUtils_getUIntLE_25_0_Test.java:22)
+
+[INFO] Running org.apache.tika.io.EndianUtils_ubyteToInt_29_0_Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.tika.io.EndianUtils_ubyteToInt_29_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getIntBE_23_0_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.tika.io.EndianUtils_getIntBE_23_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getShortLE_13_0_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.tika.io.EndianUtils_getShortLE_13_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getLongLE_28_0_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.tika.io.EndianUtils_getLongLE_28_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test
+[ERROR] Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test.testGetUIntLE -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:673)
+	at org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test.testGetUIntLE(EndianUtils_getUIntLE_24_0_Test.java:20)
+
+[ERROR] org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test.testGetUIntLEWithOffset -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <16777216>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:673)
+	at org.apache.tika.io.EndianUtils_getUIntLE_24_0_Test.testGetUIntLEWithOffset(EndianUtils_getUIntLE_24_0_Test.java:27)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getShortLE_12_0_Test
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.tika.io.EndianUtils_getShortLE_12_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_readShortLE_0_0_Test
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/nassimbarhoumi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.842 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_readShortLE_0_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.testReadShortLE_withBufferUnderrun -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Expected org.apache.tika.io.EndianUtils.BufferUnderrunException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3234)
+	at org.apache.tika.io.EndianUtils_readShortLE_0_0_Test.testReadShortLE_withBufferUnderrun(EndianUtils_readShortLE_0_0_Test.java:35)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getIntLE_21_0_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.tika.io.EndianUtils_getIntLE_21_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getUIntBE_27_0_Test
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getUIntBE_27_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getUIntBE_27_0_Test.testGetUIntBE -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:673)
+	at org.apache.tika.io.EndianUtils_getUIntBE_27_0_Test.testGetUIntBE(EndianUtils_getUIntBE_27_0_Test.java:22)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test
+[ERROR] Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.testGetUShortBE -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <256> but was: <1>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:569)
+	at org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.testGetUShortBE(EndianUtils_getUShortBE_18_0_Test.java:20)
+
+[ERROR] org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.testGetUShortBEWithOffset -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <256> but was: <258>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:569)
+	at org.apache.tika.io.EndianUtils_getUShortBE_18_0_Test.testGetUShortBEWithOffset(EndianUtils_getUShortBE_18_0_Test.java:27)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getShortBE_16_0_Test
+[ERROR] Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getShortBE_16_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getShortBE_16_0_Test.testGetShortBEWithOffset -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <258> but was: <2>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:569)
+	at org.apache.tika.io.EndianUtils_getShortBE_16_0_Test.testGetShortBEWithOffset(EndianUtils_getShortBE_16_0_Test.java:27)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getUShortLE_15_0_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.tika.io.EndianUtils_getUShortLE_15_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getUShortBE_19_0_Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.tika.io.EndianUtils_getUShortBE_19_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getIntLE_20_0_Test
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.tika.io.EndianUtils_getIntLE_20_0_Test
+[INFO] Running org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.testGetUIntBE -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <0>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:673)
+	at org.apache.tika.io.EndianUtils_getUIntBE_26_0_Test.testGetUIntBE(EndianUtils_getUIntBE_26_0_Test.java:20)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getShortBE_17_0_Test
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getShortBE_17_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getShortBE_17_0_Test.testGetShortBE -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <256> but was: <1>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:363)
+	at org.apache.tika.io.EndianUtils_getShortBE_17_0_Test.testGetShortBE(EndianUtils_getShortBE_17_0_Test.java:22)
+
+[INFO] Running org.apache.tika.io.EndianUtils_getUShortLE_14_0_Test
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! -- in org.apache.tika.io.EndianUtils_getUShortLE_14_0_Test
+[ERROR] org.apache.tika.io.EndianUtils_getUShortLE_14_0_Test.testGetUShortLEWithOffset -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1027> but was: <770>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:569)
+	at org.apache.tika.io.EndianUtils_getUShortLE_14_0_Test.testGetUShortLEWithOffset(EndianUtils_getUShortLE_14_0_Test.java:27)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   EndianUtils_getShortBE_16_0_Test.testGetShortBEWithOffset:27 expected: <258> but was: <2>
+[ERROR]   EndianUtils_getShortBE_17_0_Test.testGetShortBE:22 expected: <256> but was: <1>
+[ERROR]   EndianUtils_getUIntBE_26_0_Test.testGetUIntBE:20 expected: <1> but was: <0>
+[ERROR]   EndianUtils_getUIntBE_27_0_Test.testGetUIntBE:22 expected: <1> but was: <0>
+[ERROR]   EndianUtils_getUIntLE_24_0_Test.testGetUIntLE:20 expected: <1> but was: <0>
+[ERROR]   EndianUtils_getUIntLE_24_0_Test.testGetUIntLEWithOffset:27 expected: <1> but was: <16777216>
+[ERROR]   EndianUtils_getUIntLE_25_0_Test.testGetUIntLE:22 expected: <1> but was: <0>
+[ERROR]   EndianUtils_getUShortBE_18_0_Test.testGetUShortBE:20 expected: <256> but was: <1>
+[ERROR]   EndianUtils_getUShortBE_18_0_Test.testGetUShortBEWithOffset:27 expected: <256> but was: <258>
+[ERROR]   EndianUtils_getUShortLE_14_0_Test.testGetUShortLEWithOffset:27 expected: <1027> but was: <770>
+[ERROR]   EndianUtils_readShortLE_0_0_Test.testReadShortLE_withBufferUnderrun:35 Expected org.apache.tika.io.EndianUtils.BufferUnderrunException to be thrown, but nothing was thrown.
+[INFO] 
+[ERROR] Tests run: 71, Failures: 11, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.052 s
+[INFO] Finished at: 2026-09-28T16:13:34-04:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project tika-core: There are test failures.
+[ERROR] 
+[ERROR] See /Users/nassimbarhoumi/Documents/tika/tika-core/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

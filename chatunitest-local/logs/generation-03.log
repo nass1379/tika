@@ -1,0 +1,731 @@
+[INFO] Maveniverse Nisse 0.9.4 loaded
+[INFO] Nisse injecting 32 properties into User Properties
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika-core:bundle:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] No need for inlining
+[INFO] 
+[INFO] ---------------------< org.apache.tika:tika-core >----------------------
+[INFO] Building Apache Tika core 4.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'prune' is unknown for plugin 'chatunitest-maven-plugin:2.1.1:class (default-cli)'
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-core ---
+[INFO] Spotless.Java is keeping 389 files clean - 0 were changed to be clean, 0 were already clean, 389 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] Copying appended resource: META-INF/LICENSE
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-core ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-core:bundle:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ tika-core ---
+[INFO] Copying 57 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ tika-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- chatunitest:2.1.1:class (default-cli) @ tika-core ---
+[INFO] 
+========================== Configuration ==========================
+
+[INFO] PluginSign >>>>CHATUNITEST
+[INFO]  Multithreading >>>> false
+[INFO]  Stop when success >>>> true
+[INFO]  No execution >>>> false
+[INFO]  Enable Merge >>>> false
+[INFO]  --- 
+[INFO]  TestOutput Path >>> /Users/nassimbarhoumi/Documents/tika/tika-core/chatunitest/tika-parent/tika-core
+[INFO]  TmpOutput Path >>> /Users/nassimbarhoumi/Documents/tika/tika-core/target/chatunitest-info/tika-parent/tika-core
+[INFO]  CounterExample Path >>> /Users/nassimbarhoumi/Documents/tika/tika-core/smartut-tests
+[INFO]  Prompt path >>> /Users/nassimbarhoumi/Documents/tika/tika-core/../chatunitest-local/prompts
+[INFO]  Example path >>> /Users/nassimbarhoumi/Documents/tika/tika-core/exampleUsage.json
+[INFO]  --- 
+[INFO]  Model >>> CODE_QWEN
+[INFO]  Url >>> http://127.0.0.1:11434/v1/chat/completions
+[INFO]  MaxPromptTokens >>> 6000
+[INFO]  MaxResponseTokens >>> 2048
+[INFO]  MinErrorTokens >>> 500
+[INFO]  MaxThreads >>> 40
+[INFO]  TestNumber >>> 1
+[INFO]  MaxRounds >>> 3
+[INFO]  MinErrorTokens >>> 500
+[INFO]  MaxPromptTokens >>> 6000
+[INFO]  SleepTime >>> 0
+[INFO]  DependencyDepth >>> 1
+[INFO]  SampleSize >>> 10
+[INFO]  PhaseType >>> CHATUNITEST
+[INFO] 
+===================================================================
+
+[INFO] 
+==========================
+[CHATUNITEST] Parse output already exists, skip parsing!
+[INFO] 
+==========================
+[CHATUNITEST] Generating tests for class < org.apache.tika.io.EndianUtils > ...
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readShortLE > number 0...
+
+[INFO] Generating test for method < readShortLE > round 0 ...
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/nassimbarhoumi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+Test run finished after 823 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         3 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < readShortLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 1 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readShortBE > number 0...
+
+[INFO] Generating test for method < readShortBE > round 0 ...
+[INFO] Test for method < readShortBE > compilation failed round 0
+[INFO] Fixing test for method < readShortBE > round 1 ...
+[INFO] Test for method < readShortBE > compilation failed round 1
+[INFO] Fixing test for method < readShortBE > round 2 ...
+[INFO] Test for method < readShortBE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 2 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readUShortLE > number 0...
+
+[INFO] Generating test for method < readUShortLE > round 0 ...
+[INFO] Test for method < readUShortLE > compilation failed round 0
+[INFO] Fixing test for method < readUShortLE > round 1 ...
+[INFO] Test for method < readUShortLE > compilation failed round 1
+[INFO] Fixing test for method < readUShortLE > round 2 ...
+[INFO] Test for method < readUShortLE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 3 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readUShortBE > number 0...
+
+[INFO] Generating test for method < readUShortBE > round 0 ...
+[INFO] Test for method < readUShortBE > compilation failed round 0
+[INFO] Fixing test for method < readUShortBE > round 1 ...
+[INFO] Test for method < readUShortBE > compilation failed round 1
+[INFO] Fixing test for method < readUShortBE > round 2 ...
+[INFO] Test for method < readUShortBE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 4 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readUIntLE > number 0...
+
+[INFO] Generating test for method < readUIntLE > round 0 ...
+[INFO] Test for method < readUIntLE > compilation failed round 0
+[INFO] Fixing test for method < readUIntLE > round 1 ...
+[INFO] Test for method < readUIntLE > compilation failed round 1
+[INFO] Fixing test for method < readUIntLE > round 2 ...
+[INFO] Test for method < readUIntLE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 5 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readUIntBE > number 0...
+
+[INFO] Generating test for method < readUIntBE > round 0 ...
+[INFO] Test for method < readUIntBE > compilation failed round 0
+[INFO] Fixing test for method < readUIntBE > round 1 ...
+[INFO] Test for method < readUIntBE > compilation failed round 1
+[INFO] Fixing test for method < readUIntBE > round 2 ...
+[INFO] Test for method < readUIntBE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 6 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readIntLE > number 0...
+
+[INFO] Generating test for method < readIntLE > round 0 ...
+[INFO] Test for method < readIntLE > compilation failed round 0
+[INFO] Fixing test for method < readIntLE > round 1 ...
+[INFO] Test for method < readIntLE > compilation failed round 1
+[INFO] Fixing test for method < readIntLE > round 2 ...
+[INFO] Test for method < readIntLE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 7 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readIntBE > number 0...
+
+[INFO] Generating test for method < readIntBE > round 0 ...
+[INFO] Test for method < readIntBE > compilation failed round 0
+[INFO] Fixing test for method < readIntBE > round 1 ...
+[INFO] Test for method < readIntBE > compilation failed round 1
+[INFO] Fixing test for method < readIntBE > round 2 ...
+[INFO] Test for method < readIntBE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 8 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readIntME > number 0...
+
+[INFO] Generating test for method < readIntME > round 0 ...
+[INFO] Test for method < readIntME > compilation failed round 0
+[INFO] Fixing test for method < readIntME > round 1 ...
+[INFO] Test for method < readIntME > compilation failed round 1
+[INFO] Fixing test for method < readIntME > round 2 ...
+[INFO] Test for method < readIntME > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 9 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readLongLE > number 0...
+
+[INFO] Generating test for method < readLongLE > round 0 ...
+[INFO] Test for method < readLongLE > compilation failed round 0
+[INFO] Fixing test for method < readLongLE > round 1 ...
+[INFO] Test for method < readLongLE > compilation failed round 1
+[INFO] Fixing test for method < readLongLE > round 2 ...
+[INFO] Test for method < readLongLE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 10 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readLongBE > number 0...
+
+[INFO] Generating test for method < readLongBE > round 0 ...
+[INFO] Test for method < readLongBE > compilation failed round 0
+[INFO] Fixing test for method < readLongBE > round 1 ...
+[INFO] Test for method < readLongBE > compilation failed round 1
+[INFO] Fixing test for method < readLongBE > round 2 ...
+[INFO] Test for method < readLongBE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 11 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < readUE7 > number 0...
+
+[INFO] Generating test for method < readUE7 > round 0 ...
+[INFO] Test for method < readUE7 > compilation failed round 0
+[INFO] Fixing test for method < readUE7 > round 1 ...
+[INFO] Test for method < readUE7 > compilation failed round 1
+[INFO] Fixing test for method < readUE7 > round 2 ...
+[INFO] Test for method < readUE7 > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 12 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getShortLE > number 0...
+
+[INFO] Generating test for method < getShortLE > round 0 ...
+
+Test run finished after 5 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         6 tests found           ]
+[         0 tests skipped         ]
+[         6 tests started         ]
+[         0 tests aborted         ]
+[         6 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getShortLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 13 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getShortLE > number 0...
+
+[INFO] Generating test for method < getShortLE > round 0 ...
+
+Test run finished after 5 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getShortLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 14 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUShortLE > number 0...
+
+[INFO] Generating test for method < getUShortLE > round 0 ...
+
+Test run finished after 4 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         3 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < getUShortLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 15 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUShortLE > number 0...
+
+[INFO] Generating test for method < getUShortLE > round 0 ...
+
+Test run finished after 3 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getUShortLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 16 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getShortBE > number 0...
+
+[INFO] Generating test for method < getShortBE > round 0 ...
+
+Test run finished after 3 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < getShortBE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 17 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getShortBE > number 0...
+
+[INFO] Generating test for method < getShortBE > round 0 ...
+
+Test run finished after 13 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         3 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < getShortBE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 18 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUShortBE > number 0...
+
+[INFO] Generating test for method < getUShortBE > round 0 ...
+
+Test run finished after 5 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         2 tests successful      ]
+[         2 tests failed          ]
+
+[INFO] Test for method < getUShortBE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 19 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUShortBE > number 0...
+
+[INFO] Generating test for method < getUShortBE > round 0 ...
+
+Test run finished after 2 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         5 tests found           ]
+[         0 tests skipped         ]
+[         5 tests started         ]
+[         0 tests aborted         ]
+[         5 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getUShortBE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 20 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getIntLE > number 0...
+
+[INFO] Generating test for method < getIntLE > round 0 ...
+
+Test run finished after 3 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getIntLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 21 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getIntLE > number 0...
+
+[INFO] Generating test for method < getIntLE > round 0 ...
+
+Test run finished after 5 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getIntLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 22 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getIntBE > number 0...
+
+[INFO] Generating test for method < getIntBE > round 0 ...
+[INFO] Test for method < getIntBE > compilation failed round 0
+[INFO] Fixing test for method < getIntBE > round 1 ...
+[INFO] Test for method < getIntBE > compilation failed round 1
+[INFO] Fixing test for method < getIntBE > round 2 ...
+[INFO] Test for method < getIntBE > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 23 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getIntBE > number 0...
+
+[INFO] Generating test for method < getIntBE > round 0 ...
+
+Test run finished after 2 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getIntBE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 24 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUIntLE > number 0...
+
+[INFO] Generating test for method < getUIntLE > round 0 ...
+
+Test run finished after 3 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         2 tests successful      ]
+[         2 tests failed          ]
+
+[INFO] Test for method < getUIntLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 25 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUIntLE > number 0...
+
+[INFO] Generating test for method < getUIntLE > round 0 ...
+[INFO] Test for method < getUIntLE > compilation failed round 0
+[INFO] Fixing test for method < getUIntLE > round 1 ...
+[INFO] Test for method < getUIntLE > compilation failed round 1
+[INFO] Fixing test for method < getUIntLE > round 2 ...
+
+Test run finished after 3 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         3 tests found           ]
+[         0 tests skipped         ]
+[         3 tests started         ]
+[         0 tests aborted         ]
+[         2 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < getUIntLE > compile and execute successfully round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 26 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUIntBE > number 0...
+
+[INFO] Generating test for method < getUIntBE > round 0 ...
+
+Test run finished after 3 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         3 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < getUIntBE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 27 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUIntBE > number 0...
+
+[INFO] Generating test for method < getUIntBE > round 0 ...
+[INFO] Test for method < getUIntBE > compilation failed round 0
+[INFO] Fixing test for method < getUIntBE > round 1 ...
+[INFO] Test for method < getUIntBE > compilation failed round 1
+[INFO] Fixing test for method < getUIntBE > round 2 ...
+
+Test run finished after 2 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         3 tests found           ]
+[         0 tests skipped         ]
+[         3 tests started         ]
+[         0 tests aborted         ]
+[         2 tests successful      ]
+[         1 tests failed          ]
+
+[INFO] Test for method < getUIntBE > compile and execute successfully round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 28 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getLongLE > number 0...
+
+[INFO] Generating test for method < getLongLE > round 0 ...
+
+Test run finished after 2 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < getLongLE > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 29 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < ubyteToInt > number 0...
+
+[INFO] Generating test for method < ubyteToInt > round 0 ...
+
+Test run finished after 2 ms
+[         3 containers found      ]
+[         0 containers skipped    ]
+[         3 containers started    ]
+[         0 containers aborted    ]
+[         3 containers successful ]
+[         0 containers failed     ]
+[         1 tests found           ]
+[         0 tests skipped         ]
+[         1 tests started         ]
+[         0 tests aborted         ]
+[         1 tests successful      ]
+[         0 tests failed          ]
+
+[INFO] Test for method < ubyteToInt > compile and execute successfully round 0
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 30 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generating test for method < getUByte > number 0...
+
+[INFO] Generating test for method < getUByte > round 0 ...
+[INFO] Test for method < getUByte > compilation failed round 0
+[INFO] Fixing test for method < getUByte > round 1 ...
+[INFO] Test for method < getUByte > compilation failed round 1
+[INFO] Fixing test for method < getUByte > round 2 ...
+[INFO] Test for method < getUByte > compilation failed round 2
+[INFO] 
+==========================
+[CHATUNITEST] Completed Method Jobs:   [ 31 /  0]
+[INFO] 
+==========================
+[CHATUNITEST] Generation finished
+[INFO] 
+==========================
+[CHATUNITEST] Test processed
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23:11 min
+[INFO] Finished at: 2026-09-28T16:12:56-04:00
+[INFO] ------------------------------------------------------------------------

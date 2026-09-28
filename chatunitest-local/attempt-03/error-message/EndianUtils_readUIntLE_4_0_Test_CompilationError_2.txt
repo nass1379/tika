@@ -1,0 +1,52 @@
+package org.apache.tika.io;
+
+import org.apache.tika.io.EndianUtils;
+import org.apache.tika.io.EndianUtils.BufferUnderrunException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.InputStream;
+import org.apache.tika.exception.TikaException;
+
+public class EndianUtils_readUIntLE_4_0_Test {
+
+    @Test
+    public void testReadUIntLE_Success() throws IOException {
+        byte[] data = { 0x01, 0x02, 0x03, 0x04 };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        long result = EndianUtils.readUIntLE(inputStream);
+        assertEquals(0x04030201L, result);
+    }
+
+    @Test
+    public void testReadUIntLE_InsufficientData() throws IOException {
+        byte[] data = { 0x01, 0x02 };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        assertThrows(BufferUnderrunException.class, () -> EndianUtils.readUIntLE(inputStream));
+    }
+
+    @Test
+    public void testReadUIntLE_NegativeByte() throws IOException {
+        byte[] data = { (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        long result = EndianUtils.readUIntLE(inputStream);
+        assertEquals(0xFFFFFFFFL, result);
+    }
+}
+
+--------------------------------------------
+Error in EndianUtils_readUIntLE_4_0_Test: line -1 : Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+Error in EndianUtils_readUIntLE_4_0_Test: line -1 : Supported source version 'RELEASE_17' from annotation processor 'org.apache.tika.annotation.TikaComponentProcessor' less than -source '21'
+Error in EndianUtils_readUIntLE_4_0_Test: line 22 : unreported exception org.apache.tika.io.EndianUtils.BufferUnderrunException; must be caught or declared to be thrown
+Error in EndianUtils_readUIntLE_4_0_Test: line 37 : unreported exception org.apache.tika.io.EndianUtils.BufferUnderrunException; must be caught or declared to be thrown

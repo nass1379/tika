@@ -1,0 +1,72 @@
+package org.apache.tika.io;
+
+import org.apache.tika.io.EndianUtils;
+import org.apache.tika.io.EndianUtils.BufferUnderrunException;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.io.InputStream;
+import org.apache.tika.exception.TikaException;
+
+public class EndianUtils_readUE7_11_0_Test {
+
+    @Test
+    public void testReadUE7_Success() throws IOException {
+        byte[] data = { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        long result = EndianUtils.readUE7(inputStream);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testReadUE7_MultipleBytes() throws IOException {
+        byte[] data = { 0x81, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x00 };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        long result = EndianUtils.readUE7(inputStream);
+        assertEquals(127, result);
+    }
+
+    @Test
+    public void testReadUE7_MaxValue() throws IOException {
+        byte[] data = { 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F, 0x7F };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        long result = EndianUtils.readUE7(inputStream);
+        assertEquals(127 + (127 << 7) + (127 << 14) + (127 << 21) + (127 << 28) + (127 << 35) + (127 << 42) + (127 << 49), result);
+    }
+
+    @Test
+    public void testReadUE7_BufferUnderrun() {
+        InputStream inputStream = new ByteArrayInputStream(new byte[0]);
+        assertThrows(BufferUnderrunException.class, () -> EndianUtils.readUE7(inputStream));
+    }
+
+    @Test
+    public void testReadUE7_NegativeByte() throws IOException {
+        byte[] data = { (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF };
+        InputStream inputStream = new ByteArrayInputStream(data);
+        assertThrows(BufferUnderrunException.class, () -> EndianUtils.readUE7(inputStream));
+    }
+}
+
+--------------------------------------------
+Error in EndianUtils_readUE7_11_0_Test: line -1 : Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+Error in EndianUtils_readUE7_11_0_Test: line -1 : Supported source version 'RELEASE_17' from annotation processor 'org.apache.tika.annotation.TikaComponentProcessor' less than -source '21'
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_readUE7_11_0_Test: line 28 : incompatible types: possible lossy conversion from int to byte

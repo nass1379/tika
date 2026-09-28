@@ -119,6 +119,17 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>${mockito-junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -321,6 +332,82 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>chatunitest-local</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.github.zju-aces-ise</groupId>
+            <artifactId>chatunitest-maven-plugin</artifactId>
+            <version>2.1.1</version>
+            <configuration>
+              <apiKeys>ollama-local</apiKeys>
+              <!-- Compatibility alias for local qwen2.5-coder:7b, not Qwen 1.5. -->
+              <model>codeqwen:v1.5-chat</model>
+              <url>http://127.0.0.1:11434/v1/chat/completions</url>
+              <selectClass>org.apache.tika.io.EndianUtils</selectClass>
+              <promptPath>${project.basedir}/../chatunitest-local/prompts</promptPath>
+              <testNumber>1</testNumber>
+              <maxRounds>3</maxRounds>
+              <thread>false</thread>
+              <merge>false</merge>
+              <prune>false</prune>
+              <temperature>0.2</temperature>
+              <maxPromptTokens>6000</maxPromptTokens>
+              <maxResponseTokens>2048</maxResponseTokens>
+              <tmpOutput>${project.build.directory}/chatunitest-info</tmpOutput>
+              <testOutput>${project.basedir}/chatunitest</testOutput>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-launcher</artifactId>
+                <version>${junit6.version}</version>
+              </dependency>
+              <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit6.version}</version>
+              </dependency>
+              <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>${junit6.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>chatunitest-verify</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.6.2</version>
+            <executions>
+              <execution>
+                <id>verify-raw-chatunitest-tests</id>
+                <phase>generate-test-sources</phase>
+                <goals>
+                  <goal>add-test-source</goal>
+                </goals>
+                <configuration>
+                  <sources>
+                    <source>${project.basedir}/chatunitest</source>
+                  </sources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
   <reporting>
     <plugins>
       <!-- to run: mvn site - reports go in target/site/findbugs.html -->

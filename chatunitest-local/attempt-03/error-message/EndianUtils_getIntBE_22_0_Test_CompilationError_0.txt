@@ -1,0 +1,57 @@
+package org.apache.tika.io;
+
+import org.apache.tika.io.EndianUtils;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.io.IOException;
+import java.io.InputStream;
+import org.apache.tika.exception.TikaException;
+
+public class EndianUtils_getIntBE_22_0_Test {
+
+    @Test
+    public void testGetIntBE() {
+        byte[] data = { 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00 };
+        int result = EndianUtils.getIntBE(data);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testGetIntBEWithOffset() {
+        byte[] data = { 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00 };
+        int result = EndianUtils.getIntBE(data, 4);
+        assertEquals(0, result);
+    }
+
+    @Test
+    public void testGetIntBEWithNegativeValue() {
+        byte[] data = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00 };
+        int result = EndianUtils.getIntBE(data);
+        assertEquals(-1, result);
+    }
+
+    @Test
+    public void testGetIntBEWithZeroValue() {
+        byte[] data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+        int result = EndianUtils.getIntBE(data);
+        assertEquals(0, result);
+    }
+}
+
+--------------------------------------------
+Error in EndianUtils_getIntBE_22_0_Test: line -1 : Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+Error in EndianUtils_getIntBE_22_0_Test: line -1 : Supported source version 'RELEASE_17' from annotation processor 'org.apache.tika.annotation.TikaComponentProcessor' less than -source '21'
+Error in EndianUtils_getIntBE_22_0_Test: line 32 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_getIntBE_22_0_Test: line 32 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_getIntBE_22_0_Test: line 32 : incompatible types: possible lossy conversion from int to byte
+Error in EndianUtils_getIntBE_22_0_Test: line 32 : incompatible types: possible lossy conversion from int to byte

@@ -1,0 +1,63 @@
+package org.apache.tika.io;
+
+import org.apache.tika.io.EndianUtils;
+import org.apache.tika.io.EndianUtils.BufferUnderrunException;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import org.apache.tika.exception.TikaException;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MockitoExtension.class)
+public class EndianUtils_readShortBE_1_0_Test {
+
+    @Mock
+    private InputStream inputStream;
+
+    @Test
+    public void testReadShortBE_Success() throws IOException {
+        // Arrange
+        byte[] data = { 0x01, 0x02 };
+        when(inputStream.read()).thenReturn(data[0], data[1], -1);
+        // Act
+        short result = EndianUtils.readShortBE(inputStream);
+        // Assert
+        assertEquals(0x0102, result);
+        verify(inputStream, times(2)).read();
+    }
+
+    @Test
+    public void testReadShortBE_BufferUnderrun() throws IOException {
+        // Arrange
+        when(inputStream.read()).thenReturn(0x01, -1);
+        // Act & Assert
+        assertThrows(BufferUnderrunException.class, () -> EndianUtils.readShortBE(inputStream));
+        verify(inputStream, times(2)).read();
+    }
+
+    @Test
+    public void testReadShortBE_IOException() throws IOException {
+        // Arrange
+        when(inputStream.read()).thenThrow(new IOException("Mocked IOException"));
+        // Act & Assert
+        assertThrows(IOException.class, () -> EndianUtils.readShortBE(inputStream));
+        verify(inputStream, times(1)).read();
+    }
+}
+
+--------------------------------------------
+Error in EndianUtils_readShortBE_1_0_Test: line -1 : Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+Error in EndianUtils_readShortBE_1_0_Test: line -1 : Supported source version 'RELEASE_17' from annotation processor 'org.apache.tika.annotation.TikaComponentProcessor' less than -source '21'
+Error in EndianUtils_readShortBE_1_0_Test: line 26 : incompatible types: byte cannot be converted to java.lang.Integer
+Error in EndianUtils_readShortBE_1_0_Test: line -1 : Some messages have been simplified; recompile with -Xdiags:verbose to get full output
