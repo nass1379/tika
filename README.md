@@ -701,6 +701,48 @@ Aucune installation ni invocation d'Ollama, aucune génération ChatUniTest et a
 
 **Vérification distante réussie le 28 septembre 2026 :** le commit `d4288be12` a été publié sur `main`. Le [workflow GitHub Actions n° 36482829069](https://github.com/nass1379/tika/actions/runs/36482829069) a terminé avec succès sur Ubuntu 24.04 : préparation du réacteur, exécution des tests originaux, générés et manuels, puis sauvegarde des rapports Surefire. Le statut invalide de `gh auth status` n'empêchait pas Git de publier avec son accès existant ; aucune nouvelle authentification n'a été nécessaire. Cette preuve concerne le workflow « Tache 2 - tika-core tests », pas les autres workflows hérités du dépôt Apache. Le commit documentaire suivant porte `[skip ci]` pour éviter de relancer les builds pour cette seule mise à jour du compte rendu.
 
+## Expérience MediaType 
+
+Classe : `org.apache.tika.mime.MediaType`, module `tika-core`. Les tests existants spécifiques à cette classe sont dans [MediaTypeTest.java](tika-core/src/test/java/org/apache/tika/mime/MediaTypeTest.java).
+
+### Environnement et préparation
+
+Expérience réalisée sous Windows avec PowerShell, Temurin Java 21.0.9 et le wrapper Maven 3.9.12 du dépôt, sur la branche `mediatype`, à partir du commit `539ac7414649b1fc7351ef32d5837bc2546267ba`.
+
+Ollama 0.34.4 est installé avec `qwen2.5-coder:7b` et l’alias `codeqwen:v1.5-chat`. La configuration de l’alias indique une fenêtre de contexte de 8192 tokens. Aucune nouvelle génération n’a encore été effectuée dans cette expérience.
+
+Preuves : [environnement](chatunitest-local/mediatype/logs/environment.log) et [préparation Maven](chatunitest-local/mediatype/logs/prerequisites.log).
+
+### Mesure initiale avec les tests originaux
+
+Analyse exécutée le 29 septembre 2026 avec PIT 1.25.9, le connecteur JUnit 1.2.3 et les opérateurs `DEFAULTS`. Seule `MediaType` est ciblée. Le profil `chatunitest-verify` n’est pas activé ; les tests générés ne font donc pas partie de cette mesure. Maven nettoie le dossier temporaire de compilation avant de recompiler le projet pour cette mesure initiale.
+
+| Mesure | Résultat initial |
+|---|---:|
+| Mutants générés | 85 |
+| `KILLED` | 60 |
+| `SURVIVED` | 10 |
+| `NO_COVERAGE` | 14 |
+| `TIMED_OUT` | 1 |
+| Score strict `KILLED / total` | 60/85 = **70,59 %** |
+| Score incluant le timeout | 61/85 = **71,76 %** |
+| Couverture des lignes PIT | 126/156 = **80,77 %** |
+
+Le résumé PIT annonce « Killed 61 » en incluant le mutant `TIMED_OUT`. Nous distinguons ce timeout des 60 mutants classés `KILLED` ; sa cause reste à examiner dans le rapport détaillé.
+
+Cette mesure justifie le choix de `MediaType` : sa couverture est inférieure à 100 %, dix mutants survivent aux tests existants et quatorze mutants ne sont pas couverts.
+
+Commande exécutée depuis la racine du dépôt, dans PowerShell :
+
+```powershell
+.\mvnw.cmd -B -ntp -pl tika-core clean test-compile org.pitest:pitest-maven:1.25.9:mutationCoverage "-DtargetClasses=org.apache.tika.mime.MediaType" "-Drat.skip=true" "-Dcheckstyle.skip=true" "-Dossindex.skip=true" 2>&1 |
+    Tee-Object -FilePath "chatunitest-local/mediatype/logs/pit-before.log"
+```
+
+Résultat : `BUILD SUCCESS`. Cette commande compile les tests et exécute l’analyse PIT ; elle ne constitue pas une exécution complète des tests par Surefire.
+
+Le rapport a été copié hors de `target` avant toute nouvelle commande Maven. Preuves : [rapport HTML initial](rapports-pit/mediatype-before/index.html), [mutants XML](rapports-pit/mediatype-before/mutations.xml) et [journal Maven/PIT](chatunitest-local/mediatype/logs/pit-before.log).
+
 <!-- IFT3913-TACHE2-END -->
 
 ---
