@@ -961,6 +961,14 @@ Elle inclut les tests existants, les tests générés corrigés et les tests man
 
 Preuves : [journal complet](chatunitest-local/mediatype/logs/validation-final.log) et [rapports Surefire sauvegardés](chatunitest-local/mediatype/validation-final/surefire-reports/).
 
+### Validation GitHub Actions
+
+Le workflow [Tache 2 - tika-core tests, exécution 36652594733](https://github.com/nass1379/tika/actions/runs/36652594733)
+a réussi sur la branche `mediatype`, au commit `9e1f2ab`.
+
+Les rapports Surefire confirment 876 tests, aucun échec, aucune erreur
+et deux tests ignorés. Les 29 tests générés corrigés et les dix tests
+manuels MediaType ont tous réussi, sans test ignoré.
 
 <!-- IFT3913-TACHE2-END -->
 
