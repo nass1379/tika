@@ -1,0 +1,40 @@
+package org.apache.tika.mime;
+
+import org.apache.tika.mime.MediaType;
+import java.io.Serializable;
+import java.nio.charset.Charset;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.*;
+import org.junit.jupiter.api.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MediaType_application_0_0_Test {
+
+    @Test
+    public void testApplicationMethod() {
+        // Test with a valid type
+        MediaType mediaType = MediaType.application("json");
+        assertEquals("application/json", mediaType.toString());
+        // Test with an empty type
+        mediaType = MediaType.application("");
+        assertEquals("application/", mediaType.toString());
+        // Test with a null type
+        mediaType = MediaType.application(null);
+        assertNull(mediaType);
+    }
+}
+
+--------------------------------------------
+Error in testApplicationMethod(): line 32 : java.lang.NullPointerException: Cannot invoke "org.apache.tika.mime.MediaType.toString()" because "<local1>" is null

@@ -1,0 +1,11 @@
+{
+  "attempt0": {
+    "testClassName": "MediaType_parse_7_0_Test",
+    "fullName": "org.apache.tika.mime.MediaType_parse_7_0_Test",
+    "path": "C:\\Users\\15146\\Documents\\IFT3913\\tache2\\tika\\tika-core\\chatunitest\\tika-parent\\tika-core\\org\\apache\\tika\\mime\\MediaType_parse_7_0_Test.java",
+    "className": "MediaType",
+    "packageName": "org.apache.tika.mime",
+    "methodName": "parse",
+    "methodSig": "parse(String)"
+  }
+}

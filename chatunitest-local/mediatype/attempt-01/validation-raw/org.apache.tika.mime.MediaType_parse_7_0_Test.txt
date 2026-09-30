@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.tika.mime.MediaType_parse_7_0_Test
+-------------------------------------------------------------------------------
+Tests run: 15, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.085 s <<< FAILURE! -- in org.apache.tika.mime.MediaType_parse_7_0_Test
+org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_ComplexCache -- Time elapsed: 0.010 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: org.apache.tika.mime.MediaType@5a090f62<application/xml; charset=UTF-8> but was: org.apache.tika.mime.MediaType@559af296<application/xml; charset=UTF-8>
+	at org.junit.jupiter.api.Assertions.assertSame(Assertions.java:2962)
+	at org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_ComplexCache(MediaType_parse_7_0_Test.java:125)
+
+org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_InvalidType -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <invalid/type>
+	at org.junit.jupiter.api.Assertions.assertNull(Assertions.java:308)
+	at org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_InvalidType(MediaType_parse_7_0_Test.java:50)
+
+org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_InvalidCharset -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <text/plain; charset=invalid>
+	at org.junit.jupiter.api.Assertions.assertNull(Assertions.java:308)
+	at org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_InvalidCharset(MediaType_parse_7_0_Test.java:55)
+
+org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_SpecialCharacters -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <UTF-8> but was: <UTF-8", name="example>
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1199)
+	at org.apache.tika.mime.MediaType_parse_7_0_Test.testParse_SpecialCharacters(MediaType_parse_7_0_Test.java:110)
+

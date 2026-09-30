@@ -709,7 +709,7 @@ Classe : `org.apache.tika.mime.MediaType`, module `tika-core`. Les tests existan
 
 Expérience réalisée sous Windows avec PowerShell, Temurin Java 21.0.9 et le wrapper Maven 3.9.12 du dépôt, sur la branche `mediatype`, à partir du commit `539ac7414649b1fc7351ef32d5837bc2546267ba`.
 
-Ollama 0.34.4 est installé avec `qwen2.5-coder:7b` et l’alias `codeqwen:v1.5-chat`. La configuration de l’alias indique une fenêtre de contexte de 8192 tokens. Aucune nouvelle génération n’a encore été effectuée dans cette expérience.
+Ollama 0.34.4 est installé avec `qwen2.5-coder:7b` et l’alias `codeqwen:v1.5-chat`. La configuration de l’alias indique une fenêtre de contexte de 8192 tokens.
 
 Preuves : [environnement](chatunitest-local/mediatype/logs/environment.log) et [préparation Maven](chatunitest-local/mediatype/logs/prerequisites.log).
 
@@ -728,9 +728,20 @@ Analyse exécutée le 29 septembre 2026 avec PIT 1.25.9, le connecteur JUnit 1.2
 | Score incluant le timeout | 61/85 = **71,76 %** |
 | Couverture des lignes PIT | 126/156 = **80,77 %** |
 
-Le résumé PIT annonce « Killed 61 » en incluant le mutant `TIMED_OUT`. Nous distinguons ce timeout des 60 mutants classés `KILLED` ; sa cause reste à examiner dans le rapport détaillé.
+Le résumé PIT annonce « Killed 61 » en incluant le mutant `TIMED_OUT`. Nous distinguons ce timeout des 60 mutants classés `KILLED` ; sa cause est expliquée dans l’analyse des mutants restants.
 
 Cette mesure justifie le choix de `MediaType` : sa couverture est inférieure à 100 %, dix mutants survivent aux tests existants et quatorze mutants ne sont pas couverts.
+
+La génération a été lancée à l’échelle de la classe, sans sélection
+manuelle de méthodes individuelles. Le rapport initial montre notamment
+un mutant sans couverture dans `audio`, un cas sans couverture dans
+`equals`, ainsi que des mutants survivants dans `parse` et dans
+`isSimpleName`, appelée par le parseur. Ces lacunes motivent la génération
+de cas supplémentaires sur les fabriques et le parsing.
+
+D’autres méthodes ont également reçu des tests générés. Nous ne prétendons
+pas que chacune était initialement sans couverture : l’objectif était
+d’enrichir les tests de la classe et de mesurer leur apport avec PIT.
 
 Commande exécutée depuis la racine du dépôt, dans PowerShell :
 
@@ -742,6 +753,214 @@ Commande exécutée depuis la racine du dépôt, dans PowerShell :
 Résultat : `BUILD SUCCESS`. Cette commande compile les tests et exécute l’analyse PIT ; elle ne constitue pas une exécution complète des tests par Surefire.
 
 Le rapport a été copié hors de `target` avant toute nouvelle commande Maven. Preuves : [rapport HTML initial](rapports-pit/mediatype-before/index.html), [mutants XML](rapports-pit/mediatype-before/mutations.xml) et [journal Maven/PIT](chatunitest-local/mediatype/logs/pit-before.log).
+
+### Préparation des prompts
+
+Les templates du dépôt ont été copiés dans [mediatype/prompts](chatunitest-local/mediatype/prompts). La ligne du prompt système concernant l’exception imbriquée d’EndianUtils a été retirée, car elle ne concerne pas MediaType. Aucun résultat attendu ni oracle de test n’a été ajouté.
+
+### Génération et sauvegarde des tests
+
+La génération ChatUniTest s’est terminée le 29 septembre 2026 après 51 minutes, avec `BUILD SUCCESS`. Neuf fichiers de tests MediaType ont été exportés. Leur compilation et leurs résultats ont été vérifiés séparément avec Maven.
+
+Les [tests générés originaux](chatunitest-local/mediatype/attempt-01/exported/) ont été archivés avant toute modification, avec leurs [empreintes SHA-256](chatunitest-local/mediatype/attempt-01/raw-tests-sha256.csv), les [fichiers du plugin](chatunitest-local/mediatype/attempt-01/plugin-output/), la [configuration Maven](chatunitest-local/mediatype/attempt-01/pom.xml) et les [prompts utilisés](chatunitest-local/mediatype/attempt-01/prompts/).
+
+Le profil `chatunitest-mediatype` du [pom.xml](tika-core/pom.xml) cible MediaType et appelle Ollama localement avec l’alias `codeqwen:v1.5-chat`, basé sur `qwen2.5-coder:7b`. Paramètres : `testNumber=1`, trois tours maximum, température 0,2, génération séquentielle, fusion désactivée, limites de 6000 tokens pour le prompt et 2048 pour la réponse.
+
+Commande exécutée depuis la racine du dépôt :
+
+```powershell
+.\mvnw.cmd -B -ntp -f tika-core/pom.xml -Pchatunitest-mediatype test-compile io.github.zju-aces-ise:chatunitest-maven-plugin:2.1.1:class "-DselectClass=org.apache.tika.mime.MediaType" "-Drat.skip=true" "-Dcheckstyle.skip=true" "-Dossindex.skip=true" 2>&1 |
+    Tee-Object -FilePath "chatunitest-local/mediatype/logs/generation-01.log"
+```
+
+Journal complet : [generation-01.log](chatunitest-local/mediatype/logs/generation-01.log).
+
+### Contenu et limites des tests générés
+
+Les neuf fichiers originaux sont accessibles dans
+[exported](chatunitest-local/mediatype/attempt-01/exported/).
+Le tableau décrit leurs 29 méthodes de test ; les corrections nécessaires
+sont détaillées dans la section suivante.
+
+| Fichier | Nombre de tests | Comportements vérifiés et limites |
+|---|---:|---|
+| `MediaType_audio_1_0_Test.java` | 1 | Fabrique audio avec sous-type simple, paramètres, valeur contenant un espace et sous-type vide. Les attentes initiales sur les guillemets et le sous-type vide étaient incorrectes. |
+| `MediaType_compareTo_20_0_Test.java` | 1 | Égalité et ordre entre json et xml. L’oracle initial exigeait exactement -1 et 1 ; seul le signe est pertinent. Les différences de paramètres ne sont pas testées. |
+| `MediaType_equals_18_0_Test.java` | 4 | Même objet, type différent, null et objet d’une autre classe. Les réponses booléennes sont pertinentes ; deux objets distincts mais égaux ne sont pas vérifiés ici. |
+| `MediaType_hashCode_19_0_Test.java` | 1 | Même hash pour deux valeurs égales et hashes différents pour deux exemples précis. La première assertion vérifie le contrat ; la seconde n’est pas une propriété générale, car des collisions sont permises. |
+| `MediaType_hasParameters_15_0_Test.java` | 2 | Map vide et map contenant un charset. Les oracles false/true distinguent directement les deux situations ; ils ne vérifient pas le contenu des paramètres. |
+| `MediaType_image_2_0_Test.java` | 1 | Fabrique image avec png, sous-type vide et argument null. Les attentes initiales sur les deux derniers cas étaient incorrectes. |
+| `MediaType_parse_7_0_Test.java` | 15 | Null, types simples et paramétrés, espaces, guillemets, paramètres multiples et identité des résultats. Plusieurs attentes initiales étaient incorrectes. Deux tests utilisent exactement l’entrée text/plain; et des assertions identiques, ce qui constitue une redondance. |
+| `MediaType_text_3_0_Test.java` | 3 | Type simple, espaces autour du sous-type et charset. Les représentations attendues sont précises ; les entrées nulles et vides ne sont pas testées ici. |
+| `MediaType_toString_17_0_Test.java` | 1 | Représentation application/json sans paramètres. L’oracle est précis mais couvre un seul cas simple. |
+
+Les tests exportés ne couvrent pas toutes les méthodes ni toutes les
+branches de MediaType. Leur réussite après correction ne suffit donc
+pas à conclure à une couverture complète ; les mesures PIT quantifient
+leur apport et les lacunes restantes.
+
+### Vérification des tests générés originaux
+
+Les neuf fichiers générés compilent. Leur exécution avec Maven, via le profil `chatunitest-verify`, donne **29 tests : 22 réussis, 7 échecs, aucune erreur et aucun test ignoré**. Maven termine avec `BUILD FAILURE`.
+
+Les échecs concernent `audio`, `compareTo`, `image` et quatre tests de `parse`. Les assertions et les données ont été examinées avant correction. Le `BUILD SUCCESS` de la génération ChatUniTest ne garantit donc pas la réussite des tests exportés.
+
+Preuves : [journal de validation](chatunitest-local/mediatype/logs/validation-raw.log) et [rapports Surefire originaux](chatunitest-local/mediatype/attempt-01/validation-raw/).
+
+### Corrections et validation des tests générés
+
+Les corrections ont été réalisées avec l’aide de ChatGPT/Codex, après lecture des tests et du code de `MediaType`. Quatre fichiers ont été modifiés ; les cinq autres sont inchangés. Aucun test n’a été supprimé ou désactivé.
+
+| Test concerné | Correction et justification |
+|---|---|
+| `audio` | Retrait des guillemets attendus autour des valeurs simples ; le sous-type vide doit donner `null`. |
+| `compareTo` | Vérification du signe du résultat plutôt que des valeurs exactes `-1` et `1`. |
+| `image` | Le sous-type vide donne `null` ; l’argument Java `null` est concaténé en `"image/null"`. |
+| `parse` — type non enregistré | `"invalid/type"` est accepté : le parseur ne vérifie pas l’inscription dans un registre. |
+| `parse` — charset inconnu | La valeur `"invalid"` est conservée sans validation de l’encodage. |
+| `parse` — paramètres | Remplacement de la virgule par un point-virgule dans les données du test. |
+| `parse` — égalité | Remplacement de `assertSame` par `assertEquals` pour les types avec paramètres, qui ne sont pas mis en cache comme les types simples. |
+
+La validation de cette version donne **29 tests réussis, aucun échec, aucune erreur et aucun test ignoré**, avec `BUILD SUCCESS`. Cette exécution cible uniquement les tests MediaType générés.
+
+Preuves : [version corrigée sauvegardée](chatunitest-local/mediatype/corrections/version-01/), [rapports Surefire](chatunitest-local/mediatype/corrections/version-01/surefire-reports/) et [journal de validation](chatunitest-local/mediatype/logs/validation-corrected-01.log).
+
+### Comparaison qualitative des oracles
+
+Les oracles générés vérifient notamment les types, sous-types,
+paramètres, représentations textuelles et relations d’égalité.
+Ces assertions sont précises, mais plusieurs attentes initiales
+étaient incorrectes : rejet d’un type non enregistré, validation
+d’un charset inconnu ou identité supposée des objets avec paramètres.
+Les vérifications de non-nullité seules apportent moins d’information
+que les assertions sur les valeurs.
+
+Les tests manuels ciblent davantage les comportements insuffisamment
+vérifiés : filtrage des ensembles, non-modifiabilité, fusion et
+remplacement des paramètres, préservation de l’objet de base et
+caractères limites. Leurs oracles comparent des contenus attendus
+explicitement construits ou vérifient une exception précise.
+
+Les assertions d’identité du cache et de getBaseType(), ainsi que
+l’accès privé par réflexion, vérifient le comportement actuel de
+l’implémentation ; elles sont plus sensibles à une refonte interne.
+
+### Mesure PIT après ajout des tests générés corrigés
+
+L’analyse conserve la même classe cible et les mêmes opérateurs que la mesure initiale. Le profil `chatunitest-verify` ajoute les tests générés corrigés aux tests existants. Cette mesure a été réalisée avant l’ajout des tests manuels MediaType.
+
+| Mesure | Tests existants | Avec tests générés corrigés |
+|---|---:|---:|
+| Mutants générés | 85 | 85 |
+| `KILLED` | 60 | 68 |
+| `SURVIVED` | 10 | 5 |
+| `NO_COVERAGE` | 14 | 11 |
+| `TIMED_OUT` | 1 | 1 |
+| Score strict `KILLED / total` | 70,59 % | 80,00 % |
+| Score incluant les timeouts | 71,76 % | 81,18 % |
+| Couverture des lignes PIT | 126/156 = 80,77 % | 132/156 = 84,62 % |
+
+Le nombre de mutants `KILLED` augmente de huit, soit un gain de 9,41 points de pourcentage du score strict. Le résumé PIT annonce 69 mutants détectés en incluant le timeout ; le XML distingue 68 `KILLED` et un `TIMED_OUT`. La comparaison des XML confirme cinq mutants auparavant survivants et trois auparavant sans couverture devenus KILLED. Les 60 mutants initialement KILLED le restent.
+
+| Mutation devenue KILLED | Test détecteur | Pourquoi elle est détectée |
+|---|---|---|
+| `audio`, ligne 185 : retourner `null` | `testAudioMethod` | Les assertions exigent un objet et sa représentation attendue. |
+| `equals`, ligne 420 : retourner `true` | `testEqualsWithDifferentClass` | Le test exige une réponse fausse pour un objet d’une autre classe. |
+| `isSimpleName`, lignes 288 et 293 : trois mutations des conditions ou du retour | `testImageMethod` | Les cas de sous-type vide et d’argument `null` rendent observables les modifications de reconnaissance des noms simples. |
+| `parse`, ligne 247 : supprimer le contrôle de nullité | `testParse_NullInput` | L’entrée `null` doit retourner `null` sans exception. |
+| `parse`, ligne 265 : modifier la branche du cache | `testParse_SimpleCache` | Deux parsings du même type simple doivent retourner la même instance. |
+| `parse`, ligne 277 : modifier une condition de reconnaissance | `testImageMethod` | Les assertions sur les résultats de `image("")` et `image(null)` distinguent le comportement modifié. |
+
+Les tests générés corrigés ne détectent donc pas tous les mutants :
+cinq survivent et onze ne sont pas couverts ; un autre provoque un timeout.
+
+Preuves : [rapport HTML](rapports-pit/mediatype-generated-01/index.html), [mutants XML](rapports-pit/mediatype-generated-01/mutations.xml) et [journal PIT](chatunitest-local/mediatype/logs/pit-generated-01.log).
+
+### Tests manuels ciblés
+
+Huit tests ont été élaborés avec l’aide de ChatGPT/Codex dans [MediaTypeManualTest.java](tika-core/src/test/java/org/apache/tika/mime/MediaTypeManualTest.java), à partir des mutants restants et du code de `MediaType`. Ils sont séparés des tests générés.
+
+| Test | Intention et données | Résultat attendu |
+|---|---|---|
+| `charsetBeforeMediaTypeIsPreserved` | Parser `"charset=UTF-8; text/plain"`. | Type `text`, sous-type `plain`, charset `UTF-8`. |
+| `setOfMediaTypesRemovesDuplicatesAndNulls` | Fournir deux types, un doublon et `null`. | Exactement deux types distincts ; ensemble non modifiable. |
+| `setOfStringsParsesAndFiltersInvalidValues` | Fournir deux types sous forme de chaînes, un doublon, `null` et `"invalid"`. | Exactement les deux types valides ; ensemble non modifiable. |
+| `addingParametersToBaseTypePreservesValues` | Ajouter `charset=UTF-8` à `TEXT_PLAIN`. | Paramètre conservé et type de base `text/plain`. |
+| `addingEmptyParametersPreservesExistingValues` | Ajouter une map vide à un type avec charset. | Valeur du type et paramètres conservés. |
+| `addingParametersMergesAndOverridesValues` | Fusionner les paramètres en remplaçant le charset et en ajoutant une version. | Ancien format conservé, charset remplacé, version ajoutée ; objet de base inchangé. |
+| `videoFactoryCreatesExpectedMediaType` | Appeler `video("mp4")`. | Type `video`, sous-type `mp4`, représentation `video/mp4`. |
+| `baseTypeWithoutParametersReturnsSameInstance` | Appeler `getBaseType()` sur un objet créé sans paramètres. | La même instance est retournée ; cette assertion vérifie le comportement actuel du code. |
+
+La validation ciblée donne **37 tests réussis : huit manuels et 29 générés corrigés**, sans échec, erreur ou test ignoré, avec `BUILD SUCCESS`.
+
+Preuves : [version manuelle sauvegardée](chatunitest-local/mediatype/manual/version-01/MediaTypeManualTest.java), [rapports Surefire](chatunitest-local/mediatype/manual/version-01/surefire-reports/) et [journal de validation](chatunitest-local/mediatype/logs/validation-manual-01.log).
+
+### Compléments manuels et bilan PIT
+
+Deux tests supplémentaires ont porté la suite manuelle à dix tests :
+
+| Test | Intention et données | Résultat attendu |
+|---|---|---|
+| `newlyParsedSimpleTypeEndingInZIsCached` | Parser deux fois un type simple dédié se terminant par `z`. | Même valeur et même instance retournée. |
+| `simpleNameAcceptsBoundaryCharactersAndRejectsEmptyName` | Invoquer `isSimpleName` par réflexion avec les caractères limites acceptés et les caractères voisins exclus. | Acceptation de `a`, `z`, `0`, `9`, `-`, `+`, `.`, `_` ; rejet du nom vide, des majuscules, espaces et caractères hors limites. |
+
+Le test du cache seul n’a pas amélioré le score PIT. Un cache déjà rempli peut éviter l’appel à `isSimpleName`. Le test par réflexion a permis de vérifier cette méthode indépendamment du cache ; il dépend toutefois de son nom et de sa visibilité privée actuels.
+
+| Mesure | Tests existants | Avec générés corrigés | Avec dix tests manuels |
+|---|---:|---:|---:|
+| Mutants générés | 85 | 85 | 85 |
+| `KILLED` | 60 | 68 | 81 |
+| `SURVIVED` | 10 | 5 | 3 |
+| `NO_COVERAGE` | 14 | 11 | 0 |
+| `TIMED_OUT` | 1 | 1 | 1 |
+| Score strict | 70,59 % | 80,00 % | 95,29 % |
+| Score incluant le timeout | 71,76 % | 81,18 % | 96,47 % |
+| Couverture des lignes PIT | 80,77 % | 84,62 % | 154/156 = 98,72 % |
+
+Les versions manuelles 01 et 02 ont obtenu 79 mutants `KILLED`, la version 03 en a obtenu 80 et la version 04 en a obtenu 81. Le gain final est de 13 mutants `KILLED` par rapport à la suite avec tests générés corrigés, et de 21 par rapport à la mesure initiale.
+
+### Analyse des mutants restants
+
+Trois mutants ont été considérés comme équivalents pour les résultats observables via l’API publique, après examen du code :
+
+| Méthode et ligne | Mutation | Justification |
+|---|---|---|
+| `parse`, ligne 257 | Remplacer le retour par `null`. | Cette instruction retourne déjà `null` lorsque la chaîne ne contient aucun `/`. |
+| `union`, ligne 349 | Forcer le premier test de map vide à être faux. | Lorsque la première map est vide, la fusion avec la seconde conserve les mêmes entrées. |
+| `union`, ligne 351 | Forcer le second test de map vide à être faux. | Lorsque la seconde map est vide, la copie de la première conserve les mêmes entrées. Le constructeur recopie les paramètres, ce qui masque la différence d’identité de la map intermédiaire. |
+
+PIT conserve ces mutations au statut `SURVIVED` ; l’équivalence est une conclusion de notre analyse, pas un statut attribué automatiquement par PIT.
+
+Le mutant `TIMED_OUT` dans `parseParameters`, ligne 305, transforme la condition de boucle `length() > 0` en `length() >= 0`. La boucle continue alors sur une chaîne vide sans progresser, ce qui explique le dépassement du délai.
+
+Preuves : [version manuelle finale et rapports Surefire](chatunitest-local/mediatype/manual/version-04/), [journal de validation](chatunitest-local/mediatype/logs/validation-manual-04.log), [rapport PIT final](rapports-pit/mediatype-manual-04/index.html), [mutants XML](rapports-pit/mediatype-manual-04/mutations.xml) et [journal PIT](chatunitest-local/mediatype/logs/pit-manual-04.log).
+
+### Motivation des données et justification des oracles manuels
+
+Les résultats attendus ont été déterminés à partir du code de MediaType,
+puis exprimés par des valeurs explicites dans les assertions.
+
+| Test | Motivation des données et justification de l’oracle |
+|---|---|
+| `charsetBeforeMediaTypeIsPreserved` | Le charset placé avant le type exerce la branche de réorganisation du parseur ; les assertions vérifient que le type et le paramètre sont conservés. |
+| `setOfMediaTypesRemovesDuplicatesAndNulls` | Deux types distincts, un doublon et `null` distinguent conservation, déduplication et filtrage ; l’ensemble attendu contient exactement les deux types valides. L’ajout doit lever une exception car le résultat est non modifiable. |
+| `setOfStringsParsesAndFiltersInvalidValues` | Les chaînes valides, le doublon, `null` et une chaîne sans `/` exercent le parsing et le filtrage ; seuls les deux types valides doivent rester, dans un ensemble non modifiable. |
+| `addingParametersToBaseTypePreservesValues` | Un paramètre unique sur un type sans paramètres exerce l’ajout initial ; la map attendue contient uniquement le charset fourni et le type de base reste text/plain. |
+| `addingEmptyParametersPreservesExistingValues` | Une map ajoutée vide exerce le cas sans nouvelles entrées ; le charset existant et la valeur du type doivent rester inchangés. |
+| `addingParametersMergesAndOverridesValues` | Une clé commune, une ancienne clé distincte et une nouvelle clé exercent remplacement et fusion ; la map attendue contient les trois valeurs et la map de l’objet initial reste inchangée. |
+| `videoFactoryCreatesExpectedMediaType` | Le sous-type simple mp4 exerce la fabrique video, absente des fichiers générés exportés ; les composants et la représentation doivent être video/mp4. |
+| `baseTypeWithoutParametersReturnsSameInstance` | Un type sans paramètres exerce le retour direct de getBaseType() ; assertSame vérifie l’identité prévue par cette branche du code. |
+| `newlyParsedSimpleTypeEndingInZIsCached` | Un nom dédié terminé par z vise la borne supérieure des lettres minuscules ; deux appels identiques doivent conserver la valeur et l’identité via le cache. |
+| `simpleNameAcceptsBoundaryCharactersAndRejectsEmptyName` | Les bornes a/z et 0/9, les signes autorisés et leurs voisins exclus distinguent les conditions de reconnaissance ; les valeurs booléennes attendues suivent les caractères autorisés par le code. |
+
+### Validation complète de tika-core
+
+L’exécution complète avec le profil `chatunitest-verify` a comptabilisé **876 tests, aucun échec, aucune erreur et deux tests ignorés**, avec `BUILD SUCCESS` et un code de sortie Maven égal à `0`.
+
+Elle inclut les tests existants, les tests générés corrigés et les tests manuels des expériences EndianUtils et MediaType. MediaType ajoute 29 tests générés corrigés et dix tests manuels.
+
+Preuves : [journal complet](chatunitest-local/mediatype/logs/validation-final.log) et [rapports Surefire sauvegardés](chatunitest-local/mediatype/validation-final/surefire-reports/).
+
 
 <!-- IFT3913-TACHE2-END -->
 

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.tika.mime.MediaType_image_2_0_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.017 s <<< FAILURE! -- in org.apache.tika.mime.MediaType_image_2_0_Test
+org.apache.tika.mime.MediaType_image_2_0_Test.testImageMethod -- Time elapsed: 0.014 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: not <null>
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:336)
+	at org.apache.tika.mime.MediaType_image_2_0_Test.testImageMethod(MediaType_image_2_0_Test.java:33)
+
