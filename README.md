@@ -1,7 +1,7 @@
 <!-- IFT3913-TACHE2-START -->
 # IFT3913 — Tâche 2 — Nassim Barhoumi et Dina Andolsi
 
-## Expérience EndianUtils (en cours)
+## Expérience EndianUtils
 
 Classe : `org.apache.tika.io.EndianUtils`, module `tika-core`. Les tests originaux sont dans `tika-core/src/test/java/org/apache/tika/io/EndianUtilsTest.java`.
 
@@ -811,6 +811,9 @@ Preuves : [journal de validation](chatunitest-local/mediatype/logs/validation-ra
 
 Les corrections ont été réalisées avec l’aide de ChatGPT/Codex, après lecture des tests et du code de `MediaType`. Quatre fichiers ont été modifiés ; les cinq autres sont inchangés. Aucun test n’a été supprimé ou désactivé.
 
+**Comptage des corrections.** La comparaison des neuf fichiers [bruts](chatunitest-local/mediatype/attempt-01/exported/) avec leur [version corrigée](chatunitest-local/mediatype/corrections/version-01/) identifie **7 méthodes de test corrigées dans 4 fichiers**, sur 29 méthodes conservées. L’unité retenue est une méthode de test dont les données ou les assertions ont changé, et non une ligne modifiée ni une assertion individuelle. `testAudioMethod`, `testCompareTo` et `testImageMethod` comptent chacune pour une méthode, même lorsque plusieurs assertions ont été corrigées. Les quatre autres sont `testParse_InvalidType` (renommée `testParse_UnregisteredType`), `testParse_InvalidCharset` (renommée `testParse_UnknownCharsetPreserved`), `testParse_SpecialCharacters` et `testParse_ComplexCache` (renommée `testParse_ComplexTypesEqual`). Les renommages ne constituent pas des tests supplémentaires. Ces corrections manuelles sont distinctes des réparations automatiques tentées pendant la génération ChatUniTest.
+
+
 | Test concerné | Correction et justification |
 |---|---|
 | `audio` | Retrait des guillemets attendus autour des valeurs simples ; le sous-type vide doit donner `null`. |
@@ -826,6 +829,12 @@ La validation de cette version donne **29 tests réussis, aucun échec, aucune e
 Preuves : [version corrigée sauvegardée](chatunitest-local/mediatype/corrections/version-01/), [rapports Surefire](chatunitest-local/mediatype/corrections/version-01/surefire-reports/) et [journal de validation](chatunitest-local/mediatype/logs/validation-corrected-01.log).
 
 ### Comparaison qualitative des oracles
+
+**Comparaison avec les tests originaux.** Dans [MediaTypeTest.java](tika-core/src/test/java/org/apache/tika/mime/MediaTypeTest.java), `testBasics`, `testLowerCase` et `testTrim` comparent des représentations textuelles exactes : ils vérifient respectivement la construction, la normalisation de la casse et le retrait des espaces. `testQuote` exige l’échappement précis des caractères spéciaux. Ces oracles originaux sont plus discriminants qu’une simple assertion de non-nullité ; le test généré `testToString` ne vérifie qu’un cas simple `application/json`.
+
+À l’inverse, le test original `testParseWithParams` vérifie le nombre et les noms des paramètres, mais pas leurs valeurs. Les tests générés `testParse_ComplexType` et `testParse_MultipleParameters` vérifient explicitement `UTF-8` et `1.0`, ce qui permet de détecter une mauvaise valeur malgré des clés correctes. Cet apport n’est toutefois pas entièrement nouveau : le test original `testParseWithParamsAndQuotedCharset` vérifie déjà les valeurs et compare notamment une map attendue complète pour le cas d’un charset unique.
+
+Les tests générés ajoutent des cas comme l’entrée nulle et l’égalité avec un objet d’une autre classe. Ils présentent aussi des redondances : `testParse_EmptyParameters` et `testParse_SemicolonAtEnd` utilisent tous deux `text/plain;`, alors que le test original `testParseNoParamsWithSemi` traite déjà un type terminé par un point-virgule. Enfin, les attentes erronées sur les types non enregistrés, les charsets inconnus et l’identité des objets paramétrés montrent qu’un oracle IA précis peut malgré tout être incorrect ; les sept méthodes corrigées sont donc analysées séparément de l’apport en couverture.
 
 Les oracles générés vérifient notamment les types, sous-types,
 paramètres, représentations textuelles et relations d’égalité.
@@ -866,10 +875,14 @@ Le nombre de mutants `KILLED` augmente de huit, soit un gain de 9,41 points de p
 |---|---|---|
 | `audio`, ligne 185 : retourner `null` | `testAudioMethod` | Les assertions exigent un objet et sa représentation attendue. |
 | `equals`, ligne 420 : retourner `true` | `testEqualsWithDifferentClass` | Le test exige une réponse fausse pour un objet d’une autre classe. |
-| `isSimpleName`, lignes 288 et 293 : trois mutations des conditions ou du retour | `testImageMethod` | Les cas de sous-type vide et d’argument `null` rendent observables les modifications de reconnaissance des noms simples. |
+| `isSimpleName`, ligne 293, index 60 — `ConditionalsBoundaryMutator` | `MediaType_image_2_0_Test.testImageMethod` | La condition finale `name.length() > 0` devient `>= 0` : le sous-type vide est accepté par le chemin rapide. L’assertion `assertNull(MediaType.image(""))` distingue ce comportement. |
+| `isSimpleName`, ligne 288, index 44 — `RemoveConditionalMutator_ORDER_ELSE` | `MediaType_image_2_0_Test.testImageMethod` | PIT supprime une comparaison de reconnaissance des caractères (`removed conditional - replaced comparison check with false`). Le test vérifie les fabriques pour `png`, le sous-type vide et l’argument Java `null`, avec des résultats explicites. Le XML attribue la détection à cette méthode de test ; il ne précise pas l’assertion ou l’exception qui a arrêté son exécution. |
+| `isSimpleName`, ligne 293, index 68 — `returns.BooleanTrueReturnValsMutator` | `MediaType_image_2_0_Test.testImageMethod` | Le retour final est forcé à `true`, y compris pour un nom vide. `assertNull(MediaType.image(""))` détecte l’acceptation indue du sous-type vide. |
 | `parse`, ligne 247 : supprimer le contrôle de nullité | `testParse_NullInput` | L’entrée `null` doit retourner `null` sans exception. |
 | `parse`, ligne 265 : modifier la branche du cache | `testParse_SimpleCache` | Deux parsings du même type simple doivent retourner la même instance. |
 | `parse`, ligne 277 : modifier une condition de reconnaissance | `testImageMethod` | Les assertions sur les résultats de `image("")` et `image(null)` distinguent le comportement modifié. |
+
+Les noms de mutateurs ci-dessus sont les suffixes exacts du préfixe `org.pitest.mutationtest.engine.gregor.mutators.` dans le XML. Les indices sont les valeurs de `<indexes><index>`, pas des numéros de ligne. Les trois identités `isSimpleName` permettent ainsi de distinguer les deux mutations situées ligne 293.
 
 Les tests générés corrigés ne détectent donc pas tous les mutants :
 cinq survivent et onze ne sont pas couverts ; un autre provoque un timeout.
