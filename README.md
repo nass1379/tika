@@ -999,6 +999,14 @@ Les commandes de build documentées plus haut gardent leurs options de désactiv
 
 L’autre échec examiné, le [build Java 25 du 28 septembre](https://github.com/nass1379/tika/actions/runs/36482829178/job/109132392395), se situe dans `tika-pipes-s3-integration-tests` : `S3PipeIntegrationTest.setupMinio` rencontre une `ContainerLaunchException` au démarrage Docker Compose, précédée d’un délai dépassé lors de la récupération de `quay.io/minio/minio:latest`. Ce problème d’intégration S3 n’est pas corrigé par l’ajout des en-têtes. La réussite du workflow dédié ne signifie pas que tous les workflows généraux de Tika sont verts.
 
+### Publication Docker sur le fork du cours
+
+Le workflow `Docker snapshot - tika-server and tika-grpc` publie les images officielles `apache/tika` et `apache/tika-grpc` sur Docker Hub. Son [exécution du 1er octobre](https://github.com/nass1379/tika/actions/runs/36917347969/job/110554632939#step:9:9) a échoué à l’étape `Login to Docker Hub` avec `Username and password required`, faute des identifiants de publication dans notre fork.
+
+Le premier job `gate` de [docker-snapshot.yml](.github/workflows/docker-snapshot.yml) est désormais conditionné par `github.repository == 'apache/tika'`. Sur `nass1379/tika`, ce job est ignoré, de même que le job de publication `build` qui en dépend. Aucun identifiant Docker Hub n’est nécessaire pour la tâche 2. Les anciennes exécutions échouées restent visibles dans l’historique.
+
+Ce choix concerne uniquement le workflow de publication des snapshots Docker. Le workflow `Tache 2 - tika-core tests`, ses tests originaux, générés et manuels, et ses contrôles RAT, Spotless et Checkstyle restent actifs. Les autres workflows de tests restent également actifs. La publication Docker n’est pas demandée par l’énoncé ; le critère d’exécution porte sur la réussite des nouveaux tests dans GitHub Actions. Cette restriction ne corrige pas le problème distinct de démarrage Docker/MinIO du test d’intégration S3.
+
 <!-- IFT3913-TACHE2-END -->
 
 ---

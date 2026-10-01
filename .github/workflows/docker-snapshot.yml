@@ -31,6 +31,8 @@ jobs:
   # this gate that push would publish release-named images to Docker Hub before the
   # vote. Release/GA images are published post-vote by docker-release.yml.
   gate:
+    # Official Docker Hub publication is not applicable to course forks.
+    if: github.repository == 'apache/tika'
     runs-on: ubuntu-latest
     outputs:
       publish: ${{ steps.check.outputs.publish }}
