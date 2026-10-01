@@ -37,6 +37,8 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
+      - name: Check tika-core licenses and style
+        run: ./mvnw -B -ntp -pl tika-core apache-rat:check spotless:check checkstyle:check
       - name: Install reactor prerequisites
         run: >-
           ./mvnw -B -ntp -pl tika-core -am install -DskipTests

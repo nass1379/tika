@@ -983,6 +983,22 @@ Les rapports Surefire confirment 876 tests, aucun échec, aucune erreur
 et deux tests ignorés. Les 29 tests générés corrigés et les dix tests
 manuels MediaType ont tous réussi, sans test ignoré.
 
+### Correction des contrôles de licence et de style — 1er octobre 2026
+
+Le [build général Java 17 du 30 septembre](https://github.com/nass1379/tika/actions/runs/36782556998/job/110116114035#step:5:500) a échoué au contrôle Apache RAT dans `tika-core` : 28 fichiers ajoutés ne portaient pas d’en-tête de licence reconnu. Il s’agissait des 18 fichiers générés EndianUtils, des neuf fichiers générés MediaType et de `MediaTypeManualTest.java`. Cet échec concernait bien les ajouts de l’expérience, même si leur exécution était réussie dans la CI dédiée, qui désactivait RAT.
+
+Les 28 copies actives portent désormais l’en-tête Apache 2.0 du dépôt. Les imports statiques de `MediaTypeManualTest` sont explicites et sa fin de fichier a été corrigée pour Checkstyle. Aucun comportement de test, donnée ou assertion n’a été modifié. Les archives brutes, les versions corrigées sauvegardées et les rapports historiques sont conservés tels quels. Leurs empreintes décrivent ces versions historiques ; les fichiers actifs diffèrent désormais aussi par ces en-têtes et ajustements de forme. Cela n’ajoute aucune correction sémantique aux 11 méthodes EndianUtils et sept méthodes MediaType déjà recensées.
+
+Le workflow dédié comporte maintenant une étape explicite avant la compilation :
+
+```bash
+./mvnw -B -ntp -pl tika-core apache-rat:check spotless:check checkstyle:check
+```
+
+Les commandes de build documentées plus haut gardent leurs options de désactivation pour éviter de répéter certains contrôles ; RAT et Checkstyle sont toutefois exécutés et bloquants dans cette étape distincte. OSS Index reste désactivé. Validation locale après correction : Apache RAT, Spotless et Checkstyle réussissent ; les 876 tests exécutés après nettoyage ne présentent aucun échec ni erreur, avec deux tests ignorés.
+
+L’autre échec examiné, le [build Java 25 du 28 septembre](https://github.com/nass1379/tika/actions/runs/36482829178/job/109132392395), se situe dans `tika-pipes-s3-integration-tests` : `S3PipeIntegrationTest.setupMinio` rencontre une `ContainerLaunchException` au démarrage Docker Compose, précédée d’un délai dépassé lors de la récupération de `quay.io/minio/minio:latest`. Ce problème d’intégration S3 n’est pas corrigé par l’ajout des en-têtes. La réussite du workflow dédié ne signifie pas que tous les workflows généraux de Tika sont verts.
+
 <!-- IFT3913-TACHE2-END -->
 
 ---
