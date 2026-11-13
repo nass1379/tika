@@ -1,0 +1,12 @@
+
+name: Rickroll
+description: Affiche un Rickroll lorsqu'un test échoue
+
+runs:
+  using: composite
+  steps:
+    - name: Afficher le Rickroll
+      shell: bash
+      run: |
+        echo "## Un test de Tika a échoué !" >> "$GITHUB_STEP_SUMMARY"
+        echo "[Identifier la source du problème](https://youtu.be/dQw4w9WgXcQ)" >> "$GITHUB_STEP_SUMMARY"
