@@ -74,3 +74,52 @@ jobs:
       - name: Rickroll si échec des tests E2E
         if: ${{ failure() && steps.e2e.outcome == 'failure' }}
         uses: ./.github/actions/rickroll
+  
+  semgrep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Choisir la version à comparer
+        id: reference
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            BASE="$PR_BASE"
+          else
+            BASE="$PUSH_BEFORE"
+          fi
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            git fetch origin main
+            BASE=$(git merge-base HEAD FETCH_HEAD)
+          fi
+          echo "Commit de référence : $BASE"
+          echo "base=$BASE" >> "$GITHUB_OUTPUT"
+      - name: Installer Semgrep
+        run: pip install semgrep
+      - name: Analyser les nouvelles vulnérabilités
+        shell: bash
+        env:
+          BASE: ${{ steps.reference.outputs.base }}
+        run: |
+          semgrep scan --config p/java \
+            --baseline-commit "$BASE" \
+            --metrics=off \
+            --json \
+            --output semgrep-resultat.json \
+            --error
+      - name: Sauvegarder le rapport
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-semgrep
+          path: semgrep-resultat.json
+          if-no-files-found: warn
