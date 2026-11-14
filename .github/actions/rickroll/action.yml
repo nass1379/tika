@@ -5,7 +5,16 @@ description: Affiche un Rickroll lorsqu'un test échoue
 runs:
   using: composite
   steps:
+    - name: Vérifier les résultats des tests
+      id: tests
+      shell: bash
+      run: |
+        if find . -type f \( -path '*/surefire-reports/TEST-*.xml' -o -path '*/failsafe-reports/TEST-*.xml' \) -exec grep -lE '<(failure|error)([[:space:]>])' {} + | grep -q .; then
+          echo "failed=true" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Afficher le Rickroll
+      if: steps.tests.outputs.failed == 'true'
       shell: bash
       run: |
         echo "## Un test de Tika a échoué !" >> "$GITHUB_STEP_SUMMARY"
