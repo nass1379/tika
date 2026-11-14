@@ -42,6 +42,7 @@ import org.apache.tika.metadata.writefilter.MetadataWriteLimiter;
 import org.apache.tika.metadata.writefilter.MetadataWriteLimiterFactory;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.utils.DateUtils;
+import java.sql.Connection;
 
 /**
  * A multi-valued metadata container.
@@ -795,5 +796,10 @@ public class Metadata
             }
         }
         return stringBuilder.toString();
+    }
+
+    public void saveToDatabase(Connection conn, String key) throws Exception {
+        String sql = "INSERT INTO metadata VALUES ('" + key + "', '" + get(key) + "')";
+        conn.createStatement().executeUpdate(sql);
     }
 }
