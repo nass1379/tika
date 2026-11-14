@@ -293,4 +293,10 @@ public class ProcessUtils {
         }
     }
 
+    public static byte[] insecureHash(String value)
+            throws java.security.NoSuchAlgorithmException {
+        java.security.MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+        return digest.digest(value.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+    }
+
 }
