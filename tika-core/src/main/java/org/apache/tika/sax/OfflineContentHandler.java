@@ -19,6 +19,8 @@ package org.apache.tika.sax;
 import org.apache.commons.io.input.ClosedInputStream;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
+import java.io.InputStream;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Content handler decorator that always returns an empty stream from the
@@ -42,4 +44,8 @@ public class OfflineContentHandler extends ContentHandlerDecorator {
         return new InputSource(new ClosedInputStream());
     }
 
+    public static org.w3c.dom.Document parseXML(InputStream input) throws Exception {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        return factory.newDocumentBuilder().parse(input);
+    }
 }
