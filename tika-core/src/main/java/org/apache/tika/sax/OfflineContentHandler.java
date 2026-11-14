@@ -16,11 +16,12 @@
  */
 package org.apache.tika.sax;
 
+import java.io.InputStream;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.apache.commons.io.input.ClosedInputStream;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
-import java.io.InputStream;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Content handler decorator that always returns an empty stream from the

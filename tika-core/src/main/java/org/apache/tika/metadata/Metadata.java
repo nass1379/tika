@@ -19,6 +19,7 @@ package org.apache.tika.metadata;
 import static org.apache.tika.utils.DateUtils.formatDate;
 
 import java.io.Serializable;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -42,7 +43,6 @@ import org.apache.tika.metadata.writefilter.MetadataWriteLimiter;
 import org.apache.tika.metadata.writefilter.MetadataWriteLimiterFactory;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.utils.DateUtils;
-import java.sql.Connection;
 
 /**
  * A multi-valued metadata container.
