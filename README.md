@@ -18,16 +18,7 @@ Le job `semgrep` exécute les étapes suivantes :
 
 ### Comparaison avec un commit de référence
 
-Nous avons choisi d'utiliser `--baseline-commit` pour éviter que les vulnérabilités déjà présentes dans Tika fassent échouer le job.
-
-Le commit de référence est choisi selon le type d'événement GitHub :
-
-- **Pull request :** nous utilisons le commit de base de la pull request.
-- **Push :** nous utilisons le commit qui précédait le push.
-
-Si cette référence n'est pas disponible, le script utilise `git merge-base` pour trouver un ancêtre commun entre `HEAD` et la branche `main`.
-
-Cette comparaison permet à Semgrep de se concentrer sur les nouvelles vulnérabilités introduites par les modifications, plutôt que sur celles qui étaient déjà présentes dans le projet.
+Nous utilisons `--baseline-commit` pour détecter uniquement les nouvelles vulnérabilités. Le commit de référence correspond au commit précédent pour un push ou au commit de base pour une pull request. Si cette référence est indisponible, `git merge-base` permet de trouver un point de comparaison avec `main`.
 
 ### Validation
 
@@ -43,15 +34,27 @@ semgrep scan --config p/java --metrics=off chemin/du/fichier.java
 
 **Aucune nouvelle vulnérabilité**
 
-Nous avons vérifié que le job `semgrep` s'exécute correctement et se termine avec succès lorsqu'aucune nouvelle vulnérabilité n'est détectée.
-
-[Voir le job Semgrep réussi](https://github.com/nass1379/tika/actions/runs/43544299763/job/132291819827)
+Nous avons vérifié que le job `semgrep` s'exécute correctement et se termine avec succès lorsqu'aucune nouvelle vulnérabilité n'est détectée. [Exécution réussie](https://github.com/nass1379/tika/actions/runs/43544299763/job/132291819827)
 
 **Nouvelles vulnérabilités**
 
-Lorsqu'un commit introduit une nouvelle vulnérabilité détectée par Semgrep, le job `semgrep` passe en échec avec un code de sortie 1.
+Lorsqu'un commit introduit une nouvelle vulnérabilité détectée par Semgrep, le job `semgrep` passe en échec avec un code de sortie 1. [Exécution en échec](https://github.com/nass1379/tika/actions/runs/43553274275/job/132320316336)
 
-Voici un exemple avec la vulnérabilité 1 (MD5) ajoutée dans `ProcessUtils.java`, où l'on peut voir que Semgrep détecte la vulnérabilité et que le job échoue comme prévu.
 
-[Voir l'exemple sur GitHub Actions](https://github.com/nass1379/tika/actions/runs/43553274275/job/132320316336)
+## Rickroll
+
+### Implémentation
+
+Nous avons créé une action réutilisable dans `.github/actions/rickroll/action.yml` pour afficher un Rickroll lorsqu'un test de Tika échoue.
+
+L'action vérifie les rapports de tests Maven (Surefire et Failsafe) pour repérer les balises `<failure>` ou `<error>`. Si un échec est détecté, elle ajoute au résumé GitHub Actions un lien intitulé « Identifier la source du problème », qui mène à la vidéo Rickroll. Cette action est appelée dans `.github/workflows/main-jdk17-build.yml`, après les étapes Maven des jobs `build` et `e2e-tests`.
+
+### Validation
+
+Nous avons vérifié sur GitHub Actions que le Rickroll s'affiche dans le résumé après un échec Maven. [Exécution sur GitHub Actions](https://github.com/nass1379/tika/actions/runs/43544299763)
+
+![Rickroll dans GitHub Actions](images/rickroll.png)
+
+
+
 
