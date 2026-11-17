@@ -1,174 +1,109 @@
-
 <!-- IFT3913-TACHE3-START -->
-# Tâche 3
+# Tâche 3 — Semgrep et vulnérabilités
 
-## Détection automatique des vulnérabilités avec Semgrep
+Nous avons ajouté sept vulnérabilités pédagogiques dans Tika, configuré GitHub Actions pour détecter les nouveaux problèmes et créé une action Rickroll lorsqu’un test échoue.
 
-### Implémentation
+## Détection avec Semgrep
 
-Nous avons ajouté un nouveau job `semgrep` dans le fichier `.github/workflows/main-jdk17-build.yml` pour détecter les nouvelles vulnérabilités dans le code de Tika. Ce job est indépendant et se trouve au même niveau que les jobs `build` et `e2e-tests`, sans modifier leur fonctionnement.
+Le job `semgrep` du [workflow Java 17](.github/workflows/main-jdk17-build.yml) s’exécute sur les push et les pull requests vers `main` et `tache3`, indépendamment des tests Maven.
 
-Le job `semgrep` exécute les étapes suivantes :
+Nous utilisons **Semgrep CE 1.185.0** et un [instantané de 60 règles Java](rapports-semgrep/java-rules.yaml), récupéré le 16 novembre 2026. Figer ces versions permet de comparer les résultats avec les mêmes détecteurs.
 
-- **Récupération du code :** `actions/checkout@v6` récupère le dépôt. Nous utilisons `fetch-depth: 0` pour avoir accès à tout l'historique Git, nécessaire pour comparer les commits.
-- **Choix du commit de référence :** l'étape `reference` détermine automatiquement le commit avec lequel les modifications seront comparées.
-- **Installation :** la commande `pip install semgrep==1.185.0` installe Semgrep sur la machine utilisée par GitHub Actions.
-- **Analyse :** l'option `--config rapports-semgrep/java-rules.yaml` utilise un instantané des règles publiques Java `p/java` (60 règles, récupérées le 16 novembre 2026). `--no-rewrite-rule-ids` conserve les identifiants originaux. Le fichier de règles et la version 1.185.0 de Semgrep sont figés pour rendre les analyses comparables. L'option `--baseline-commit` permet de repérer les nouvelles vulnérabilités et `--error` fait échouer le job lorsqu'une nouvelle vulnérabilité est détectée.
-- **Rapport :** les options `--json` et `--output` enregistrent les résultats dans `semgrep-resultat.json`. Le fichier est ensuite conservé comme artefact GitHub Actions sous le nom `rapport-semgrep`, même lorsque l'analyse échoue. L'option `--metrics=off` désactive l'envoi des métriques à Semgrep.
-
-### Comparaison avec un commit de référence
-
-Nous utilisons `--baseline-commit` pour détecter uniquement les nouvelles vulnérabilités. Le commit de référence correspond au commit précédent pour un push ou au commit de base pour une pull request. Si cette référence est indisponible, `git merge-base` permet de trouver un point de comparaison avec `main`.
-
-### Validation
-
-Nous avons vérifié le fonctionnement de Semgrep localement, puis sur GitHub Actions, afin de tester les deux situations : une analyse réussie et une analyse qui détecte une nouvelle vulnérabilité.
-
-**Vérification locale**
-
-Nous avons vérifié que Semgrep détecte les vulnérabilités dans chaque fichier Java modifié à l'aide de la commande suivante :
+Le workflow récupère tout l’historique Git avec `fetch-depth: 0`, puis choisit sa référence : le commit précédent pour un push, ou le commit de base pour une PR. Si la référence est vide ou nulle, il utilise le point commun avec `main`.
 
 ```bash
-semgrep scan --config p/java --metrics=off chemin/du/fichier.java
+semgrep scan --config rapports-semgrep/java-rules.yaml --no-rewrite-rule-ids \
+  --baseline-commit "$BASE" --metrics=off \
+  --json --output semgrep-resultat.json --error
 ```
 
-**Aucune nouvelle vulnérabilité**
+`--baseline-commit` limite les résultats aux nouvelles alertes. `--error` fait échouer le job lorsqu’il en trouve. Les identifiants des règles sont conservés avec `--no-rewrite-rule-ids`, et les métriques sont désactivées. Le rapport JSON est sauvegardé dans l’artefact `rapport-semgrep`, même en cas d’échec.
 
-Nous avons vérifié que le job `semgrep` s'exécute correctement et se termine avec succès lorsqu'aucune nouvelle vulnérabilité n'est détectée. [Exécution réussie](https://github.com/nass1379/tika/actions/runs/43544299763/job/132291819827)
+Nous avons vérifié les deux cas :
 
-**Nouvelles vulnérabilités**
+- **Sans nouvelle vulnérabilité :** [Semgrep passe](https://github.com/nass1379/tika/actions/runs/44128171110/job/134197591008) sur un commit de documentation et de configuration.
+- **Avec de nouvelles vulnérabilités :** [Semgrep bloque la PR](https://github.com/nass1379/tika/actions/runs/44022291115/job/133834331939), avec quatre alertes et le code de sortie 1. Le [rapport conservé](rapports-semgrep/ci-pr1.json) contient les quatre ajouts attendus, sans erreur d’analyse.
 
-Lorsqu'un commit introduit une nouvelle vulnérabilité détectée par Semgrep, le job `semgrep` passe en échec avec un code de sortie 1. [Exécution en échec](https://github.com/nass1379/tika/actions/runs/43553274275/job/132320316336)
+La PR compare nos quatre derniers ajouts au code contenant déjà les trois premiers. La comparaison complète ci-dessous part, elle, du commit précédant les sept ajouts.
 
+## Les sept vulnérabilités
 
-## Vulnérabilités
+### 1. Hachage faible : MD5
 
-### Vulnérabilité 1 : hachage faible (MD5)
+Dans [ProcessUtils.java](tika-core/src/main/java/org/apache/tika/utils/ProcessUtils.java), `insecureHash(String)` calcule une empreinte MD5. Nous avons choisi une méthode utilitaire indépendante pour ne pas modifier les traitements existants ; ce placement sert à l’expérience.
 
-- **Type :** utilisation d'un algorithme de hachage cryptographique faible.
-- **Choix du fichier :** `tika-core/src/main/java/org/apache/tika/utils/ProcessUtils.java`.  
-  Cette classe regroupe des méthodes statiques liées à la gestion des processus dans Tika. Nous y avons ajouté une méthode indépendante, qui n'est pas appelée par les méthodes existantes. Leur comportement ne change donc pas.
-- **Code ajouté :**  
-  La méthode `insecureHash(String value)` utilise MD5 pour calculer l'empreinte d'une chaîne de caractères et retourne le résultat sous forme de tableau d'octets.
-- **Pourquoi c'est vulnérable :**  
-  MD5 est vulnérable aux collisions : deux données différentes peuvent produire la même empreinte. Son utilisation peut compromettre les mécanismes qui reposent sur la résistance aux collisions, comme certaines vérifications d'intégrité ou d'authenticité. SHA-256 serait préférable pour ces usages.
-- **Résultat Semgrep :**  
-  Nous avons analysé `ProcessUtils.java` avec les règles Java (`p/java`). Semgrep a détecté l'utilisation de MD5 et l'a signalée comme une faiblesse de sécurité. [Run](https://github.com/nass1379/tika/actions/runs/43553274275/job/132320316336)
+MD5 permet des collisions : deux contenus différents peuvent avoir la même empreinte. Il est donc inadapté aux vérifications exigeant une résistance aux collisions. SHA-256 serait préférable pour cet usage.
 
-### Vulnérabilité 2 : injection SQL
+**Semgrep :** une nouvelle alerte `use-of-md5`. [Validation CI](https://github.com/nass1379/tika/actions/runs/43553274275/job/132320316336).
 
-- **Type :** injection SQL.
-- **Choix du fichier :** `tika-core/src/main/java/org/apache/tika/metadata/Metadata.java`.  
-  Cette classe sert à gérer les métadonnées des documents dans Tika. Ces valeurs peuvent provenir de documents non fiables, ce qui rend leur enregistrement dans une base de données pertinent pour illustrer une injection SQL.
-- **Code ajouté :**  
-  La méthode `saveToDatabase(Connection conn, String key)` permet d'enregistrer une métadonnée dans une base de données. Elle construit la requête SQL en concaténant directement la clé et sa valeur.
-- **Pourquoi c'est vulnérable :**  
-  La requête est construite à partir de valeurs qui pourraient provenir d'une source non fiable. Si l'une contient des caractères ou des instructions SQL malveillantes, elle pourrait modifier la requête exécutée. Un `PreparedStatement` avec des paramètres permettrait de séparer les données de la commande SQL et d'éviter ce problème.
-- **Résultat Semgrep :**  
-  Nous avons analysé `Metadata.java` avec `p/java`. L'injection SQL a été détectée (`1 finding`, `1 blocking`). [Run](https://github.com/nass1379/tika/actions/runs/43632586929/job/132562258032)
+### 2. Injection SQL
 
-### Vulnérabilité 3 : XML External Entity (XXE)
+Dans [Metadata.java](tika-core/src/main/java/org/apache/tika/metadata/Metadata.java), `saveToDatabase(Connection, String)` construit une requête en concaténant une clé et sa valeur. Ce fichier gère les métadonnées, qui peuvent provenir de documents non fiables.
 
-- **Type :** XML External Entity (XXE).
-- **Choix du fichier :** `tika-core/src/main/java/org/apache/tika/sax/OfflineContentHandler.java`.  
-  Cette classe fait partie des composants de Tika liés au traitement du contenu XML avec SAX, ce qui en fait un endroit pertinent pour introduire une vulnérabilité liée au traitement XML.
-- **Code ajouté :**  
-  La méthode `parseXML(InputStream input)` analyse un document XML avec `DocumentBuilderFactory`, sans configurer le parseur pour bloquer les entités externes.
-- **Pourquoi c'est vulnérable :**  
-  Le parseur est créé sans configuration de sécurité contre les entités externes. Selon sa configuration, un document XML malveillant pourrait exploiter cette faiblesse pour tenter de lire des fichiers locaux ou d'accéder à des ressources internes. Il faudrait notamment désactiver les déclarations `DOCTYPE` et la résolution des entités externes.
-- **Résultat Semgrep :**  
-  Nous avons analysé `OfflineContentHandler.java` avec `p/java`. La vulnérabilité XXE a été détectée (`1 finding`, `1 blocking`). [Run](https://github.com/nass1379/tika/actions/runs/43635358793/job/132570853817)
+Une valeur malveillante pourrait modifier la requête exécutée. Un `PreparedStatement` avec des paramètres éviterait de mélanger les données et les instructions SQL.
 
-### Vulnérabilité 4 : chiffrement AES en mode ECB
+**Semgrep :** une nouvelle alerte `formatted-sql-string`. [Validation CI](https://github.com/nass1379/tika/actions/runs/43632586929/job/132562258032).
 
-- **Type :** fuite des motifs du texte clair par chiffrement déterministe des blocs (CWE-327), distincte des collisions du hachage MD5 de la vulnérabilité 1.
-- **Fichier et méthode :** [`ProcessUtils.java`](tika-core/src/main/java/org/apache/tika/utils/ProcessUtils.java), `insecureEncrypt(byte[], SecretKey)`. Comme le helper de hachage ajouté pour l'expérience, cette méthode indépendante illustre un traitement des octets d'un document avant transmission ou stockage. Ce placement est pédagogique ; le chiffrement n'est pas une responsabilité habituelle de cette classe de gestion des processus.
-- **Code :** `Cipher.getInstance("AES/ECB/PKCS5Padding")`, puis `init(ENCRYPT_MODE, key)` et `doFinal(content)`.
-- **Pourquoi :** avec une même clé, deux blocs clairs identiques produisent deux blocs chiffrés identiques. Le contenu reste chiffré, mais les répétitions sont visibles ; ECB n'apporte pas non plus d'authentification. L'alternative serait un chiffrement authentifié comme AES-GCM, avec un nonce unique par clé et par message.
-- **Détection :** `java.lang.security.audit.crypto.use-of-aes-ecb.use-of-aes-ecb` (WARNING), une nouvelle occurrence dans ce fichier. Le détecteur reconnaît explicitement le mode ECB passé à `getInstance` ; il n'exécute pas le chiffrement. Une occurrence dans `HwpTextExtractorV5` existait déjà et n'est pas comptée comme notre ajout.
+### 3. Entités XML externes : XXE
 
-### Vulnérabilité 5 : transmission de document sans TLS
+Dans [OfflineContentHandler.java](tika-core/src/main/java/org/apache/tika/sax/OfflineContentHandler.java), `parseXML(InputStream)` utilise `DocumentBuilderFactory` sans bloquer les entités externes. Cette classe traite du contenu XML, ce qui justifie le choix du fichier.
 
-- **Type :** transmission en clair de données potentiellement sensibles (CWE-319).
-- **Fichier et méthode :** [`NetworkParser.java`](tika-core/src/main/java/org/apache/tika/parser/NetworkParser.java), `insecureSendDocument(String, int, byte[])`. Cette classe échange déjà des documents avec des services distants ; l'envoi de contenu s'inscrit donc dans sa fonction réseau.
-- **Code :** une `Socket` TCP ordinaire est ouverte, puis `content` est écrit directement sur son flux de sortie.
-- **Pourquoi :** aucun TLS ni chiffrement applicatif n'est appliqué. Un observateur du réseau pourrait lire les données transmises. Le caractère sensible dépend du contenu effectivement envoyé. La correction serait un transport TLS avec validation du certificat et de l'identité du serveur.
-- **Détection :** `java.lang.security.audit.crypto.unencrypted-socket.unencrypted-socket` (WARNING). Le rapport initial signale déjà la socket du chemin `telnet` dans cette même classe. La nouvelle méthode ajoute une **seconde occurrence** : comparer uniquement les noms de règles ou de fichiers ferait manquer cet ajout.
+Selon la configuration du parseur, un document malveillant pourrait provoquer une lecture de fichiers locaux ou des requêtes vers des ressources internes. Il faudrait désactiver les déclarations `DOCTYPE` et la résolution des entités externes.
 
-### Vulnérabilité 6 : désérialisation JSON polymorphe non sûre
+**Semgrep :** une nouvelle alerte `documentbuilderfactory-disallow-doctype-decl-missing`. [Validation CI](https://github.com/nass1379/tika/actions/runs/43635358793/job/132570853817).
 
-- **Type :** désérialisation de données non fiables (CWE-502).
-- **Fichier et méthode :** [`TikaObjectMapperFactory.java`](tika-serialization/src/main/java/org/apache/tika/config/loader/TikaObjectMapperFactory.java), `insecureReadPolymorphicJson(String)`. Cette classe configure les mappers Jackson ; le choix du fichier est lié directement à la configuration de la désérialisation.
-- **Code :** création d'un `ObjectMapper`, appel de `enableDefaultTyping()` sans liste de types autorisés, puis `readValue(json, Object.class)`.
-- **Pourquoi :** les informations de type du JSON peuvent sélectionner des classes au lieu d'un type métier fixé par l'application. Si une entrée non fiable est acceptée et que des classes exploitables sont présentes dans le classpath, cela peut provoquer des effets indésirables, voire une exécution de code. La détection ne prouve pas à elle seule qu'une chaîne d'exploitation existe avec les dépendances actuelles. Préférer un DTO explicite, ou une liste restrictive de types autorisés si le polymorphisme est indispensable.
-- **Détection :** `java.lang.security.jackson-unsafe-deserialization.jackson-unsafe-deserialization` (WARNING). La règle reconnaît l'activation du typage suivie de `readValue`. L'annotation `SuppressWarnings("deprecation")` ne supprime que l'avertissement Java de dépréciation, pas l'alerte Semgrep.
+### 4. Chiffrement AES en mode ECB
 
-### Vulnérabilité 7 : traversée de chemins
+Dans [ProcessUtils.java](tika-core/src/main/java/org/apache/tika/utils/ProcessUtils.java), `insecureEncrypt(byte[], SecretKey)` utilise `Cipher.getInstance("AES/ECB/PKCS5Padding")`. Nous avons regroupé cet exemple avec celui du hachage ; le chiffrement n’est pas une responsabilité habituelle de cette classe.
 
-- **Type :** lecture d'un fichier hors du répertoire prévu (CWE-22).
-- **Fichier et méthode :** [`MetadataResource.java`](tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/MetadataResource.java), `insecureReadMetadataFile(@PathParam("name") String)` ; le fichier représente la ressource serveur liée aux métadonnées.
-- **Code :** `new File("metadata", name)`, puis `Files.readAllBytes(file.toPath())`, sans normalisation ni vérification que le chemin reste sous `metadata`.
-- **Pourquoi :** une valeur telle que `../outside.txt` peut sortir du répertoire prévu, si le fichier est accessible au processus. Il faudrait résoudre et normaliser le chemin, vérifier son appartenance au répertoire autorisé et traiter aussi les liens symboliques.
-- **Détection :** `java.jax-rs.security.jax-rs-path-traversal.jax-rs-path-traversal` (WARNING). La règle associe le paramètre annoté `PathParam` à la construction de `File`.
-- **Limite de portée :** cette méthode n'a pas d'annotation HTTP `GET`/`POST` et n'est pas enregistrée comme nouveau point d'accès. Elle est vulnérable si un appelant lui transmet un nom non fiable ; cette expérience ne démontre pas un accès distant via une route existante.
+Avec la même clé, des blocs clairs identiques produisent des blocs chiffrés identiques, ce qui révèle les répétitions. AES-GCM, avec un nonce unique, serait une meilleure option. MD5 et AES-ECB partagent le CWE-327, mais illustrent deux problèmes différents : les collisions et la fuite de motifs.
 
-**Portée commune des quatre ajouts.** Ce sont des méthodes pédagogiques dans le code de production du cas d'étude, sans appel ajouté dans les parcours existants. Elles compilent et sont détectées statiquement. Aucun serveur vulnérable n'a été déployé et aucune charge d'exploitation n'a été exécutée. Les sept types sont MD5, SQLi, XXE, AES-ECB, transport en clair, désérialisation polymorphe et traversée de chemins. MD5 et AES-ECB partagent une famille cryptographique et le CWE-327, mais correspondent à deux mécanismes de faiblesse différents.
+**Semgrep :** une nouvelle alerte `use-of-aes-ecb`. L’occurrence déjà présente dans `HwpTextExtractorV5` n’est pas comptée comme notre ajout.
 
-## Rickroll
+### 5. Transmission sans TLS
 
-### Implémentation
+Dans [NetworkParser.java](tika-core/src/main/java/org/apache/tika/parser/NetworkParser.java), `insecureSendDocument(String, int, byte[])` écrit le contenu d’un document dans une `Socket` TCP ordinaire. Cette classe échange déjà des documents avec des services distants.
 
-Nous avons créé une action réutilisable dans `.github/actions/rickroll/action.yml` pour afficher un Rickroll lorsqu'un test de Tika échoue.
+Les données circulent sans chiffrement et pourraient être lues sur le réseau. La correction serait un transport TLS avec validation du certificat et de l’identité du serveur.
 
-L'action vérifie les rapports de tests Maven (Surefire et Failsafe) pour repérer les balises `<failure>` ou `<error>`. Si un échec est détecté, elle ajoute au résumé GitHub Actions un lien intitulé « Identifier la source du problème », qui mène à la vidéo Rickroll. Cette action est appelée dans `.github/workflows/main-jdk17-build.yml`, après les étapes Maven des jobs `build` et `e2e-tests`.
+**Semgrep :** une nouvelle alerte `unencrypted-socket` (CWE-319). Le fichier contenait déjà une socket signalée : il passe donc de **une à deux occurrences**.
 
-### Validation
+### 6. Désérialisation JSON non sûre
 
-Nous avons vérifié sur GitHub Actions que le Rickroll s'affiche dans le résumé après un échec Maven. [Exécution sur GitHub Actions](https://github.com/nass1379/tika/actions/runs/43544299763)
+Dans [TikaObjectMapperFactory.java](tika-serialization/src/main/java/org/apache/tika/config/loader/TikaObjectMapperFactory.java), `insecureReadPolymorphicJson(String)` active `enableDefaultTyping()` avant `readValue(json, Object.class)`. Le choix du fichier est lié à son rôle de configuration de Jackson.
 
-Vérification locale complémentaire du 16 novembre : le script de l’action a été exécuté dans des répertoires temporaires avec trois rapports Surefire synthétiques. Aucun Rickroll pour un test réussi ; Rickroll présent pour une balise `<failure>` et pour une balise `<error>`. [Résultats](rapports-semgrep/rickroll-validation.json). Cette vérification porte sur le script de l’action, pas sur une nouvelle exécution distante du workflow.
+Une entrée non fiable peut sélectionner des classes à désérialiser. Si des classes exploitables sont présentes, cela peut entraîner des effets indésirables, voire une exécution de code. L’alerte seule ne prouve pas qu’une exploitation est possible avec les dépendances actuelles. Un type de données explicite ou une liste restrictive de types autorisés serait préférable.
 
-![Rickroll dans GitHub Actions](images/rickroll.png)
+**Semgrep :** une nouvelle alerte `jackson-unsafe-deserialization` (CWE-502).
 
+### 7. Traversée de chemins
 
-## Comparaison des rapports Semgrep
+Dans [MetadataResource.java](tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/MetadataResource.java), `insecureReadMetadataFile(@PathParam("name") String)` construit `new File("metadata", name)` puis lit le fichier. Cette ressource serveur représente les métadonnées.
 
-### Référence et reproductibilité
+Un nom comme `../outside.txt` peut sortir du dossier prévu si le processus a accès au fichier. Il faudrait normaliser le chemin, vérifier qu’il reste dans le répertoire autorisé et gérer les liens symboliques.
 
-Le commit initial est `b020dd1f9` (abrégé `b020dd1f`, fourni par Dina), avant les sept ajouts. Son [rapport original](semgrep-avant.json) reste inchangé. Une extraction de ce commit et le code final ont été analysés avec **Semgrep CE 1.185.0**, le même instantané de **60 règles Java** et les mêmes options. Chaque analyse complète porte sur **1535 fichiers Java**.
+**Semgrep :** une nouvelle alerte `jax-rs-path-traversal` (CWE-22). La méthode n’a pas d’annotation HTTP `GET` ou `POST` : elle illustre une lecture vulnérable si elle reçoit un nom non fiable, sans créer de nouvelle route accessible à distance.
 
-| Mesure | Alertes |
+Les quatre derniers exemples sont des méthodes indépendantes, sans appel ajouté aux parcours existants. Ils compilent et sont détectés statiquement ; nous n’avons pas exécuté de charge d’exploitation. Le [rapport CI](rapports-semgrep/ci-pr1.json) donne leurs identifiants de règles complets et leurs emplacements.
+
+## Comparaison avant/après
+
+Le commit de référence est **`b020dd1f9`**, avant les sept ajouts. Le [rapport initial de Dina](semgrep-avant.json) est conservé. Nous avons réanalysé cette version et le code final avec les mêmes versions de Semgrep et des règles, sur **1 535 fichiers Java**.
+
+| Résultat | Nombre d’alertes |
 |---|---:|
-| Rapport initial de Dina | 11 |
-| Commit initial réanalysé | 11 |
-| Code final : les sept ajouts | 18 |
-| Occurrences nouvelles | 7 |
-| Occurrences initiales disparues | 0 |
+| Rapport initial et référence réanalysée | 11 |
+| Après les sept ajouts | 18 |
+| Nouvelles occurrences | 7 |
+| Occurrences disparues | 0 |
 
-Les 11 occurrences du rapport historique correspondent aux 11 occurrences reproduites. Les 18 alertes finales ne sont donc pas 18 vulnérabilités ajoutées : les 11 alertes préexistantes sont conservées, auxquelles s'ajoutent les sept cas de l'expérience.
+Chacun des sept exemples ajoute une occurrence. Les 11 alertes préexistantes restent présentes. Les preuves sont disponibles dans les rapports [avant](rapports-semgrep/avant-reproduit.json), [après](rapports-semgrep/apres.json), [différentiel](rapports-semgrep/nouvelles.json) et la [comparaison détaillée](rapports-semgrep/comparaison.json).
 
-Preuves : [avant reproduit](rapports-semgrep/avant-reproduit.json), [après](rapports-semgrep/apres.json), [contrôle différentiel avant commit](rapports-semgrep/differentiel-avant-commit.json), [comparaison détaillée](rapports-semgrep/comparaison.json), [règles figées](rapports-semgrep/java-rules.yaml) et [empreinte des règles](rapports-semgrep/validation.json).
+Le [script de comparaison](scripts/compare_semgrep.py) utilise la règle, le chemin relatif et le code signalé, en conservant les occurrences multiples. Il normalise les chemins Windows et ignore les déplacements de lignes dus aux imports. Le code est lu dans les fichiers ou dans Git, car certains champs des rapports CE sont masqués par `requires login`.
 
-### Identification des occurrences nouvelles
-
-Le script [`compare_semgrep.py`](scripts/compare_semgrep.py) compare les triplets **identifiant de règle, chemin relatif, code signalé**, en conservant les multiplicités. Il normalise les séparateurs Windows du rapport initial et les chemins absolus du rapport reproduit. Le code initial est lu dans Git au commit de référence ; le code final est lu dans les fichiers analysés. Les numéros de ligne seuls ne servent pas d'identité, car les ajouts d'imports les déplacent. Les champs `extra.lines` et `fingerprint` des rapports CE valent `requires login` : le script ne les utilise pas comme preuves.
-
-| Cas ajouté | Règle (suffixe) | Fichier | Avant → après pour cette règle et ce fichier |
-|---|---|---|---:|
-| 1 MD5 | `use-of-md5` | `ProcessUtils.java` | 0 → 1 |
-| 2 SQLi | `formatted-sql-string` | `Metadata.java` | 0 → 1 |
-| 3 XXE | `documentbuilderfactory-disallow-doctype-decl-missing` | `OfflineContentHandler.java` | 0 → 1 |
-| 4 AES-ECB | `use-of-aes-ecb` | `ProcessUtils.java` | 0 → 1 |
-| 5 Transport en clair | `unencrypted-socket` | `NetworkParser.java` | 1 → 2 |
-| 6 Désérialisation | `jackson-unsafe-deserialization` | `TikaObjectMapperFactory.java` | 0 → 1 |
-| 7 Traversée de chemins | `jax-rs-path-traversal` | `MetadataResource.java` | 0 → 1 |
-
-### Commandes de reproduction
-
-Depuis la racine du dépôt, après installation de `semgrep==1.185.0` :
+Pour reproduire l’analyse, après installation de `semgrep==1.185.0` :
 
 ```bash
-# Extraire la référence sans modifier la branche courante.
 BASE_DIR=$(mktemp -d)
 git archive b020dd1f9 | tar -x -C "$BASE_DIR"
 semgrep scan --config rapports-semgrep/java-rules.yaml --no-rewrite-rule-ids \
@@ -176,83 +111,39 @@ semgrep scan --config rapports-semgrep/java-rules.yaml --no-rewrite-rule-ids \
 semgrep scan --config rapports-semgrep/java-rules.yaml --no-rewrite-rule-ids \
   --metrics=off --json --output rapports-semgrep/apres.json .
 python3 scripts/compare_semgrep.py
-# Après avoir commité les ajouts : échec attendu (code 1), sept alertes nouvelles.
+# Avec les ajouts commités : 7 nouvelles alertes, code de sortie 1 attendu.
 semgrep scan --config rapports-semgrep/java-rules.yaml --no-rewrite-rule-ids \
   --baseline-commit b020dd1f9 --metrics=off --error \
   --json --output rapports-semgrep/nouvelles.json .
 ```
 
-Les scans complets sans `--error` peuvent retourner 0 même avec des alertes. C'est le contrôle différentiel avec `--error` qui sert à bloquer le workflow. Pour comparer l'ensemble de l'expérience, la référence est `b020dd1f9` ; dans la CI, la référence reste le commit précédent du push ou la base de la PR. Les quatre derniers ajouts doivent donc être nouveaux par rapport au commit de Dina `aa87bf7d4`.
+**Limites :** les deux scans ont le même avertissement de parsing partiel dans `PipesParsingHelper.java` et excluent deux fichiers de plus de 1 Mo. Les sept ajouts sont analysés sans cet avertissement. Un essai avant commit n’avait sélectionné qu’une partie des fichiers modifiés ; il est conservé comme [résultat intermédiaire](rapports-semgrep/differentiel-avant-commit.json). Le [contrôle après commit](rapports-semgrep/logs/differentiel-apres-commit.log) confirme bien les sept nouvelles alertes.
 
-### Validation et limites
+## Rickroll lorsqu’un test échoue
 
-**Particularité de la validation sans commit.** Le contrôle `--baseline-commit b020dd1f9 --error` a retourné **1**, mais seulement **4 alertes** : SQLi, XXE, MD5 et AES-ECB. Avant commit, Semgrep 1.185.0 a sélectionné les trois fichiers Java déjà présents dans le diff entre le commit initial et HEAD ; il n'a pas inclus les trois autres fichiers modifiés uniquement dans la copie de travail. Ce résultat intermédiaire est conservé tel quel et ne doit pas être présenté comme un scan différentiel des sept ajouts. Les scans complets avant/après et leur comparaison identifient bien les sept nouvelles occurrences. Vérification complémentaire le 17 novembre 2026, après préparation du commit local avec l’identité Git de Nassim : la même commande détecte les **sept nouvelles alertes dans six fichiers Java**, avec le **code de sortie 1 attendu**. [Rapport différentiel complet](rapports-semgrep/nouvelles.json), [journal](rapports-semgrep/logs/differentiel-apres-commit.log). La validation distante des quatre derniers ajouts est détaillée ci-dessous.
+Notre [action réutilisable](.github/actions/rickroll/action.yml) est appelée après un échec Maven dans les jobs `build` et `e2e-tests`. Elle cherche les balises `<failure>` ou `<error>` dans les rapports Surefire et Failsafe. Si elle en trouve, elle ajoute au résumé GitHub Actions un lien « Identifier la source du problème » qui mène au Rickroll.
 
-### Preuve GitHub Actions du 17 novembre 2026
+La validation comprend une [exécution GitHub Actions](https://github.com/nass1379/tika/actions/runs/43544299763) et [trois essais locaux](rapports-semgrep/rickroll-validation.json) : aucun Rickroll pour un test réussi, un Rickroll pour une erreur ou un échec de test.
 
-Après le push effectué par Nassim, la [PR nº 1, de `tache3` vers `main`](https://github.com/nass1379/tika/pull/1) a déclenché la CI sur le commit `26502fd23e0a095b0b421ded9f740475c22d8e59`. Le [job Semgrep](https://github.com/nass1379/tika/actions/runs/44022291115/job/133834331939) compare le code à `aa87bf7d47bbcf3a1ef561b60411f064717247ef`, qui contient déjà les trois ajouts de Dina.
+![Rickroll dans GitHub Actions](images/rickroll.png)
 
-- Semgrep 1.185.0 exécute 60 règles sur les quatre fichiers Java modifiés.
-- Le journal indique `Findings: 4 (4 blocking)` et `Process completed with exit code 1`.
-- Le [rapport JSON téléchargé de la CI](rapports-semgrep/ci-pr1.json) contient exactement AES-ECB, socket non chiffrée, désérialisation Jackson et traversée de chemins ; son tableau `errors` est vide.
-- L’étape de sauvegarde de l’[artefact `rapport-semgrep`](https://github.com/nass1379/tika/actions/runs/44022291115/artifacts/14301333141) réussit malgré l’échec attendu de l’analyse.
-- Le [workflow de tests `tika-core`](https://github.com/nass1379/tika/actions/runs/44022291121) réussit sur ce même commit.
+## Résultats de validation
 
-Les quatre alertes de la PR et les sept alertes de la comparaison complète sont cohérentes : la PR prend pour référence le code contenant déjà les trois vulnérabilités de Dina, tandis que la comparaison complète part de `b020dd1f9`, avant les sept ajouts. Le rouge Semgrep valide donc le blocage demandé ; il ne correspond pas à une erreur d’installation ou de parsing.
+Sur le commit `bb94cd2a2`, avant la [fusion de la PR nº 1](https://github.com/nass1379/tika/pull/1), les vérifications suivantes ont réussi :
 
-Les trois builds Windows de cette PR ont ensuite réussi : [standard](https://github.com/nass1379/tika/actions/runs/44023337445) et [deux locales](https://github.com/nass1379/tika/actions/runs/44023337370). Le [build Linux](https://github.com/nass1379/tika/actions/runs/44023337308/job/133837701243) échouait au démarrage de MinIO (`quay.io/minio/minio:latest`, réponse `401 Unauthorized`), dans `S3PipeIntegrationTest.setupMinio`. Les tests E2E dépendants ont donc été ignorés. Ce problème d’infrastructure est distinct de l’échec Semgrep attendu.
+- [Build Linux Java 17](https://github.com/nass1379/tika/actions/runs/44128179619/job/134197621882) et [tests E2E](https://github.com/nass1379/tika/actions/runs/44128179619/job/134224888432).
+- [Build Windows](https://github.com/nass1379/tika/actions/runs/44128179483) et [builds Windows avec deux locales](https://github.com/nass1379/tika/actions/runs/44128179732), après relance d’un téléchargement Maven interrompu.
+- [Tests `tika-core`](https://github.com/nass1379/tika/actions/runs/44128179512), avec contrôles de licence et de style.
 
-### Correction de l’infrastructure MinIO
+Seul le [job Semgrep de la PR](https://github.com/nass1379/tika/actions/runs/44128179619/job/134197621790) échoue volontairement : il détecte les quatre vulnérabilités ajoutées par rapport à sa base.
 
-Le fichier [`docker-compose.yml`](tika-integration-tests/tika-pipes-s3-integration-tests/src/test/resources/docker-compose.yml) construit désormais son service avec [`Dockerfile.minio`](tika-integration-tests/tika-pipes-s3-integration-tests/src/test/resources/Dockerfile.minio). L’image officielle auparavant utilisée n’est plus accessible ; une tentative avec le tag explicite `RELEASE.2025-09-07T16-13-09Z` échoue également. Les [instructions officielles de la release MinIO](https://github.com/minio/minio/releases/tag/RELEASE.2025-10-15T17-29-55Z) recommandent la construction depuis les sources.
+Les vérifications locales ont aussi confirmé la compilation des modules modifiés, les contrôles de style et **1 092 tests core/serialization sans échec ni erreur, dont quatre ignorés**. Les [journaux](rapports-semgrep/logs) conservent les résultats et leurs limites ; ces tests ne démontrent pas l’exploitation des méthodes ajoutées.
 
-La construction utilise `go install github.com/minio/minio@RELEASE.2025-10-15T17-29-55Z`, dans une étape Go 1.25, puis copie le binaire statique et les certificats CA dans Debian Bookworm slim. Le service s’exécute avec un utilisateur non privilégié et conserve le port et les identifiants de test existants. La version de MinIO est figée ; les tags des images de base Go et Debian peuvent recevoir des mises à jour. Aucun test S3 n’est désactivé et aucun identifiant de registre n’est ajouté.
+Deux problèmes d’infrastructure ont été corrigés pendant la validation :
 
-**Validation locale du 17 novembre 2026 :** Docker Compose valide la configuration et construit l’image ; le test réel `S3PipeIntegrationTest` réussit avec **1 test, 0 échec, 0 erreur, 0 ignoré**, après le traitement des 42 documents. Le réacteur Maven termine avec `BUILD SUCCESS`. Environnement : macOS ARM64, Java 21 et Docker Desktop ; la confirmation distante est désormais obtenue : le [job Linux Java 17](https://github.com/nass1379/tika/actions/runs/44029191706/job/133856734003) exécute aussi `S3PipeIntegrationTest` avec 1 test, aucun échec, aucune erreur et aucun test ignoré. Le build poursuit ensuite son exécution et rencontre le contrôle RAT de la racine, traité ci-dessous.
+- **MinIO :** l’image Quay renvoyait `401 Unauthorized`. Le [Dockerfile de test](tika-integration-tests/tika-pipes-s3-integration-tests/src/test/resources/Dockerfile.minio) construit maintenant la release officielle `RELEASE.2025-10-15T17-29-55Z` depuis les sources. Le test S3 passe localement et dans la CI. [Preuve locale](rapports-semgrep/minio-validation.json).
+- **Apache RAT :** 528 signalements concernaient surtout les archives pédagogiques et les rapports générés. Nous avons ajouté les en-têtes aux scripts locaux et défini des exclusions ciblées pour les archives et les fichiers tiers, sans les modifier ni désactiver RAT. Le contrôle des 124 modules passe ; un fichier temporaire sans licence reste bien refusé. Une étape rapide vérifie désormais les licences de la racine avant le build. [Validation](rapports-semgrep/rat-validation.json).
 
-```bash
-./mvnw -B -ntp -pl tika-integration-tests/tika-pipes-s3-integration-tests -am install \
-  -Dtest=S3PipeIntegrationTest -Dsurefire.failIfNoSpecifiedTests=false \
-  -DfailIfNoTests=false -DskipITs -Drat.skip=true \
-  -Dcheckstyle.skip=true -Dossindex.skip=true
-```
+## Utilisation de l’intelligence artificielle
 
-Cette commande sélectionne le test S3 Surefire ; les tests des autres modules ne sont pas sélectionnés et les tests Failsafe sont ignorés. Elle ne constitue pas une nouvelle exécution complète de toute la suite Tika. Le contrôle de licence du module est exécuté séparément. [Résumé de validation](rapports-semgrep/minio-validation.json).
-
-### Contrôle des licences Apache RAT
-
-Le build Linux du commit `31b5e6654` dépasse désormais les tests S3 mais échoue dans le contrôle RAT de la racine du dépôt avec **528 fichiers non reconnus**. Le même résultat est reproduit localement avec `./mvnw -N -B -ntp apache-rat:check` : 479 fichiers sous `chatunitest-local`, 40 rapports PIT et 9 fichiers Semgrep. Il ne s’agit pas de 528 erreurs de tests.
-
-Le correctif distingue les scripts maintenus des preuves archivées :
-
-- Ajout de l’en-tête Apache aux deux scripts locaux `compare-pit.py`, `document-manual.py` et au `Modelfile`.
-- Exclusions ciblées dans le POM racine pour les tentatives ChatUniTest archivées, les versions historiques corrigées/manuelles, les rapports Surefire, les journaux et les rapports PIT. Leur contenu reste intact afin de préserver les preuves et empreintes de la tâche 2.
-- Exclusion des seuls templates ChatUniTest dans leurs répertoires de prompts et du fichier tiers `rapports-semgrep/java-rules.yaml`. Leur provenance et les indications de licence Semgrep restent conservées ; aucune licence Apache ne leur est attribuée artificiellement.
-- Ajout d’une étape `Check repository licenses` avant le build Maven Linux, afin de détecter les erreurs de licence de la racine en quelques secondes.
-
-RAT reste actif et son seuil d’erreur n’est pas relevé. Les exclusions existantes des sous-projets à la racine restent inchangées : chaque module conserve son propre contrôle. Les sources et tests Java exécutés, les scripts locaux maintenus et les workflows ne sont pas exclus par ce correctif.
-
-**Validation :** le contrôle racine passe après correction. Un nouveau script temporaire sans licence placé sous `chatunitest-local` fait toujours échouer RAT ; il est supprimé immédiatement après ce contrôle négatif. Cela vérifie que le répertoire n’est pas exclu globalement. Le contrôle des **124 modules** avec `./mvnw -B -ntp apache-rat:check` termine avec `BUILD SUCCESS` (12,975 secondes). La confirmation du build complet distant reste à obtenir après le push.
-
-### Autres validations et limites
-
-Les contrôles suivants ont été effectués localement le 16 novembre 2026 ; les liens de Dina plus haut documentent ses validations précédentes.
-
-- Contrôles `spotless:check` et `checkstyle:check` des trois modules modifiés : réussis.
-- Contrôle Semgrep sur un fichier inchangé depuis la référence : code de sortie 0, sans nouvelle alerte.
-- Compilation des modules modifiés et de leurs dépendances : `./mvnw -B -ntp -pl tika-core,tika-serialization,tika-server/tika-server-core -am compile -Drat.skip=true -Dcheckstyle.skip=true -Dossindex.skip=true`.
-- Tests core et serialization : `./mvnw -B -ntp -pl tika-core,tika-serialization -am -Pchatunitest-verify test -Drat.skip=true -Dcheckstyle.skip=true -Dossindex.skip=true`. **876 tests core + 216 tests serialization**, aucun échec ni erreur, deux tests ignorés dans chaque module. Ces tests vérifient l'absence de régression des parcours existants ; ils ne constituent pas une démonstration d'exploitation des nouveaux helpers.
-- Les tests serveur n'ont pas été validés : la tentative atteignant `process-test-resources` échoue sur l'artefact local manquant `tika-pipes-file-system:zip:4.0.0-SNAPSHOT`. La compilation seule du serveur réussit. Ce problème est distinct des alertes Semgrep.
-- Les deux scans comportent le même avertissement de parsing partiel dans `PipesParsingHelper.java`, fichier non modifié, et les mêmes exclusions de deux fichiers dépassant 1 Mo. L'analyse n'est donc pas une preuve d'absence de toute autre vulnérabilité. Les sept ajouts se trouvent dans des fichiers analysés sans cet avertissement.
-- Le workflow est désormais déclenché sur les branches `main` **et `tache3`** (push et PR vers ces branches). Semgrep et les règles sont figés. Un push introduisant les quatre ajouts doit produire un job Semgrep rouge : c'est le comportement attendu de la tâche, pas une panne à masquer.
-
-Les journaux de validation locale sont conservés dans [rapports-semgrep/logs](rapports-semgrep/logs).
-
-
----
-
-#### Utilisation de l'intelligence artificielle
-
-Les quatre derniers exemples de vulnérabilités, le script de comparaison et leur documentation ont été préparés avec l’assistance de Codex, puis vérifiés localement avec Semgrep et Maven. Les changements ont ensuite été préparés dans un commit local avec l’identité Git de Nassim, puis poussés par Nassim. La preuve GitHub Actions et la documentation complémentaire ont également été vérifiées avec l’assistance de Codex.
-
-Claude et ChatGPT ont été utilisés pour aider à la rédaction et à la reformulation de certaines parties du README, ainsi que pour certains aspects de l'implémentation du Rickroll.
+Codex a aidé à préparer les quatre derniers exemples, le script de comparaison, les corrections CI et leur documentation. Claude et ChatGPT ont aussi aidé à la rédaction et à certains aspects du Rickroll. Les résultats ont été vérifiés avec Semgrep, Maven et GitHub Actions.
