@@ -208,7 +208,7 @@ Le fichier [`docker-compose.yml`](tika-integration-tests/tika-pipes-s3-integrati
 
 La construction utilise `go install github.com/minio/minio@RELEASE.2025-10-15T17-29-55Z`, dans une étape Go 1.25, puis copie le binaire statique et les certificats CA dans Debian Bookworm slim. Le service s’exécute avec un utilisateur non privilégié et conserve le port et les identifiants de test existants. La version de MinIO est figée ; les tags des images de base Go et Debian peuvent recevoir des mises à jour. Aucun test S3 n’est désactivé et aucun identifiant de registre n’est ajouté.
 
-**Validation locale du 17 novembre 2026 :** Docker Compose valide la configuration et construit l’image ; le test réel `S3PipeIntegrationTest` réussit avec **1 test, 0 échec, 0 erreur, 0 ignoré**, après le traitement des 42 documents. Le réacteur Maven termine avec `BUILD SUCCESS`. Environnement : macOS ARM64, Java 21 et Docker Desktop ; la confirmation sur le runner Linux Java 17 reste à obtenir après publication du correctif.
+**Validation locale du 17 novembre 2026 :** Docker Compose valide la configuration et construit l’image ; le test réel `S3PipeIntegrationTest` réussit avec **1 test, 0 échec, 0 erreur, 0 ignoré**, après le traitement des 42 documents. Le réacteur Maven termine avec `BUILD SUCCESS`. Environnement : macOS ARM64, Java 21 et Docker Desktop ; la confirmation distante est désormais obtenue : le [job Linux Java 17](https://github.com/nass1379/tika/actions/runs/44029191706/job/133856734003) exécute aussi `S3PipeIntegrationTest` avec 1 test, aucun échec, aucune erreur et aucun test ignoré. Le build poursuit ensuite son exécution et rencontre le contrôle RAT de la racine, traité ci-dessous.
 
 ```bash
 ./mvnw -B -ntp -pl tika-integration-tests/tika-pipes-s3-integration-tests -am install \
@@ -218,6 +218,21 @@ La construction utilise `go install github.com/minio/minio@RELEASE.2025-10-15T17
 ```
 
 Cette commande sélectionne le test S3 Surefire ; les tests des autres modules ne sont pas sélectionnés et les tests Failsafe sont ignorés. Elle ne constitue pas une nouvelle exécution complète de toute la suite Tika. Le contrôle de licence du module est exécuté séparément. [Résumé de validation](rapports-semgrep/minio-validation.json).
+
+### Contrôle des licences Apache RAT
+
+Le build Linux du commit `31b5e6654` dépasse désormais les tests S3 mais échoue dans le contrôle RAT de la racine du dépôt avec **528 fichiers non reconnus**. Le même résultat est reproduit localement avec `./mvnw -N -B -ntp apache-rat:check` : 479 fichiers sous `chatunitest-local`, 40 rapports PIT et 9 fichiers Semgrep. Il ne s’agit pas de 528 erreurs de tests.
+
+Le correctif distingue les scripts maintenus des preuves archivées :
+
+- Ajout de l’en-tête Apache aux deux scripts locaux `compare-pit.py`, `document-manual.py` et au `Modelfile`.
+- Exclusions ciblées dans le POM racine pour les tentatives ChatUniTest archivées, les versions historiques corrigées/manuelles, les rapports Surefire, les journaux et les rapports PIT. Leur contenu reste intact afin de préserver les preuves et empreintes de la tâche 2.
+- Exclusion des seuls templates ChatUniTest dans leurs répertoires de prompts et du fichier tiers `rapports-semgrep/java-rules.yaml`. Leur provenance et les indications de licence Semgrep restent conservées ; aucune licence Apache ne leur est attribuée artificiellement.
+- Ajout d’une étape `Check repository licenses` avant le build Maven Linux, afin de détecter les erreurs de licence de la racine en quelques secondes.
+
+RAT reste actif et son seuil d’erreur n’est pas relevé. Les exclusions existantes des sous-projets à la racine restent inchangées : chaque module conserve son propre contrôle. Les sources et tests Java exécutés, les scripts locaux maintenus et les workflows ne sont pas exclus par ce correctif.
+
+**Validation :** le contrôle racine passe après correction. Un nouveau script temporaire sans licence placé sous `chatunitest-local` fait toujours échouer RAT ; il est supprimé immédiatement après ce contrôle négatif. Cela vérifie que le répertoire n’est pas exclu globalement. Le contrôle des **124 modules** avec `./mvnw -B -ntp apache-rat:check` termine avec `BUILD SUCCESS` (12,975 secondes). La confirmation du build complet distant reste à obtenir après le push.
 
 ### Autres validations et limites
 

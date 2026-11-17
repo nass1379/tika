@@ -43,6 +43,8 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.java }}
           cache: 'maven'
+      - name: Check repository licenses
+        run: ./mvnw -N -B -ntp apache-rat:check
       - name: Install external tools
         run: sudo apt-get update && sudo apt-get install -y ffmpeg libimage-exiftool-perl
       - name: Build with Maven

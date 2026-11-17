@@ -317,6 +317,23 @@ least three +1 Tika PMC votes are cast.
             <!-- UAT test fixtures (binary/markup test documents carry no license header) -->
             <inputExclude>release-tools/uat/test-files/**</inputExclude>
 
+            <!-- Task 2 evidence snapshots: preserve original bytes and recorded hashes. -->
+            <inputExclude>chatunitest-local/attempt-*/**</inputExclude>
+            <inputExclude>chatunitest-local/mediatype/attempt-*/**</inputExclude>
+            <inputExclude>chatunitest-local/mediatype/corrections/version-*/**</inputExclude>
+            <inputExclude>chatunitest-local/mediatype/manual/version-*/**</inputExclude>
+            <inputExclude>chatunitest-local/**/surefire-reports/**</inputExclude>
+            <inputExclude>chatunitest-local/**/logs/**</inputExclude>
+            <inputExclude>rapports-pit/**</inputExclude>
+
+            <!-- ChatUniTest 2.1.1 templates retained with their original provenance. -->
+            <inputExclude>chatunitest-local/prompts/*.ftl</inputExclude>
+            <inputExclude>chatunitest-local/mediatype/prompts/*.ftl</inputExclude>
+
+            <!-- Generated logs and third-party rules; keep the embedded Semgrep license. -->
+            <inputExclude>rapports-semgrep/logs/*.log</inputExclude>
+            <inputExclude>rapports-semgrep/java-rules.yaml</inputExclude>
+
             <!-- subprojects already checked, added for RAT 0.17, see also RAT-97 -->
             <inputExclude>tika-*/**</inputExclude>
           </inputExcludes>
