@@ -164,4 +164,12 @@ public class TikaObjectMapperFactory {
             }
         }
     }
+
+    /** Educational task 3 example: accepts polymorphic types from untrusted JSON. */
+    @SuppressWarnings("deprecation")
+    public static Object insecureReadPolymorphicJson(String json) throws java.io.IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.enableDefaultTyping();
+        return mapper.readValue(json, Object.class);
+    }
 }

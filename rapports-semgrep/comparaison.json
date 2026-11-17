@@ -1,0 +1,194 @@
+{
+  "baseline_commit": "b020dd1f9",
+  "semgrep_version": "1.185.0",
+  "archived_count": 11,
+  "before_count": 11,
+  "after_count": 18,
+  "archived_baseline_matches_reproduction": true,
+  "new_findings": [
+    {
+      "rule": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "path": "tika-core/src/main/java/org/apache/tika/metadata/Metadata.java",
+      "line": 803,
+      "source": "conn.createStatement().executeUpdate(sql);",
+      "severity": "ERROR"
+    },
+    {
+      "rule": "java.lang.security.audit.crypto.unencrypted-socket.unencrypted-socket",
+      "path": "tika-core/src/main/java/org/apache/tika/parser/NetworkParser.java",
+      "line": 174,
+      "source": "try (Socket socket = new Socket(host, port)) {",
+      "severity": "WARNING"
+    },
+    {
+      "rule": "java.lang.security.audit.xxe.documentbuilderfactory-disallow-doctype-decl-missing.documentbuilderfactory-disallow-doctype-decl-missing",
+      "path": "tika-core/src/main/java/org/apache/tika/sax/OfflineContentHandler.java",
+      "line": 50,
+      "source": "return factory.newDocumentBuilder().parse(input);",
+      "severity": "ERROR"
+    },
+    {
+      "rule": "java.lang.security.audit.crypto.use-of-md5.use-of-md5",
+      "path": "tika-core/src/main/java/org/apache/tika/utils/ProcessUtils.java",
+      "line": 298,
+      "source": "java.security.MessageDigest digest = java.security.MessageDigest.getInstance(\"MD5\");",
+      "severity": "WARNING"
+    },
+    {
+      "rule": "java.lang.security.audit.crypto.use-of-aes-ecb.use-of-aes-ecb",
+      "path": "tika-core/src/main/java/org/apache/tika/utils/ProcessUtils.java",
+      "line": 306,
+      "source": "javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance(\"AES/ECB/PKCS5Padding\");",
+      "severity": "WARNING"
+    },
+    {
+      "rule": "java.lang.security.jackson-unsafe-deserialization.jackson-unsafe-deserialization",
+      "path": "tika-serialization/src/main/java/org/apache/tika/config/loader/TikaObjectMapperFactory.java",
+      "line": 173,
+      "source": "return mapper.readValue(json, Object.class);",
+      "severity": "WARNING"
+    },
+    {
+      "rule": "java.jax-rs.security.jax-rs-path-traversal.jax-rs-path-traversal",
+      "path": "tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/MetadataResource.java",
+      "line": 189,
+      "source": "public byte[] insecureReadMetadataFile(@PathParam(\"name\") String name)\nthrows java.io.IOException {\nFile file = new File(\"metadata\", name);\nreturn java.nio.file.Files.readAllBytes(file.toPath());\n}",
+      "severity": "WARNING"
+    }
+  ],
+  "removed_findings": [],
+  "before_scan_warnings": [
+    {
+      "code": 3,
+      "level": "warn",
+      "type": [
+        "PartialParsing",
+        [
+          {
+            "path": "/tmp/tache3-before/tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+            "start": {
+              "line": 226,
+              "col": 47,
+              "offset": 0
+            },
+            "end": {
+              "line": 227,
+              "col": 23,
+              "offset": 58
+            }
+          },
+          {
+            "path": "/tmp/tache3-before/tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+            "start": {
+              "line": 606,
+              "col": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 606,
+              "col": 2,
+              "offset": 1
+            }
+          }
+        ]
+      ],
+      "message": "Syntax error at line /tmp/tache3-before/tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java:226:\n `'\u0000' || Character.isISOControl(c)) {\n                return` was unexpected",
+      "path": "/tmp/tache3-before/tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+      "spans": [
+        {
+          "file": "/tmp/tache3-before/tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+          "start": {
+            "line": 226,
+            "col": 47,
+            "offset": 0
+          },
+          "end": {
+            "line": 227,
+            "col": 23,
+            "offset": 58
+          }
+        },
+        {
+          "file": "/tmp/tache3-before/tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+          "start": {
+            "line": 606,
+            "col": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 606,
+            "col": 2,
+            "offset": 1
+          }
+        }
+      ]
+    }
+  ],
+  "after_scan_warnings": [
+    {
+      "code": 3,
+      "level": "warn",
+      "type": [
+        "PartialParsing",
+        [
+          {
+            "path": "tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+            "start": {
+              "line": 226,
+              "col": 47,
+              "offset": 0
+            },
+            "end": {
+              "line": 227,
+              "col": 23,
+              "offset": 58
+            }
+          },
+          {
+            "path": "tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+            "start": {
+              "line": 606,
+              "col": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 606,
+              "col": 2,
+              "offset": 1
+            }
+          }
+        ]
+      ],
+      "message": "Syntax error at line tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java:226:\n `'\u0000' || Character.isISOControl(c)) {\n                return` was unexpected",
+      "path": "tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+      "spans": [
+        {
+          "file": "tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+          "start": {
+            "line": 226,
+            "col": 47,
+            "offset": 0
+          },
+          "end": {
+            "line": 227,
+            "col": 23,
+            "offset": 58
+          }
+        },
+        {
+          "file": "tika-server/tika-server-core/src/main/java/org/apache/tika/server/core/resource/PipesParsingHelper.java",
+          "start": {
+            "line": 606,
+            "col": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 606,
+            "col": 2,
+            "offset": 1
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-17",
+  "baseline_commit": "31b5e6654",
+  "before_unapproved": 528,
+  "before_groups": {
+    "chatunitest-local": 479,
+    "rapports-pit": 40,
+    "rapports-semgrep": 9
+  },
+  "root_check": "passed",
+  "reactor_check": "BUILD SUCCESS",
+  "modules": 124,
+  "negative_probe": "unlicensed script under chatunitest-local rejected, then removed",
+  "threshold_changed": false,
+  "archived_evidence_modified": false,
+  "remote_full_build": "pending push"
+}

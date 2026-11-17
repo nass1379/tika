@@ -167,4 +167,12 @@ public class NetworkParser implements Parser {
 
     }
 
+
+    /** Educational task 3 example: sends document content without TLS. */
+    public static void insecureSendDocument(String host, int port, byte[] content)
+            throws IOException {
+        try (Socket socket = new Socket(host, port)) {
+            socket.getOutputStream().write(content);
+        }
+    }
 }

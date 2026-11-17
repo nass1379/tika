@@ -1,0 +1,43 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 25 files tracked by git with 60 Code rules:
+  Scanning 6 files with 60 java rules.
+  Current version has 8 findings.
+
+Creating git worktree from 'b020dd1f9' to scan baseline.
+  Will report findings introduced by these commits (may be incomplete for shallow checkouts):
+    * 780d4185d Compléter la tâche 3 : quatre vulnérabilités et comparaison Semgrep
+    * aa87bf7d4 Documentation vulnérabilités 1,2,3
+    * b55bf0832 Documentation Rickroll
+    * 616ea1c4f fix: formatage imports
+    * 380022a32 fix: Rickroll uniquement si un test échoue
+    * 5d1d45d6f Documentation Semgrep
+    * 23e584f8e Vulnérabilité 3
+    * 77a43efd6 Vulnérabilité 2
+    * 9da587166 Vulnérabilité 1
+    * 98058a25d Intégration semgrep
+    * 91b6eac7f Ajout Rickroll
+
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 6 files tracked by git with 7 Code rules:
+  Scanning 6 files with 7 java rules.
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 7 (7 blocking)
+ • Rules run: 60
+ • Targets scanned: 6
+ • Parsed lines: ~100.0%
+ • Scan was limited to files changed since baseline commit.
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 60 rules on 6 files: 7 findings.
