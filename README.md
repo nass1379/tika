@@ -186,9 +186,25 @@ Les scans complets sans `--error` peuvent retourner 0 même avec des alertes. C'
 
 ### Validation et limites
 
-**Particularité de la validation sans commit.** Le contrôle `--baseline-commit b020dd1f9 --error` a retourné **1**, mais seulement **4 alertes** : SQLi, XXE, MD5 et AES-ECB. Avant commit, Semgrep 1.185.0 a sélectionné les trois fichiers Java déjà présents dans le diff entre le commit initial et HEAD ; il n'a pas inclus les trois autres fichiers modifiés uniquement dans la copie de travail. Ce résultat intermédiaire est conservé tel quel et ne doit pas être présenté comme un scan différentiel des sept ajouts. Les scans complets avant/après et leur comparaison identifient bien les sept nouvelles occurrences. Vérification complémentaire le 17 novembre 2026, après préparation du commit local avec l’identité Git de Nassim : la même commande détecte les **sept nouvelles alertes dans six fichiers Java**, avec le **code de sortie 1 attendu**. [Rapport différentiel complet](rapports-semgrep/nouvelles.json), [journal](rapports-semgrep/logs/differentiel-apres-commit.log). Le résultat distant reste à vérifier après son push.
+**Particularité de la validation sans commit.** Le contrôle `--baseline-commit b020dd1f9 --error` a retourné **1**, mais seulement **4 alertes** : SQLi, XXE, MD5 et AES-ECB. Avant commit, Semgrep 1.185.0 a sélectionné les trois fichiers Java déjà présents dans le diff entre le commit initial et HEAD ; il n'a pas inclus les trois autres fichiers modifiés uniquement dans la copie de travail. Ce résultat intermédiaire est conservé tel quel et ne doit pas être présenté comme un scan différentiel des sept ajouts. Les scans complets avant/après et leur comparaison identifient bien les sept nouvelles occurrences. Vérification complémentaire le 17 novembre 2026, après préparation du commit local avec l’identité Git de Nassim : la même commande détecte les **sept nouvelles alertes dans six fichiers Java**, avec le **code de sortie 1 attendu**. [Rapport différentiel complet](rapports-semgrep/nouvelles.json), [journal](rapports-semgrep/logs/differentiel-apres-commit.log). La validation distante des quatre derniers ajouts est détaillée ci-dessous.
 
-Le 16 novembre 2026, les validations sont **locales, avant commit et push**. La preuve GitHub Actions des quatre derniers ajouts reste à obtenir après publication ; les liens de Dina plus haut concernent ses validations précédentes.
+### Preuve GitHub Actions du 17 novembre 2026
+
+Après le push effectué par Nassim, la [PR nº 1, de `tache3` vers `main`](https://github.com/nass1379/tika/pull/1) a déclenché la CI sur le commit `26502fd23e0a095b0b421ded9f740475c22d8e59`. Le [job Semgrep](https://github.com/nass1379/tika/actions/runs/44022291115/job/133834331939) compare le code à `aa87bf7d47bbcf3a1ef561b60411f064717247ef`, qui contient déjà les trois ajouts de Dina.
+
+- Semgrep 1.185.0 exécute 60 règles sur les quatre fichiers Java modifiés.
+- Le journal indique `Findings: 4 (4 blocking)` et `Process completed with exit code 1`.
+- Le [rapport JSON téléchargé de la CI](rapports-semgrep/ci-pr1.json) contient exactement AES-ECB, socket non chiffrée, désérialisation Jackson et traversée de chemins ; son tableau `errors` est vide.
+- L’étape de sauvegarde de l’[artefact `rapport-semgrep`](https://github.com/nass1379/tika/actions/runs/44022291115/artifacts/14301333141) réussit malgré l’échec attendu de l’analyse.
+- Le [workflow de tests `tika-core`](https://github.com/nass1379/tika/actions/runs/44022291121) réussit sur ce même commit.
+
+Les quatre alertes de la PR et les sept alertes de la comparaison complète sont cohérentes : la PR prend pour référence le code contenant déjà les trois vulnérabilités de Dina, tandis que la comparaison complète part de `b020dd1f9`, avant les sept ajouts. Le rouge Semgrep valide donc le blocage demandé ; il ne correspond pas à une erreur d’installation ou de parsing.
+
+Les builds complets Linux et Windows étaient encore en cours lors de cette vérification. Cette preuve ne les déclare pas réussis et ne remplace pas l’examen de leurs résultats avant fusion.
+
+### Autres validations et limites
+
+Les contrôles suivants ont été effectués localement le 16 novembre 2026 ; les liens de Dina plus haut documentent ses validations précédentes.
 
 - Contrôles `spotless:check` et `checkstyle:check` des trois modules modifiés : réussis.
 - Contrôle Semgrep sur un fichier inchangé depuis la référence : code de sortie 0, sans nouvelle alerte.
@@ -205,6 +221,6 @@ Les journaux de validation locale sont conservés dans [rapports-semgrep/logs](r
 
 #### Utilisation de l'intelligence artificielle
 
-Les quatre derniers exemples de vulnérabilités, le script de comparaison et leur documentation ont été préparés avec l’assistance de Codex, puis vérifiés localement avec Semgrep et Maven. Les changements ont ensuite été préparés dans un commit local avec l’identité Git de Nassim ; le push est laissé à Nassim.
+Les quatre derniers exemples de vulnérabilités, le script de comparaison et leur documentation ont été préparés avec l’assistance de Codex, puis vérifiés localement avec Semgrep et Maven. Les changements ont ensuite été préparés dans un commit local avec l’identité Git de Nassim, puis poussés par Nassim. La preuve GitHub Actions et la documentation complémentaire ont également été vérifiées avec l’assistance de Codex.
 
 Claude et ChatGPT ont été utilisés pour aider à la rédaction et à la reformulation de certaines parties du README, ainsi que pour certains aspects de l'implémentation du Rickroll.

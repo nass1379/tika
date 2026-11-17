@@ -27,5 +27,19 @@
     "java_files": 6,
     "exit_code": 1,
     "pushed": false
+  },
+  "github_actions_validation": {
+    "date": "2026-11-17",
+    "head": "26502fd23e0a095b0b421ded9f740475c22d8e59",
+    "base": "aa87bf7d47bbcf3a1ef561b60411f064717247ef",
+    "pull_request": "https://github.com/nass1379/tika/pull/1",
+    "semgrep_job": "https://github.com/nass1379/tika/actions/runs/44022291115/job/133834331939",
+    "findings": 4,
+    "blocking_findings": 4,
+    "scan_errors": 0,
+    "exit_code": 1,
+    "artifact_id": 14301333141,
+    "core_workflow_conclusion": "success",
+    "full_builds": "in progress at verification; not yet validated"
   }
 }
