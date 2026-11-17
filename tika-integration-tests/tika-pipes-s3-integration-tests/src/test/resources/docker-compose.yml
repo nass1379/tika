@@ -12,10 +12,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-version: '3.7'
 services:
   minio-service:
-    image: quay.io/minio/minio
+    build:
+      context: .
+      dockerfile: Dockerfile.minio
     command: minio server /data
     ports:
       - "9000:9000"

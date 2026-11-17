@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-17",
+  "reason": "MinIO image pull fails with 401 Unauthorized on GitHub Actions",
+  "source_release": "RELEASE.2025-10-15T17-29-55Z",
+  "compose_config": "passed",
+  "compose_build": "passed",
+  "integration_test": "org.apache.tika.pipes.s3.tests.S3PipeIntegrationTest",
+  "tests": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "documents": 42,
+  "maven_result": "BUILD SUCCESS",
+  "environment": "macOS ARM64, Java 21, Docker Desktop 4.56.0",
+  "remote_fix_validation": "pending user push and GitHub Actions run",
+  "apache_rat_check": "passed"
+}

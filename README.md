@@ -200,7 +200,24 @@ Après le push effectué par Nassim, la [PR nº 1, de `tache3` vers `main`](http
 
 Les quatre alertes de la PR et les sept alertes de la comparaison complète sont cohérentes : la PR prend pour référence le code contenant déjà les trois vulnérabilités de Dina, tandis que la comparaison complète part de `b020dd1f9`, avant les sept ajouts. Le rouge Semgrep valide donc le blocage demandé ; il ne correspond pas à une erreur d’installation ou de parsing.
 
-Les builds complets Linux et Windows étaient encore en cours lors de cette vérification. Cette preuve ne les déclare pas réussis et ne remplace pas l’examen de leurs résultats avant fusion.
+Les trois builds Windows de cette PR ont ensuite réussi : [standard](https://github.com/nass1379/tika/actions/runs/44023337445) et [deux locales](https://github.com/nass1379/tika/actions/runs/44023337370). Le [build Linux](https://github.com/nass1379/tika/actions/runs/44023337308/job/133837701243) échouait au démarrage de MinIO (`quay.io/minio/minio:latest`, réponse `401 Unauthorized`), dans `S3PipeIntegrationTest.setupMinio`. Les tests E2E dépendants ont donc été ignorés. Ce problème d’infrastructure est distinct de l’échec Semgrep attendu.
+
+### Correction de l’infrastructure MinIO
+
+Le fichier [`docker-compose.yml`](tika-integration-tests/tika-pipes-s3-integration-tests/src/test/resources/docker-compose.yml) construit désormais son service avec [`Dockerfile.minio`](tika-integration-tests/tika-pipes-s3-integration-tests/src/test/resources/Dockerfile.minio). L’image officielle auparavant utilisée n’est plus accessible ; une tentative avec le tag explicite `RELEASE.2025-09-07T16-13-09Z` échoue également. Les [instructions officielles de la release MinIO](https://github.com/minio/minio/releases/tag/RELEASE.2025-10-15T17-29-55Z) recommandent la construction depuis les sources.
+
+La construction utilise `go install github.com/minio/minio@RELEASE.2025-10-15T17-29-55Z`, dans une étape Go 1.25, puis copie le binaire statique et les certificats CA dans Debian Bookworm slim. Le service s’exécute avec un utilisateur non privilégié et conserve le port et les identifiants de test existants. La version de MinIO est figée ; les tags des images de base Go et Debian peuvent recevoir des mises à jour. Aucun test S3 n’est désactivé et aucun identifiant de registre n’est ajouté.
+
+**Validation locale du 17 novembre 2026 :** Docker Compose valide la configuration et construit l’image ; le test réel `S3PipeIntegrationTest` réussit avec **1 test, 0 échec, 0 erreur, 0 ignoré**, après le traitement des 42 documents. Le réacteur Maven termine avec `BUILD SUCCESS`. Environnement : macOS ARM64, Java 21 et Docker Desktop ; la confirmation sur le runner Linux Java 17 reste à obtenir après publication du correctif.
+
+```bash
+./mvnw -B -ntp -pl tika-integration-tests/tika-pipes-s3-integration-tests -am install \
+  -Dtest=S3PipeIntegrationTest -Dsurefire.failIfNoSpecifiedTests=false \
+  -DfailIfNoTests=false -DskipITs -Drat.skip=true \
+  -Dcheckstyle.skip=true -Dossindex.skip=true
+```
+
+Cette commande sélectionne le test S3 Surefire ; les tests des autres modules ne sont pas sélectionnés et les tests Failsafe sont ignorés. Elle ne constitue pas une nouvelle exécution complète de toute la suite Tika. Le contrôle de licence du module est exécuté séparément. [Résumé de validation](rapports-semgrep/minio-validation.json).
 
 ### Autres validations et limites
 
