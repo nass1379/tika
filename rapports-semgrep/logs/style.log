@@ -1,0 +1,93 @@
+[INFO] Maveniverse Nisse 0.9.4 loaded
+[INFO] Nisse injecting 32 properties into User Properties
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika-parent:pom:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika:pom:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] No need for inlining
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Apache Tika core                                                [bundle]
+[INFO] Apache Tika serialization                                          [jar]
+[INFO] Apache Tika server core                                            [jar]
+[INFO] 
+[INFO] ---------------------< org.apache.tika:tika-core >----------------------
+[INFO] Building Apache Tika core 4.0.0-SNAPSHOT                           [1/3]
+[INFO]   from pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- spotless:3.9.0:check (default-cli) @ tika-core ---
+[INFO] Spotless.Java is keeping 391 files clean - 0 needs changes to be clean, 0 were already clean, 391 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (default-cli) @ tika-core ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] -----------------< org.apache.tika:tika-serialization >-----------------
+[INFO] Building Apache Tika serialization 4.0.0-SNAPSHOT                  [2/3]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-serialization/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- spotless:3.9.0:check (default-cli) @ tika-serialization ---
+[INFO] Spotless.Java is keeping 68 files clean - 0 needs changes to be clean, 0 were already clean, 68 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (default-cli) @ tika-serialization ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] ------------------< org.apache.tika:tika-server-core >------------------
+[INFO] Building Apache Tika server core 4.0.0-SNAPSHOT                    [3/3]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-server/tika-server-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] Could not transfer metadata org.jacoco/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata org.sonatype.ossindex.maven/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata de.thetaphi/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata org.apache.felix/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata com.diffplug.spotless/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata org.apache.rat/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata org.apache.tooling/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.jacoco/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.jacoco/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.sonatype.ossindex.maven/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.sonatype.ossindex.maven/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] de.thetaphi/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata de.thetaphi/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.felix/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.felix/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] com.diffplug.spotless/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata com.diffplug.spotless/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.rat/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.rat/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.tooling/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.tooling/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.maven.plugins/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.codehaus.mojo/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.jacoco/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.jacoco/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.sonatype.ossindex.maven/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.sonatype.ossindex.maven/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] de.thetaphi/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata de.thetaphi/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.felix/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.felix/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] com.diffplug.spotless/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata com.diffplug.spotless/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.rat/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.rat/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.tooling/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.tooling/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.apache.maven.plugins/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[WARNING] org.codehaus.mojo/maven-metadata.xml failed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): Blocked mirror for repositories: [miredot (http://nexus.qmino.com/content/repositories/miredot, default, releases+snapshots)]
+[INFO] 
+[INFO] --- spotless:3.9.0:check (default-cli) @ tika-server-core ---
+[INFO] Spotless.Java is keeping 66 files clean - 0 needs changes to be clean, 0 were already clean, 66 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (default-cli) @ tika-server-core ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Apache Tika core 4.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Apache Tika core ................................... SUCCESS [  0.909 s]
+[INFO] Apache Tika serialization .......................... SUCCESS [  1.040 s]
+[INFO] Apache Tika server core ............................ SUCCESS [  1.084 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.348 s
+[INFO] Finished at: 2026-11-16T16:55:10-05:00
+[INFO] ------------------------------------------------------------------------

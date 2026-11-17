@@ -18,6 +18,7 @@ package org.apache.tika.server.core.resource;
 
 import static org.apache.tika.server.core.resource.TikaResource.fillMetadata;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 
@@ -182,5 +183,12 @@ public class MetadataResource {
             return Metadata.newInstance(context);
         }
         return metadataList.get(0);
+    }
+
+    /** Educational task 3 example: resolves a caller-controlled path without containment checks. */
+    public byte[] insecureReadMetadataFile(@PathParam("name") String name)
+            throws java.io.IOException {
+        File file = new File("metadata", name);
+        return java.nio.file.Files.readAllBytes(file.toPath());
     }
 }

@@ -1,0 +1,14 @@
+[
+  {
+    "fixture": "success",
+    "rickroll_rendered": false
+  },
+  {
+    "fixture": "failure",
+    "rickroll_rendered": true
+  },
+  {
+    "fixture": "error",
+    "rickroll_rendered": true
+  }
+]

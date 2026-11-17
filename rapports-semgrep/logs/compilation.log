@@ -1,0 +1,1201 @@
+[INFO] Maveniverse Nisse 0.9.4 loaded
+[INFO] Nisse injecting 32 properties into User Properties
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika-parent:pom:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for org.apache.tika:tika:pom:4.0.0-SNAPSHOT
+[WARNING] 'version' contains an expression but should be a constant. @ org.apache.tika:tika-parent:${revision}, /Users/nassimbarhoumi/Documents/tika/tika-parent/pom.xml, line 34, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] No need for inlining
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Apache Tika parent                                                 [pom]
+[INFO] Apache Tika Annotation Processor                                   [jar]
+[INFO] Apache Tika core                                                [bundle]
+[INFO] Apache Tika serialization                                          [jar]
+[INFO] Apache Tika plugins core                                           [jar]
+[INFO] Apache Tika parser modules                                         [pom]
+[INFO] Apache Tika standard parser modules and package                    [pom]
+[INFO] Apache Tika standard parser modules                                [pom]
+[INFO] Apache Tika ZIP commons                                            [jar]
+[INFO] Apache Tika Encoding Detectors                                     [pom]
+[INFO] Apache Tika ML                                                     [pom]
+[INFO] Apache Tika ML core (no Tika dependencies)                         [jar]
+[INFO] Apache Tika ML charset encoding detector                           [jar]
+[INFO] Apache Tika ML junk detector — runtime and training tools          [jar]
+[INFO] Apache Tika digest commons                                         [jar]
+[INFO] Apache Tika handlers                                               [pom]
+[INFO] tika-handler-boilerpipe                                            [jar]
+[INFO] Apache Tika language detection                                     [pom]
+[INFO] Apache Tika langdetect (charsoup core — no Tika dependencies)      [jar]
+[INFO] Apache Tika langdetect test commons                                [jar]
+[INFO] Apache Tika OpenNLP langdetect                                     [jar]
+[INFO] Apache Tika Optimaize langdetect                                   [jar]
+[INFO] Apache Tika langdetect (built-in charsoup)                         [jar]
+[INFO] Apache Tika pipes                                                  [pom]
+[INFO] Apache Tika pipes api                                              [jar]
+[INFO] Apache Tika Pipes iterators - base                                 [jar]
+[INFO] Apache Tika pipes core                                             [jar]
+[INFO] Apache Tika translate                                           [bundle]
+[INFO] Apache Tika server module                                          [pom]
+[INFO] Apache Tika server core                                            [jar]
+[INFO] 
+[INFO] --------------------< org.apache.tika:tika-parent >---------------------
+[INFO] Building Apache Tika parent 4.0.0-SNAPSHOT                        [1/30]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-parent ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-parent/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-parent ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-parent ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-parent ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-parent:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] -------------< org.apache.tika:tika-annotation-processor >--------------
+[INFO] Building Apache Tika Annotation Processor 4.0.0-SNAPSHOT          [2/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-annotation-processor/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-annotation-processor ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-annotation-processor ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-annotation-processor ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-annotation-processor ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-annotation-processor ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-annotation-processor ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-annotation-processor/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-annotation-processor ---
+[INFO] Spotless.Java is keeping 4 files clean - 0 were changed to be clean, 0 were already clean, 4 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-annotation-processor ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-annotation-processor ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-annotation-processor ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-annotation-processor:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-annotation-processor ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ---------------------< org.apache.tika:tika-core >----------------------
+[INFO] Building Apache Tika core 4.0.0-SNAPSHOT                          [3/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-core/pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-core ---
+[INFO] Spotless.Java is keeping 391 files clean - 0 were changed to be clean, 0 were already clean, 391 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] Copying appended resource: META-INF/LICENSE
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-core ---
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-core:bundle:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -----------------< org.apache.tika:tika-serialization >-----------------
+[INFO] Building Apache Tika serialization 4.0.0-SNAPSHOT                 [4/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-serialization/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-serialization ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-serialization ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-serialization ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-serialization ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-serialization ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-serialization ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-serialization ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-serialization/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-serialization ---
+[INFO] Spotless.Java is keeping 68 files clean - 0 were changed to be clean, 0 were already clean, 68 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-serialization ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-serialization ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-serialization/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-serialization ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-serialization:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-serialization ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -----------------< org.apache.tika:tika-plugins-core >------------------
+[INFO] Building Apache Tika plugins core 4.0.0-SNAPSHOT                  [5/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-plugins-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-plugins-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-plugins-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-plugins-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-plugins-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-plugins-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-plugins-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-plugins-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-plugins-core ---
+[INFO] Spotless.Java is keeping 10 files clean - 0 were changed to be clean, 0 were already clean, 10 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-plugins-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-plugins-core ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-plugins-core/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-plugins-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-plugins-core:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-plugins-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --------------------< org.apache.tika:tika-parsers >--------------------
+[INFO] Building Apache Tika parser modules 4.0.0-SNAPSHOT                [6/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-parsers/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-parsers ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-parsers ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-parsers ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-parsers ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-parsers ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-parsers ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-parsers ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-parsers/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-parsers ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-parsers ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-parsers ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-parsers:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] ---------------< org.apache.tika:tika-parsers-standard >----------------
+[INFO] Building Apache Tika standard parser modules and package 4.0.0-SNAPSHOT [7/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-parsers-standard ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-parsers-standard ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-parsers-standard ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-parsers-standard ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-parsers-standard ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-parsers-standard ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-parsers-standard ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-parsers-standard ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-parsers-standard ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-parsers-standard ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-parsers-standard:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] -----------< org.apache.tika:tika-parsers-standard-modules >------------
+[INFO] Building Apache Tika standard parser modules 4.0.0-SNAPSHOT       [8/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-parsers-standard-modules ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-parsers-standard-modules ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-parsers-standard-modules ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-parsers-standard-modules ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-parsers-standard-modules ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-parsers-standard-modules ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-parsers-standard-modules ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-parsers-standard-modules ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-parsers-standard-modules ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-parsers-standard-modules ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-parsers-standard-modules:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --------------< org.apache.tika:tika-parser-zip-commons >---------------
+[INFO] Building Apache Tika ZIP commons 4.0.0-SNAPSHOT                   [9/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-zip-commons/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-parser-zip-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-parser-zip-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-parser-zip-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-parser-zip-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-parser-zip-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-parser-zip-commons ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-parser-zip-commons ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-zip-commons/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-parser-zip-commons ---
+[INFO] Spotless.Java is keeping 18 files clean - 0 were changed to be clean, 0 were already clean, 18 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-parser-zip-commons ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-parser-zip-commons ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-parser-zip-commons ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-parser-zip-commons:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-parser-zip-commons ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --------------< org.apache.tika:tika-encoding-detectors >---------------
+[INFO] Building Apache Tika Encoding Detectors 4.0.0-SNAPSHOT           [10/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-encoding-detectors/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-encoding-detectors ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-encoding-detectors ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-encoding-detectors ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-encoding-detectors ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-encoding-detectors ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-encoding-detectors ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-encoding-detectors/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-encoding-detectors ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-encoding-detectors ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-encoding-detectors ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-encoding-detectors:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] ----------------------< org.apache.tika:tika-ml >-----------------------
+[INFO] Building Apache Tika ML 4.0.0-SNAPSHOT                           [11/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-ml/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-ml ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-ml ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-ml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-ml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-ml ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-ml ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-ml ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-ml/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-ml ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-ml ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-ml ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-ml:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --------------------< org.apache.tika:tika-ml-core >--------------------
+[INFO] Building Apache Tika ML core (no Tika dependencies) 4.0.0-SNAPSHOT [12/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-ml/tika-ml-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-ml-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-ml-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-ml-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-ml-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-ml-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-ml-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-ml-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-ml/tika-ml-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-ml-core ---
+[INFO] Spotless.Java is keeping 4 files clean - 0 were changed to be clean, 0 were already clean, 4 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-ml-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-ml-core ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-ml/tika-ml-core/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-ml-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-ml-core:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-ml-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ---------< org.apache.tika:tika-encoding-detector-mojibuster >----------
+[INFO] Building Apache Tika ML charset encoding detector 4.0.0-SNAPSHOT [13/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-encoding-detectors/tika-encoding-detector-mojibuster/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-encoding-detector-mojibuster ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-encoding-detector-mojibuster ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-encoding-detector-mojibuster ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-encoding-detector-mojibuster ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-encoding-detector-mojibuster ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-encoding-detector-mojibuster ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-encoding-detectors/tika-encoding-detector-mojibuster/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-encoding-detector-mojibuster ---
+[INFO] Spotless.Java is keeping 30 files clean - 0 were changed to be clean, 0 were already clean, 30 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-encoding-detector-mojibuster ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-encoding-detector-mojibuster ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-encoding-detector-mojibuster ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-encoding-detector-mojibuster:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-encoding-detector-mojibuster ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -----------------< org.apache.tika:tika-ml-junkdetect >-----------------
+[INFO] Building Apache Tika ML junk detector — runtime and training tools 4.0.0-SNAPSHOT [14/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-ml/tika-ml-junkdetect/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-ml-junkdetect ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-ml-junkdetect ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-ml-junkdetect ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-ml-junkdetect ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-ml-junkdetect ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-ml-junkdetect ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-ml-junkdetect ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-ml/tika-ml-junkdetect/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-ml-junkdetect ---
+[INFO] Spotless.Java is keeping 14 files clean - 0 were changed to be clean, 0 were already clean, 14 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-ml-junkdetect ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-ml-junkdetect ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-ml-junkdetect ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-ml-junkdetect:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-ml-junkdetect ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -------------< org.apache.tika:tika-parser-digest-commons >-------------
+[INFO] Building Apache Tika digest commons 4.0.0-SNAPSHOT               [15/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-digest-commons/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-parser-digest-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-parser-digest-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-parser-digest-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-parser-digest-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-parser-digest-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-parser-digest-commons ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-parser-digest-commons ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-digest-commons/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-parser-digest-commons ---
+[INFO] Spotless.Java is keeping 4 files clean - 0 were changed to be clean, 0 were already clean, 4 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-parser-digest-commons ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-parser-digest-commons ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-digest-commons/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-parser-digest-commons ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-parser-digest-commons:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-parser-digest-commons ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -------------------< org.apache.tika:tika-handlers >--------------------
+[INFO] Building Apache Tika handlers 4.0.0-SNAPSHOT                     [16/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-handlers/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-handlers ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-handlers ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-handlers ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-handlers ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-handlers ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-handlers ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-handlers/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-handlers ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-handlers ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-handlers ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-handlers:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --------------< org.apache.tika:tika-handler-boilerpipe >---------------
+[INFO] Building tika-handler-boilerpipe 4.0.0-SNAPSHOT                  [17/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-handlers/tika-handler-boilerpipe/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-handler-boilerpipe ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-handler-boilerpipe ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-handler-boilerpipe ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-handler-boilerpipe ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-handler-boilerpipe ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-handler-boilerpipe ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-handlers/tika-handler-boilerpipe/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-handler-boilerpipe ---
+[INFO] Spotless.Java is keeping 1 files clean - 0 were changed to be clean, 0 were already clean, 1 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-handler-boilerpipe ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-handler-boilerpipe ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-handlers/tika-handler-boilerpipe/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-handler-boilerpipe ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-handler-boilerpipe:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-handler-boilerpipe ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ------------------< org.apache.tika:tika-langdetect >-------------------
+[INFO] Building Apache Tika language detection 4.0.0-SNAPSHOT           [18/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-langdetect/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-langdetect ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-langdetect ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-langdetect ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-langdetect ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-langdetect ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-langdetect ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-langdetect ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-langdetect/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-langdetect ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-langdetect ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-langdetect ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-langdetect:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] -----------< org.apache.tika:tika-langdetect-charsoup-core >------------
+[INFO] Building Apache Tika langdetect (charsoup core — no Tika dependencies) 4.0.0-SNAPSHOT [19/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-charsoup-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-langdetect-charsoup-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-langdetect-charsoup-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-langdetect-charsoup-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-langdetect-charsoup-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-langdetect-charsoup-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-langdetect-charsoup-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-langdetect-charsoup-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-charsoup-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-langdetect-charsoup-core ---
+[INFO] Spotless.Java is keeping 8 files clean - 0 were changed to be clean, 0 were already clean, 8 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-langdetect-charsoup-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-langdetect-charsoup-core ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-langdetect-charsoup-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-langdetect-charsoup-core:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-langdetect-charsoup-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ------------< org.apache.tika:tika-langdetect-test-commons >------------
+[INFO] Building Apache Tika langdetect test commons 4.0.0-SNAPSHOT      [20/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-test-commons/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-langdetect-test-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-langdetect-test-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-langdetect-test-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-langdetect-test-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-langdetect-test-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-langdetect-test-commons ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-langdetect-test-commons ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-test-commons/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-langdetect-test-commons ---
+[INFO] Spotless.Java is keeping 1 files clean - 0 were changed to be clean, 0 were already clean, 1 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-langdetect-test-commons ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-langdetect-test-commons ---
+[INFO] Copying 18 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-langdetect-test-commons ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-langdetect-test-commons:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-langdetect-test-commons ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --------------< org.apache.tika:tika-langdetect-opennlp >---------------
+[INFO] Building Apache Tika OpenNLP langdetect 4.0.0-SNAPSHOT           [21/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-opennlp/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-langdetect-opennlp ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-langdetect-opennlp ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-langdetect-opennlp ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-langdetect-opennlp ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-langdetect-opennlp ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-langdetect-opennlp ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-langdetect-opennlp ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-opennlp/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-langdetect-opennlp ---
+[INFO] Spotless.Java is keeping 4 files clean - 0 were changed to be clean, 0 were already clean, 4 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-langdetect-opennlp ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-langdetect-opennlp ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-langdetect-opennlp ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-langdetect-opennlp:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-langdetect-opennlp ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -------------< org.apache.tika:tika-langdetect-optimaize >--------------
+[INFO] Building Apache Tika Optimaize langdetect 4.0.0-SNAPSHOT         [22/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-optimaize/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-langdetect-optimaize ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-langdetect-optimaize ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-langdetect-optimaize ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-langdetect-optimaize ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-langdetect-optimaize ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-langdetect-optimaize ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-langdetect-optimaize ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-optimaize/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-langdetect-optimaize ---
+[INFO] Spotless.Java is keeping 3 files clean - 0 were changed to be clean, 0 were already clean, 3 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-langdetect-optimaize ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-langdetect-optimaize ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-optimaize/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-langdetect-optimaize ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-langdetect-optimaize:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-langdetect-optimaize ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --------------< org.apache.tika:tika-langdetect-charsoup >--------------
+[INFO] Building Apache Tika langdetect (built-in charsoup) 4.0.0-SNAPSHOT [23/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-charsoup/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-langdetect-charsoup ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-langdetect-charsoup ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-langdetect-charsoup ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-langdetect-charsoup ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-langdetect-charsoup ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-langdetect-charsoup ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-langdetect-charsoup ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-langdetect/tika-langdetect-charsoup/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-langdetect-charsoup ---
+[INFO] Spotless.Java is keeping 37 files clean - 0 were changed to be clean, 0 were already clean, 37 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-langdetect-charsoup ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-langdetect-charsoup ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-langdetect-charsoup ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-langdetect-charsoup:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-langdetect-charsoup ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ---------------------< org.apache.tika:tika-pipes >---------------------
+[INFO] Building Apache Tika pipes 4.0.0-SNAPSHOT                        [24/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-pipes/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-pipes ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-pipes ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-pipes ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-pipes ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-pipes ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-pipes ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-pipes ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-pipes/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-pipes ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-pipes ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-pipes ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-pipes:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] -------------------< org.apache.tika:tika-pipes-api >-------------------
+[INFO] Building Apache Tika pipes api 4.0.0-SNAPSHOT                    [25/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-pipes-api ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-pipes-api ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-pipes-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-pipes-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-pipes-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-pipes-api ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-pipes-api ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-api/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-pipes-api ---
+[INFO] Spotless.Java is keeping 22 files clean - 0 were changed to be clean, 0 were already clean, 22 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-pipes-api ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-pipes-api ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-api/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-pipes-api ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-pipes-api:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-pipes-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ------------< org.apache.tika:tika-pipes-iterator-commons >-------------
+[INFO] Building Apache Tika Pipes iterators - base 4.0.0-SNAPSHOT       [26/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-iterator-commons/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-pipes-iterator-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-pipes-iterator-commons ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-pipes-iterator-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-pipes-iterator-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-pipes-iterator-commons ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-pipes-iterator-commons ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-pipes-iterator-commons ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-iterator-commons/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-pipes-iterator-commons ---
+[INFO] Spotless.Java is keeping 2 files clean - 0 were changed to be clean, 0 were already clean, 2 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-pipes-iterator-commons ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-pipes-iterator-commons ---
+[INFO] skip non existing resourceDirectory /Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-iterator-commons/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-pipes-iterator-commons ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-pipes-iterator-commons:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-pipes-iterator-commons ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] ------------------< org.apache.tika:tika-pipes-core >-------------------
+[INFO] Building Apache Tika pipes core 4.0.0-SNAPSHOT                   [27/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-pipes-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-pipes-core ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-pipes-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-pipes-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-pipes-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-pipes-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-pipes-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-pipes/tika-pipes-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-pipes-core ---
+[INFO] Spotless.Java is keeping 82 files clean - 0 were changed to be clean, 0 were already clean, 82 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-pipes-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-pipes-core ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-pipes-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-pipes-core:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-pipes-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] -------------------< org.apache.tika:tika-translate >-------------------
+[INFO] Building Apache Tika translate 4.0.0-SNAPSHOT                    [28/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-translate/pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-translate ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-translate ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-translate ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-translate ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-translate ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-translate ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-translate/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-translate ---
+[INFO] Spotless.Java is keeping 20 files clean - 0 were changed to be clean, 0 were already clean, 20 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-translate ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-translate ---
+[INFO] Copying 7 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-translate ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-translate:bundle:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-translate ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --------------------< org.apache.tika:tika-server >---------------------
+[INFO] Building Apache Tika server module 4.0.0-SNAPSHOT                [29/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-server/pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-server ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-server ---
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-server ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-server ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-server ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-server ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-server ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-server/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-server ---
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-server ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-server ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-server:pom:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] ------------------< org.apache.tika:tika-server-core >------------------
+[INFO] Building Apache Tika server core 4.0.0-SNAPSHOT                  [30/30]
+[INFO]   from /Users/nassimbarhoumi/Documents/tika/tika-server/tika-server-core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven-version) @ tika-server-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-java-version) @ tika-server-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (enforce-maven) @ tika-server-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.DependencyConvergence passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-bad-log4j-versions) @ tika-server-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- enforcer:3.6.3:enforce (ban-xerces-and-xml-apis) @ tika-server-core ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.dependency.BannedDependencies passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (validate) @ tika-server-core ---
+[INFO] 
+[INFO] --- jacoco:0.8.15:prepare-agent (default) @ tika-server-core ---
+[INFO] surefireArgLine set to -javaagent:/Users/nassimbarhoumi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.15/org.jacoco.agent-0.8.15-runtime.jar=destfile=/Users/nassimbarhoumi/Documents/tika/tika-server/tika-server-core/target/jacoco.exec
+[INFO] 
+[INFO] --- spotless:3.9.0:apply (default) @ tika-server-core ---
+[INFO] Spotless.Java is keeping 66 files clean - 0 were changed to be clean, 0 were already clean, 66 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ tika-server-core ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.8
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ tika-server-core ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- flatten:1.8.0:flatten (flatten) @ tika-server-core ---
+[INFO] Generating flattened POM of project org.apache.tika:tika-server-core:jar:4.0.0-SNAPSHOT...
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ tika-server-core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Apache Tika parent 4.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Apache Tika parent ................................. SUCCESS [  0.503 s]
+[INFO] Apache Tika Annotation Processor ................... SUCCESS [  0.131 s]
+[INFO] Apache Tika core ................................... SUCCESS [  0.710 s]
+[INFO] Apache Tika serialization .......................... SUCCESS [  0.191 s]
+[INFO] Apache Tika plugins core ........................... SUCCESS [  0.063 s]
+[INFO] Apache Tika parser modules ......................... SUCCESS [  0.028 s]
+[INFO] Apache Tika standard parser modules and package .... SUCCESS [  0.028 s]
+[INFO] Apache Tika standard parser modules ................ SUCCESS [  0.029 s]
+[INFO] Apache Tika ZIP commons ............................ SUCCESS [  0.061 s]
+[INFO] Apache Tika Encoding Detectors ..................... SUCCESS [  0.031 s]
+[INFO] Apache Tika ML ..................................... SUCCESS [  0.027 s]
+[INFO] Apache Tika ML core (no Tika dependencies) ......... SUCCESS [  0.026 s]
+[INFO] Apache Tika ML charset encoding detector ........... SUCCESS [  0.053 s]
+[INFO] Apache Tika ML junk detector — runtime and training tools SUCCESS [  0.053 s]
+[INFO] Apache Tika digest commons ......................... SUCCESS [  0.043 s]
+[INFO] Apache Tika handlers ............................... SUCCESS [  0.023 s]
+[INFO] tika-handler-boilerpipe ............................ SUCCESS [  0.040 s]
+[INFO] Apache Tika language detection ..................... SUCCESS [  0.023 s]
+[INFO] Apache Tika langdetect (charsoup core — no Tika dependencies) SUCCESS [  0.049 s]
+[INFO] Apache Tika langdetect test commons ................ SUCCESS [  0.045 s]
+[INFO] Apache Tika OpenNLP langdetect ..................... SUCCESS [  0.061 s]
+[INFO] Apache Tika Optimaize langdetect ................... SUCCESS [  0.050 s]
+[INFO] Apache Tika langdetect (built-in charsoup) ......... SUCCESS [  0.056 s]
+[INFO] Apache Tika pipes .................................. SUCCESS [  0.033 s]
+[INFO] Apache Tika pipes api .............................. SUCCESS [  0.061 s]
+[INFO] Apache Tika Pipes iterators - base ................. SUCCESS [  0.055 s]
+[INFO] Apache Tika pipes core ............................. SUCCESS [  0.097 s]
+[INFO] Apache Tika translate .............................. SUCCESS [  0.151 s]
+[INFO] Apache Tika server module .......................... SUCCESS [  0.022 s]
+[INFO] Apache Tika server core ............................ SUCCESS [  0.647 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.143 s
+[INFO] Finished at: 2026-11-16T16:42:41-05:00
+[INFO] ------------------------------------------------------------------------

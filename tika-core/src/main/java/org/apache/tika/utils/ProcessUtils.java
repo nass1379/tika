@@ -299,4 +299,12 @@ public class ProcessUtils {
         return digest.digest(value.getBytes(java.nio.charset.StandardCharsets.UTF_8));
     }
 
+
+    /** Educational task 3 example: ECB leaks repeated plaintext blocks. */
+    public static byte[] insecureEncrypt(byte[] content, javax.crypto.SecretKey key)
+            throws java.security.GeneralSecurityException {
+        javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("AES/ECB/PKCS5Padding");
+        cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, key);
+        return cipher.doFinal(content);
+    }
 }

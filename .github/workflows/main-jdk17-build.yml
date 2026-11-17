@@ -19,11 +19,11 @@ name: main jdk17 build
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ main, tache3 ]
     paths-ignore:
       - 'docs/**'
   push:
-    branches: [ main ]
+    branches: [ main, tache3 ]
     paths-ignore:
       - 'docs/**'
 
@@ -104,13 +104,13 @@ jobs:
           echo "Commit de référence : $BASE"
           echo "base=$BASE" >> "$GITHUB_OUTPUT"
       - name: Installer Semgrep
-        run: pip install semgrep
+        run: pip install semgrep==1.185.0
       - name: Analyser les nouvelles vulnérabilités
         shell: bash
         env:
           BASE: ${{ steps.reference.outputs.base }}
         run: |
-          semgrep scan --config p/java \
+          semgrep scan --config rapports-semgrep/java-rules.yaml --no-rewrite-rule-ids \
             --baseline-commit "$BASE" \
             --metrics=off \
             --json \
